@@ -6,15 +6,17 @@ public class Game {
     private ArrayList<Map> maps;
     private Map currentMap;
 
-    public Game() { }
+    public Game() {
+        currentMap = new Map();
+    }
 
     public void loadMap(Map m) {
     }
 
     public void startGame() {
-        System.out.println(">currentMap.init();");
+        System.out.println("    >currentMap.init();");
         currentMap.init();
-        System.out.println("<currentMap.init();");
+        System.out.println("    <currentMap.init();");
     }
 
     public void saveMap() {
