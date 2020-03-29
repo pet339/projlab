@@ -26,9 +26,9 @@ public class Menu {
             switch (event){
                 case 1: {
                     Game game = new Game();
-                    System.out.println(">game.startGame();");
+                    System.out.println(">game.startGame()");
                     game.startGame();
-                    System.out.println("<game.startGame();");
+                    System.out.println("<game.startGame()");
                 } break;
                 case 2: {
 
