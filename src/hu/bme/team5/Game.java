@@ -8,6 +8,8 @@ public class Game {
 
     public Game() {
         currentMap = new Map();
+        maps = new ArrayList<>();
+        maps.add(currentMap);
     }
 
     public void loadMap(Map m) {

@@ -1,6 +1,5 @@
 package hu.bme.team5;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Map implements TurnBased {
@@ -11,6 +10,7 @@ public class Map implements TurnBased {
     }
 
     public void init() {
+
     }
 
     public void startStorm() {
