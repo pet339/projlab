@@ -64,9 +64,9 @@ public class Character implements TurnBased, Controllable {
     @Override
     public boolean drown() {
         System.out.println("    >inventory.drownUsed()");
-        inventory.drownUsed();
-        System.out.println("    >inventory.drownUsed()");
-        return false;
+        boolean b2 = inventory.drownUsed();
+        System.out.println("    <inventory.drownUsed()");
+        return b2;
     }
 
     @Override

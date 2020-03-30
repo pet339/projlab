@@ -8,6 +8,7 @@ public class Field {
     protected int snowSize;
 
     public Field() {
+        characters = new ArrayList<>();
     }
 
     public void stepOn(Character c) {
