@@ -66,6 +66,9 @@ public class Character implements TurnBased, Controllable {
         System.out.println(">inventory.drownUsed()");
         boolean b2 = inventory.drownUsed();
         System.out.println("<inventory.drownUsed()");
+        if (!b2){
+            setDrowning(true);
+        }
         return b2;
     }
 
@@ -82,4 +85,7 @@ public class Character implements TurnBased, Controllable {
         currentField = f;
     }
 
+    void setDrowning(boolean d){
+        drowning = d;
+    }
 }

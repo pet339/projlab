@@ -17,7 +17,6 @@ public class Hole extends Field {
 
         System.out.println(">characters.get(characters.size()-1).drown()");
         characters.get(characters.size()-1).drown();
-
         System.out.println("<characters.get(characters.size()-1).drown()");
     }
 }
