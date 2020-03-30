@@ -6,20 +6,21 @@ public class Menu {
     static Game game = new Game();
 
     public Menu(){
-        System.out.println("Válasszon eseményt:");
-        System.out.println("1. Inicializáció");
-        System.out.println("2. Játékos lép");
-        System.out.println("3. Játékos havat takarít el egy jégtábláról");
-        System.out.println("4. Játékos kiás egy tárgyat egy jégtáblából");
-        System.out.println("5. Játékos felvesz egy tárgyat");
-        System.out.println("6. Játékos eldob egy tárgyat");
-        System.out.println("7. Játékos eszik");
-        System.out.println("8. Sakkutató megvizsgál egy jégtáblát");
-        System.out.println("9. Eszkimó iglut épít");
-        System.out.println("10. Játékos kimenti vízbe esett társát");
-        System.out.println("11. Játékos összeszereli a jelzőpisztolyt");
+        System.out.println("Valasszon esemenyt:");
+        System.out.println("1. Inicializacio");
+        System.out.println("2. Jatekos lep");
+        System.out.println("3. Jatekos havat takarit el egy jegtablarol");
+        System.out.println("4. Jatekos kias egy targyat egy jegtablabol");
+        System.out.println("5. Jatekos felvesz egy targyat");
+        System.out.println("6. Jatekos eldob egy targyat");
+        System.out.println("7. Jatekos eszik");
+        System.out.println("8. Sarkkutato megvizsgal egy jegtablat");
+        System.out.println("9. Eszkimo iglut epit");
+        System.out.println("10. Jatekos kimenti vizbe esett tarsat");
+        System.out.println("11. Jatekos osszeszereli a jelzopisztolyt");
         Scanner sc = new Scanner(System.in);
         int event = 0;
+        
         boolean runningGame = true;
         while(runningGame){
             try{
