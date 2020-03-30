@@ -44,7 +44,7 @@ public class Menu {
                     System.out.println(">nextField.stepOn(game.currentMap.characters.get(0))");
                     nextField.stepOn(game.currentMap.characters.get(0));
 
-                    game.currentMap.characters.get(0).drown();
+
 
 
 
