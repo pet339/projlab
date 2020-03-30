@@ -7,6 +7,6 @@ public class Food extends Item {
 
     @Override
     public boolean foodNeeded() {
-        return false;
+        return true;
     }
 }

@@ -7,6 +7,6 @@ public class DivingSuit extends Item {
 
     @Override
     public boolean divingSuitNeeded() {
-        return false;
+        return true;
     }
 }

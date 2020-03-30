@@ -7,6 +7,6 @@ public class Gun extends Item {
 
     @Override
     public boolean winItemNeeded() {
-        return false;
+        return true;
     }
 }
