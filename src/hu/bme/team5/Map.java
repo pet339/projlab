@@ -7,8 +7,8 @@ public class Map implements TurnBased {
     static ArrayList<Character> characters;
 
     public Map() {
-        fields = new ArrayList<>();
-        characters = new ArrayList<>();
+        fields = new ArrayList<Field>();
+        characters = new ArrayList<Character>();
     }
 
     public void init() {
