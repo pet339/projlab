@@ -5,6 +5,11 @@ public class Eskimo extends Character {
         super();
     }
 
-    private void buildIgloo() {
+    @Override
+    public boolean buildIgloo() {
+    	if(this.work == 0) {
+    		return false;
+    	}
+    	return true;
     }
 }
