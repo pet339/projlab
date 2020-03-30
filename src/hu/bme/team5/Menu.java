@@ -3,6 +3,8 @@ package hu.bme.team5;
 import java.util.Scanner;
 
 public class Menu {
+    static Game game = new Game();
+
     public Menu(){
         System.out.println("Válasszon eseményt:");
         System.out.println("1. Inicializáció");
@@ -25,12 +27,17 @@ public class Menu {
             }catch(Exception e){ }
             switch (event){
                 case 1: {
-                    Game game = new Game();
                     System.out.println(">game.startGame()");
                     game.startGame();
                     System.out.println("<game.startGame()");
                 } break;
-                case 2: break;
+                case 2: {
+
+                    System.out.println(">game.currentMap.characters.get(0).move(new Field())");
+                    boolean b1 = game.currentMap.characters.get(0).move(new Field());
+                    System.out.println("<game.currentMap.characters.get(0).move(new Field())");
+
+                } break;
                 case 3: break;
                 case 4: break;
                 case 5: break;
@@ -40,7 +47,10 @@ public class Menu {
                 case 9: break;
                 case 10: break;
                 case 11: break;
-                default: runningGame = false; break;
+                default: {
+                    sc.close();
+                    runningGame = false;
+                } break;
             }
         }
 

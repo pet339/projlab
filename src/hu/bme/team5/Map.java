@@ -3,14 +3,17 @@ package hu.bme.team5;
 import java.util.ArrayList;
 
 public class Map implements TurnBased {
-    private ArrayList<Field> fields;
-    private ArrayList<Character> characters;
+    static ArrayList<Field> fields;
+    static ArrayList<Character> characters;
 
     public Map() {
+        fields = new ArrayList<>();
+        characters = new ArrayList<>();
     }
 
     public void init() {
-
+        characters.add(new Eskimo());
+        characters.add(new Explorer());
     }
 
     public void startStorm() {

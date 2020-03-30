@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Game {
     private ArrayList<Map> maps;
-    private Map currentMap;
+    Map currentMap;
 
     public Game() {
         currentMap = new Map();

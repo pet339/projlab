@@ -13,11 +13,11 @@ public class Field {
     public void stepOn(Character c) {
     }
 
-    public void removeCharacter() {
+    public void removeCharacter(Character c) {
     }
 
     public boolean checkNeighbor(Field f) {
-        return false;
+        return true;
     }
 
     public void setCharacter(Character c) {
