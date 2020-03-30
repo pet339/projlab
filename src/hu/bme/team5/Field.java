@@ -37,6 +37,6 @@ public class Field {
     void setSnowSize(int s){
         System.out.println(">setSnowSize(s)");
         snowSize = s;
-        System.out.println(">setSnowSize(s)");
+        System.out.println("<setSnowSize(s)");
     }
 }

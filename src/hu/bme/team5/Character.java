@@ -50,9 +50,31 @@ public abstract class Character implements TurnBased, Controllable {
 
     @Override
     public boolean shovelSnow() {
+        boolean result;
         System.out.println(">Character.shovelSnow()");
+
+        if(work==0){
+            System.out.println("-Nincs munka, nem lehet asni.");
+            System.out.println("<Character.shovelSnow()");
+            return false;
+        }
+        if(currentField.snowSize==0){
+            System.out.println("-Nincs ho, nincs mit asni.");
+            System.out.println("<Character.shovelSnow()");
+            return false;
+        }
+
+        System.out.print("-Ho asas elott: " + currentField.snowSize + "\n");
+
+        if(inventory.shovelSnowUsed()){
+            currentField.setSnowSize(Math.max(currentField.snowSize-2, 0));
+        }
+        else currentField.setSnowSize(currentField.snowSize-1);
+
+        System.out.print("-Ho asas utan: " + currentField.snowSize + "\n");
+
         System.out.println("<Character.shovelSnow()");
-        return false;
+        return true;
     }
 
     @Override

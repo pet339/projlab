@@ -13,6 +13,7 @@ public class Inventory {
         System.out.println(">shovelSnowUsed");
         for(Item i : items){
             if(i.shovelNeeded())
+                System.out.println("<shovelSnowUsed");
                 return true;
         }
         System.out.println("<shovelSnowUsed");

@@ -28,46 +28,62 @@ public class Menu {
                 event = sc.nextInt();
             }catch(Exception e){ }
             switch (event){
+
                 case 1: {
                     System.out.println(">game.startGame()");
                     game.startGame();
                     System.out.println("<game.startGame()");
                 } break;
-                case 2: {
-                    Field nextField = new Stable();
-                    Character character = new Eskimo();
-                    boolean b1 = character.move(nextField);
 
+                case 2: {
+                    Field nextField = new Field();
+                    System.out.println(">game.currentMap.characters.get(0).move(nextField)");
+                    boolean b1 = game.currentMap.characters.get(0).move(nextField);
+                    System.out.println("<game.currentMap.characters.get(0).move(nextField)");
                 } break;
+
                 case 3: {
                     Field nextField = new Hole();
-                    Character c = new Eskimo();
-                    nextField.stepOn(c);
+                    System.out.println(">nextField.stepOn(game.currentMap.characters.get(0))");
+                    nextField.stepOn(game.currentMap.characters.get(0));
 
                     game.currentMap.characters.get(0).drown();
 
                     System.out.println("<nextField.stepOn(game.currentMap.characters.get(0))");
                 } break;
-                case 4: {
-                    Character char1 = new Explorer();
-                    Field currentField=new Field();
-                    char1.setCurrentField(currentField);
 
-                    System.out.println("Horeteg kezdeti vastagsaga: ");
+                case 4: {
+                    Character char4 = new Explorer();
+                    Field currentField=new Field();
+                    char4.setCurrentField(currentField);
+
+                    System.out.println("Mekkora a horeteg vastagsaga? (0-1024)");
                     event=sc.nextInt();
                     if(event>1024) event=1024;
                     if(event<0) event=0;
                     currentField.setSnowSize(event);
 
-                    System.out.println("Van a karakternel lapat? (i/n)");
-                    String in = sc.nextLine();
-                    if(in.equals("i")) char1.inventory.addItem(new Shovel());
+                    System.out.println("Van a karakternel lapat? (1/0)");
+                    event = sc.nextInt();
+
+                    if(event==1) char4.inventory.addItem(new Shovel());
+
+                    System.out.println("Mennyi munkat tud vegezni a karakter? (1-4)");
+                    event=sc.nextInt();
+                    if(event>4) event=4;
+                    if(event<0) event=0;
+                    char4.setWork(event);
+
+                    boolean b3=char4.shovelSnow();
 
                 } break;
+
                 case 5: {
                 } break;
+
                 case 6: {
                 } break;
+
                 case 7: break;
                 case 8: break;
                 case 9: break;
