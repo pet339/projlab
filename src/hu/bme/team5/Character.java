@@ -27,22 +27,22 @@ public class Character implements TurnBased, Controllable {
 
     @Override
     public boolean move(Field nextField) {
-        System.out.println("    >currentField.checkNeighbor(nextField)");
+        System.out.println(">currentField.checkNeighbor(nextField)");
         boolean b1 = currentField.checkNeighbor(nextField);
         setWork(5);
         if (b1 && work > 0){
             setWork(work-1);
-            System.out.println("        >currentField.removeCharacter(this)");
+            System.out.println(">currentField.removeCharacter(this)");
             currentField.removeCharacter(this);
-            System.out.println("        <currentField.removeCharacter(this)");
-            System.out.println("        >currentField.stepOn(this)");
+            System.out.println("<currentField.removeCharacter(this)");
+            System.out.println(">currentField.stepOn(this)");
             currentField.stepOn(this);
-            System.out.println("        <currentField.stepOn(this)");
-            System.out.println("        >setCurrentField(nextField)");
+            System.out.println("<currentField.stepOn(this)");
+            System.out.println(">setCurrentField(nextField)");
             setCurrentField(nextField);
-            System.out.println("        <setCurrentField(nextField)");
+            System.out.println("<setCurrentField(nextField)");
         }
-        System.out.println("    <currentField.checkNeighbor(nextField)");
+        System.out.println("<currentField.checkNeighbor(nextField)");
         return b1;
     }
 
@@ -63,9 +63,9 @@ public class Character implements TurnBased, Controllable {
 
     @Override
     public boolean drown() {
-        System.out.println("    >inventory.drownUsed()");
+        System.out.println(">inventory.drownUsed()");
         boolean b2 = inventory.drownUsed();
-        System.out.println("    <inventory.drownUsed()");
+        System.out.println("<inventory.drownUsed()");
         return b2;
     }
 
