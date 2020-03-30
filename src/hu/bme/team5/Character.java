@@ -47,24 +47,24 @@ public abstract class Character implements TurnBased, Controllable {
         System.out.println(">Character.shovelSnow()");
 
         if(work==0){
-            System.out.println("-Nincs munka, nem lehet asni.");
+            System.out.println("\t-Nincs munka, nem lehet asni.");
             System.out.println("<Character.shovelSnow()");
             return false;
         }
         if(currentField.snowSize==0){
-            System.out.println("-Nincs ho, nincs mit asni.");
+            System.out.println("\t-Nincs ho, nincs mit asni.");
             System.out.println("<Character.shovelSnow()");
             return false;
         }
 
-        System.out.print("-Ho asas elott: " + currentField.snowSize + "\n");
+        System.out.print("\t-Ho asas elott: " + currentField.snowSize + "\n");
 
         if(inventory.shovelSnowUsed()){
             currentField.setSnowSize(Math.max(currentField.snowSize-2, 0));
         }
         else currentField.setSnowSize(currentField.snowSize-1);
 
-        System.out.print("-Ho asas utan: " + currentField.snowSize + "\n");
+        System.out.print("\t-Ho asas utan: " + currentField.snowSize + "\n");
 
         System.out.println("<Character.shovelSnow()");
         return true;
@@ -73,17 +73,17 @@ public abstract class Character implements TurnBased, Controllable {
     public boolean digItem(){
         System.out.println(">Character.digItem()");
         if(currentField.snowSize!=0){
-            System.out.println("-Itt ho van, nem lehet targyat kiasni.");
+            System.out.println("\t-Itt ho van, nem lehet targyat kiasni.");
             System.out.println("<Character.digItem()");
             return false;
         }
         if(work==0){
-            System.out.println("-Nincs munka, nem lehet targyat kiasni.");
+            System.out.println("\t-Nincs munka, nem lehet targyat kiasni.");
             System.out.println("<Character.digItem()");
             return false;
         }
         if(currentField.getFrozenItem()==null){
-            System.out.println("-Nincs targy, nincs mit kiasni.");
+            System.out.println("\t-Nincs targy, nincs mit kiasni.");
             System.out.println("<Character.digItem()");
             return false;
         }
@@ -121,7 +121,18 @@ public abstract class Character implements TurnBased, Controllable {
 
     @Override
     public boolean eat() {
-        return false;
+        System.out.println(">Character.eat()");
+        if(health==256){
+            System.out.println("\t-Maximum elet, nem tud többet enni.");
+            System.out.println("<Character.eat()");
+            return false;
+        }
+        System.out.print("\t-Elet elotte: " + health + "\n");
+        health++;
+        inventory.removeFood();
+        System.out.print("\t-Elet utana: " + health + "\n");
+        System.out.println("<Character.eat()");
+        return true;
     }
 
     void setWork(int number){
@@ -129,14 +140,12 @@ public abstract class Character implements TurnBased, Controllable {
         work = number;
         System.out.println("<setWork(number)");
     }
-
     
     void setCurrentField(Field nextField){
         System.out.println(">setCurrentField()");
         currentField = nextField;
         System.out.println("<setCurrentField()");
     }
-    
     
     boolean explore() {return false;}
     boolean buildIgloo() {return false;}
@@ -145,6 +154,12 @@ public abstract class Character implements TurnBased, Controllable {
         System.out.println(">setDrowning(d)");
         drowning = d;
         System.out.println("<setDrowning(d)");
+    }
+
+    void setHealth(int h){
+        System.out.println(">Character.setHealth()");
+        health=h;
+        System.out.println("<Character.setHealth()");
     }
 
 

@@ -88,9 +88,23 @@ public class Menu {
 
                     boolean b5=char5.digItem();
                 } break;
-                case 6: {
+                case 6: break;
+                case 7: {
+                    Character char7 = new Explorer();
+                    System.out.println("Mennyi a karakter testhője? (1-256)");
+                    event=sc.nextInt();
+                    if(event<1) event=1;
+                    if(event>256) event=256;
+                    char7.setHealth(event);
+                    System.out.println("Hány ételt egyen?");
+                    event=sc.nextInt();
+                    boolean canEat=true;
+                    for (int i=0; i<event; i++){
+                        char7.inventory.addItem(new Food());
+                        canEat = char7.eat();
+                        if(!canEat) break;
+                    }
                 } break;
-                case 7: break;
                 case 8: break;
                 case 9: break;
                 case 10: break;
