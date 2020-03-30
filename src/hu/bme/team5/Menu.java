@@ -50,13 +50,22 @@ public class Menu {
                     System.out.println("<nextField.stepOn(game.currentMap.characters.get(0))");
                 } break;
                 case 4: {
+                    Field currentField=new Field();
+                    System.out.println("Horeteg kezdeti vastagsaga: ");
+                    event=sc.nextInt();
+                    if(event>1024) event=1024;
+                    if(event<0) event=0;
+                    currentField.setSnowSize(event);
+
+                    System.out.println("Van a kerekternel lapat? (i/n)");
+                    String in = sc.nextLine();
+
+
 
                 } break;
                 case 5: {
-
                 } break;
                 case 6: {
-
                 } break;
                 case 7: break;
                 case 8: break;
