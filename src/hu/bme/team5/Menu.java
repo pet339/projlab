@@ -50,6 +50,7 @@ public class Menu {
                     System.out.println("<nextField.stepOn(game.currentMap.characters.get(0))");
                 } break;
                 case 4: {
+                    Character char1 = new Explorer();
                     Field currentField=new Field();
                     System.out.println("Horeteg kezdeti vastagsaga: ");
                     event=sc.nextInt();
@@ -57,10 +58,9 @@ public class Menu {
                     if(event<0) event=0;
                     currentField.setSnowSize(event);
 
-                    System.out.println("Van a kerekternel lapat? (i/n)");
+                    System.out.println("Van a karakternel lapat? (i/n)");
                     String in = sc.nextLine();
-
-
+                    if(in.equals("i") || in.equals("I")) char1.inventory.addItem(new Shovel());
 
                 } break;
                 case 5: {
