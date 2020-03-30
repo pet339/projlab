@@ -188,12 +188,29 @@ public class Menu {
                 } break;
                 case 9: {
                     Character c = new Eskimo();
-                    c.setCurrentField(new Iceberg());
+                    c.setCurrentField(new Stable());
                     System.out.println("Mennyi munkat tud vegezni a karakter? (0-4)");
                     c.setWork(sc.nextInt());
                     c.buildIgloo();
                 } break;
-                case 10: break;
+                case 10: {
+                    Character c1 = new Explorer();
+                    c1.setCurrentField(new Stable());
+                    Character c2 = new Eskimo();
+                    c2.setCurrentField(new Hole());
+                    System.out.println("Mennyi munkat tud vegezni a karakter? (0-4)");
+                    c1.setWork(sc.nextInt());
+                    System.out.println("Szomszedos mezon all a masik karakter? (1/0)");
+                    event = sc.nextInt();
+                    if(event == 1)
+                        c1.currentField.addNeighbor(c2.currentField);
+                    System.out.println("Fuldoklik a masik karakter? (1/0)");
+                    event = sc.nextInt();
+                    if(event == 1)
+                        c2.setDrowning(true);
+                    c1.saveAlly(c2);
+
+                } break;
                 case 11: break;
                 default: {
                     sc.close();

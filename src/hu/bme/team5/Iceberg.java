@@ -1,6 +1,6 @@
 package hu.bme.team5;
 
-public class Iceberg extends Field {
+public abstract class Iceberg extends Field {
     private boolean igloo;
     private Item frozenItem;
 

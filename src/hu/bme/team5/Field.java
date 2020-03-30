@@ -17,31 +17,31 @@ public abstract class Field {
     abstract void stepOn(Character c);
 
     public void removeCharacter(Character c) {
-        System.out.println(">Field.removeCharacter(c)");
+        System.out.println(">removeCharacter(c)");
         characters.remove(c);
-        System.out.println("<Field.removeCharacter(c)");
+        System.out.println("<removeCharacter(c)");
     }
 
     public boolean checkNeighbor(Field nextField) {
-        System.out.println(">Field.checkNeighbor(nextField)");
+        System.out.println(">checkNeighbor(nextField)");
         if(neighbors.contains(nextField)){
-            System.out.println("<Field.checkNeighbor(nextField)");
+            System.out.println("<checkNeighbor(nextField)");
             return true;
         }
-        System.out.println("<Field.checkNeighbor(nextField)");
+        System.out.println("<checkNeighbor(nextField)");
         return false;
     }
 
     public void setCharacter(Character c) {
-        System.out.println(">Field.setCharacter(c)");
+        System.out.println(">setCharacter(c)");
         characters.add(c);
-        System.out.println("<Field.setCharacter(c)");
+        System.out.println("<setCharacter(c)");
     }
 
     void setSnowSize(int s){
-        System.out.println(">Field.setSnowSize(s)");
+        System.out.println(">setSnowSize(s)");
         snowSize = s;
-        System.out.println("<Field.setSnowSize(s)");
+        System.out.println("<setSnowSize(s)");
     }
 
     public void setMap(Map m){
@@ -53,9 +53,9 @@ public abstract class Field {
     }
 
     public void addNeighbor(Field f){
-        System.out.println(">Field.addNeighbor()");
+        System.out.println(">addNeighbor()");
         neighbors.add(f);
-        System.out.println("<Field.addNeighbor()");
+        System.out.println("<addNeighbor()");
     }
 
     public int getCapacity(){

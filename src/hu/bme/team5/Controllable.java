@@ -7,7 +7,7 @@ public interface Controllable {
 
     public boolean assemble();
 
-    public boolean saveAlly();
+    public boolean saveAlly(Character ally);
 
     public boolean drown();
 

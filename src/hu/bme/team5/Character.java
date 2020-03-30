@@ -98,16 +98,36 @@ public abstract class Character implements TurnBased, Controllable {
 
     @Override
     public boolean assemble() {
-        System.out.println(">Character.assemble()");
-        System.out.println("<Character.assemble()");
+        System.out.println(">assemble()");
+        System.out.println("<assemble()");
         return false;
     }
 
     @Override
-    public boolean saveAlly() {
-        System.out.println(">Character.saveAlly()");
-        System.out.println("<Character.saveAlly()");
-        return false;
+    public boolean saveAlly(Character ally) {
+        System.out.println(">saveAlly()");
+        if(work > 0){
+            Field f1 = ally.getCurrentField();
+            boolean b1 = currentField.checkNeighbor(f1);
+            boolean b2 = ally.isDrowning();
+            if(b1 && b2){
+                setWork(work -1);
+                ally.setDrowning(false);
+                currentField.stepOn(ally);
+                ally.setCurrentField(currentField);
+            }else{
+                System.out.println("Nem szomszedos mezon van a masik karakter vagy nem fulladozik (buvarruha vedi)");
+                System.out.println("<saveAlly()");
+                return false;
+            }
+        }
+        else{
+            System.out.println("Nincs eleg munkaegyseg a menteshez");
+            System.out.println("<saveAlly()");
+            return false;
+        }
+        System.out.println("<saveAlly()");
+        return true;
     }
 
     @Override
@@ -151,6 +171,10 @@ public abstract class Character implements TurnBased, Controllable {
         currentField = nextField;
         System.out.println("<setCurrentField()");
     }
+
+    Field getCurrentField(){
+        return currentField;
+    }
     
     boolean explore(Field f) {return false;}
     boolean buildIgloo() {return false;}
@@ -159,6 +183,12 @@ public abstract class Character implements TurnBased, Controllable {
         System.out.println(">setDrowning(d)");
         drowning = d;
         System.out.println("<setDrowning(d)");
+    }
+
+    boolean isDrowning(){
+        System.out.println(">isDrowning()");
+        System.out.println("<isDrowning()");
+        return drowning;
     }
 
     void setHealth(int h){
