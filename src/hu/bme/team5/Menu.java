@@ -9,6 +9,7 @@ public class Menu {
         System.out.println("Valasszon esemenyt:");
         System.out.println("1. Inicializacio");
         System.out.println("2. Jatekos lep");
+        System.out.println("3. Jatekos lyukba lep");
         System.out.println("4. Jatekos havat takarit el egy jegtablarol");
         System.out.println("5. Jatekos kias egy targyat egy jegtablabol");
         System.out.println("6. Jatekos felvesz egy targyat");
