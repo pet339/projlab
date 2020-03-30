@@ -32,10 +32,10 @@ public class Menu {
                     System.out.println("<game.startGame()");
                 } break;
                 case 2: {
-
-                    System.out.println(">game.currentMap.characters.get(0).move(new Field())");
-                    boolean b1 = game.currentMap.characters.get(0).move(new Field());
-                    System.out.println("<game.currentMap.characters.get(0).move(new Field())");
+                    Field nextField = new Field();
+                    System.out.println(">game.currentMap.characters.get(0).move(nextField)");
+                    boolean b1 = game.currentMap.characters.get(0).move(nextField);
+                    System.out.println("<game.currentMap.characters.get(0).move(nextField)");
 
                 } break;
                 case 3: break;

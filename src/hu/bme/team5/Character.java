@@ -25,17 +25,23 @@ public class Character implements TurnBased, Controllable {
     }
 
     @Override
-    public boolean move(Field f) {
-        System.out.println("    >currentField.checkNeighbor(f)");
-        boolean b1 = currentField.checkNeighbor(f);
+    public boolean move(Field nextField) {
+        System.out.println("    >currentField.checkNeighbor(nextField)");
+        boolean b1 = currentField.checkNeighbor(nextField);
         setWork(5);
         if (b1 && work > 0){
             setWork(work-1);
             System.out.println("        >currentField.removeCharacter(this)");
             currentField.removeCharacter(this);
             System.out.println("        <currentField.removeCharacter(this)");
+            System.out.println("        >currentField.stepOn(this)");
+            currentField.stepOn(this);
+            System.out.println("        <currentField.stepOn(this)");
+            System.out.println("        >setCurrentField(nextField)");
+            setCurrentField(nextField);
+            System.out.println("        <setCurrentField(nextField)");
         }
-        System.out.println("    <currentField.checkNeighbor(f)");
+        System.out.println("    <currentField.checkNeighbor(nextField)");
         return b1;
     }
 
@@ -66,6 +72,10 @@ public class Character implements TurnBased, Controllable {
 
     void setWork(int i){
         work = i;
+    }
+
+    void setCurrentField(Field f){
+        currentField = f;
     }
 
 }
