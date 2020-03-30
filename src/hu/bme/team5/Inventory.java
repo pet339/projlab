@@ -39,6 +39,7 @@ public class Inventory {
         System.out.println(">drownUsed");
         for(Item i : items){
             if(i.divingSuitNeeded())
+            System.out.println("<drownUsed");
                 return true;
         }
         System.out.println("<drownUsed");
@@ -49,6 +50,7 @@ public class Inventory {
         System.out.println(">eatUsed");
         for(Item i : items){
             if(i.foodNeeded())
+            System.out.println("<eatUsed");
                 return true;
         }
         System.out.println("<eatUsed");
@@ -59,6 +61,7 @@ public class Inventory {
         System.out.println(">saveAllyUsed");
         for(Item i : items){
             if(i.ropeNeeded())
+            System.out.println("<saveAllyUsed");
                 return true;
         }
         System.out.println("<saveAllyUsed");

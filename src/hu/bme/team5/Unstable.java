@@ -16,20 +16,13 @@ public class Unstable extends Iceberg {
         setCharacter(c);
         System.out.println("<setCharacter(c)");
 
+        System.out.println("characters.size() > capacity");
+        if(characters.size() > capacity)
+        getDestroyed();
 
-        System.out.println("-Kisebb a mezö kapacitasa, mint ahany karakter all rajta?(i/n)");
-        Scanner sc = new Scanner(System.in);
-        String s = sc.nextLine();
-        if (s.equals("i")){
-            System.out.println(">getDestroyed()");
-            getDestroyed();
-
-            System.out.println("<getDestroyed()");
-        }
-        sc.close();
     }
 
     public void getDestroyed() {
-        ;
+        
     }
 }
