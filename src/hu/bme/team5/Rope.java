@@ -7,6 +7,6 @@ public class Rope extends Item {
 
     @Override
     public boolean ropeNeeded() {
-        return false;
+        return true;
     }
 }
