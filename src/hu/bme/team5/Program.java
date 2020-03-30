@@ -3,7 +3,7 @@ package hu.bme.team5;
 public class Program {
 
     public static void main(String[] args) {
-    	 System.out.print("Szia Petra, Szia Benji!");
+    	 System.out.print("Szia Petra, Szia Benji!, Szia Aki");
         Menu menu = new Menu();
     }
 }
