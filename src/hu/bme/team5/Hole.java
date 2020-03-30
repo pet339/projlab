@@ -3,6 +3,7 @@ package hu.bme.team5;
 public class Hole extends Field {
     public Hole() {
         super();
+        capacity=0;
     }
 
     @Override

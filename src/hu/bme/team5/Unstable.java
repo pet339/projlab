@@ -5,7 +5,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Unstable extends Iceberg {
-    private int capacity;
 
     public Unstable() {
         super();
@@ -37,5 +36,9 @@ public class Unstable extends Iceberg {
             h.stepOn(c);
         }
         System.out.println("<getDestroyed");
+    }
+
+    public void setCapacity(int c){
+        capacity=c;
     }
 }

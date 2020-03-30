@@ -8,6 +8,11 @@ public class Iceberg extends Field {
         super();
     }
 
+    @Override
+    void stepOn(Character c) {
+
+    }
+
     public Item getFrozenItem() {
         return frozenItem;
     }

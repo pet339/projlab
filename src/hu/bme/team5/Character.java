@@ -146,7 +146,7 @@ public abstract class Character implements TurnBased, Controllable {
         System.out.println("<setCurrentField()");
     }
     
-    boolean explore() {return false;}
+    boolean explore(Field f) {return false;}
     boolean buildIgloo() {return false;}
 
     void setDrowning(boolean d){

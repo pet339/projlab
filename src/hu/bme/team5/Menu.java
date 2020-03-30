@@ -96,7 +96,7 @@ public class Menu {
                     if(event<1) event=1;
                     if(event>256) event=256;
                     char7.setHealth(event);
-                    System.out.println("Hány ételt egyen?");
+                    System.out.println("Mennyi ételt egyen?");
                     event=sc.nextInt();
                     boolean canEat=true;
                     for (int i=0; i<event; i++){
@@ -105,7 +105,78 @@ public class Menu {
                         if(!canEat) break;
                     }
                 } break;
-                case 8: break;
+                case 8: {
+                    Character exp8 = new Explorer();
+                    Stable currentField = new Stable();
+
+                    int type, capacity=0, place;
+                    System.out.println("Hol vizsgaljon? (0: sajat, 1: szomszedos, 2: egyeb)");
+                    place = sc.nextInt();
+                    System.out.println("Milyen legyen a vizsgalt mezo? (0: lyuk, 1: instabil, 2:stabil)");
+                    type=sc.nextInt();
+                    if(type==1){
+                        System.out.println("Mekkora legyen a teherbirasa? (0-256)");
+                        capacity=sc.nextInt();
+                    }
+                    System.out.println("Mennyi munkat tud vegezni a karakter? (1-4)");
+                    event=sc.nextInt();
+                    if(event>4) event=4;
+                    if(event<0) event=0;
+                    exp8.setWork(event);
+
+                    switch (type){ //Minden eset
+                        case 0:{
+                            Hole hole = new Hole();
+                            switch (place){
+                                case 0:{
+                                    System.out.println("-Lyukban csak fuldokolni lehet.");
+                                    exp8.setCurrentField(hole);
+                                }break;
+                                case 1:{
+                                    exp8.setCurrentField(currentField);
+                                    exp8.currentField.addNeighbor(hole);
+                                }break;
+                                case 2:{
+                                    exp8.setCurrentField(currentField);
+                                }break;
+                            }
+                            exp8.explore(hole);
+                        }break;
+                        case 1:{
+                            Unstable unstable = new Unstable();
+                            unstable.setCapacity(capacity);
+                            switch (place){
+                                case 0:{
+                                    exp8.setCurrentField(unstable);
+                                }break;
+                                case 1:{
+                                    exp8.setCurrentField(currentField);
+                                    exp8.currentField.addNeighbor(unstable);
+                                }break;
+                                case 2:{
+                                    exp8.setCurrentField(currentField);
+                                }break;
+                            }
+                            exp8.explore(unstable);
+                        }break;
+                        case 2:{
+                            Stable stable = new Stable();
+                            switch (place){
+                                case 0:{
+                                    exp8.setCurrentField(stable);
+                                }break;
+                                case 1:{
+                                    exp8.setCurrentField(currentField);
+                                    exp8.currentField.addNeighbor(stable);
+                                }break;
+                                case 2:{
+                                    exp8.setCurrentField(currentField);
+                                }break;
+                            }
+                            exp8.explore(stable);
+                        }break;
+                    }
+                } break;
                 case 9: break;
                 case 10: break;
                 case 11: break;
