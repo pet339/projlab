@@ -11,4 +11,14 @@ public class Hole extends Field {
         setSnowSize(0);
         characters.get(characters.size()-1).drown();
     }
+
+    @Override
+    public Item getFrozenItem() {
+        return null;
+    }
+
+    @Override
+    public void setFrozenItem(Item i) {
+
+    }
 }
