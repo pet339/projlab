@@ -62,6 +62,8 @@ public class Menu {
                     String in = sc.nextLine();
                     if(in.equals("i") || in.equals("I")) char1.inventory.addItem(new Shovel());
 
+
+
                 } break;
                 case 5: {
                 } break;
