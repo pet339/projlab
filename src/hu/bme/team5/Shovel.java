@@ -7,6 +7,6 @@ public class Shovel extends Item {
 
     @Override
     public boolean shovelNeeded() {
-        return false;
+        return true;
     }
 }

@@ -29,6 +29,6 @@ public class Unstable extends Iceberg {
     }
 
     public void getDestroyed() {
-
+        ;
     }
 }
