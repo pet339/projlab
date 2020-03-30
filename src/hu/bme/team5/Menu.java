@@ -52,6 +52,8 @@ public class Menu {
                 case 4: {
                     Character char1 = new Explorer();
                     Field currentField=new Field();
+                    char1.setCurrentField(currentField);
+
                     System.out.println("Horeteg kezdeti vastagsaga: ");
                     event=sc.nextInt();
                     if(event>1024) event=1024;
@@ -60,9 +62,7 @@ public class Menu {
 
                     System.out.println("Van a karakternel lapat? (i/n)");
                     String in = sc.nextLine();
-                    if(in.equals("i") || in.equals("I")) char1.inventory.addItem(new Shovel());
-
-
+                    if(in.equals("i")) char1.inventory.addItem(new Shovel());
 
                 } break;
                 case 5: {
