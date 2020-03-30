@@ -34,15 +34,15 @@ public class Menu {
                     System.out.println("<game.startGame()");
                 } break;
                 case 2: {
-                    Field nextField = new Field();
+                    Field nextField = new Stable();
                     Character character = new Eskimo();
                     boolean b1 = character.move(nextField);
 
                 } break;
                 case 3: {
                     Field nextField = new Hole();
-                    System.out.println(">nextField.stepOn(game.currentMap.characters.get(0))");
-                    nextField.stepOn(game.currentMap.characters.get(0));
+                    Character c = new Eskimo();
+                    nextField.stepOn(c);
 
                     game.currentMap.characters.get(0).drown();
 

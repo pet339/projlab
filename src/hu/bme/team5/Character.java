@@ -71,11 +71,12 @@ public abstract class Character implements TurnBased, Controllable {
 
     @Override
     public boolean drown() {
-
+        System.out.println(">drown()");
         boolean b2 = inventory.drownUsed();
         if (!b2){
             setDrowning(true);
         }
+        System.out.println("<drown()");
         return b2;
     }
 
