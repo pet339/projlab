@@ -8,7 +8,7 @@ public abstract class Character implements TurnBased, Controllable {
     protected Inventory inventory;
 
     public Character() {
-        currentField = new Field();
+        currentField = new Stable();
         inventory = new Inventory();
     }
 

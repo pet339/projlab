@@ -1,6 +1,6 @@
 package hu.bme.team5;
 
-public class Item {
+public abstract class Item {
     private String description;
 
     public Item() {
