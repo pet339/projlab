@@ -27,13 +27,18 @@ public class Menu {
                 event = sc.nextInt();
             }catch(Exception e){ }
             switch (event){
-
                 case 1: {
                     game.startGame();
                 } break;
                 case 2: {
                     Field nextField = new Stable();
                     Character character = new Eskimo();
+                    System.out.println("Mennyi munkat tud vegezni a karakter? (0-4)");
+                    character.setWork(sc.nextInt());
+                    System.out.println("Szomszedos mezore akar lepni? (1/0)");
+                    event = sc.nextInt();
+                    if(event == 1)
+                        character.currentField.addNeighbor(nextField);
                     boolean b1 = character.move(nextField);
 
                 } break;
