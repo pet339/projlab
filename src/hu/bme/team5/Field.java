@@ -2,17 +2,20 @@ package hu.bme.team5;
 
 import java.util.ArrayList;
 
-public class Field {
+public abstract class Field {
     protected Map map;
     protected ArrayList<Character> characters;
     protected ArrayList<Field> neighbors;
     protected int snowSize;
+    protected Item item;
 
     public Field() {
-        characters = new ArrayList<Character>();
+        characters = new ArrayList<>();
+        item=null;
     }
 
     public void stepOn(Character c) {
+        ;
     }
 
     public void removeCharacter(Character c) {
@@ -33,8 +36,12 @@ public class Field {
         System.out.println("<setCharacter(c)");
     }
 
+    public void setFrozenItem(Item i){
+        item = i;
+    }
+
     public Item getFrozenItem() {
-        return null;
+        return item;
     }
 
     void setSnowSize(int s){

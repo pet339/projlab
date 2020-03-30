@@ -8,7 +8,7 @@ public abstract class Character implements TurnBased, Controllable {
     protected Inventory inventory;
 
     public Character() {
-        currentField = new Field();
+        currentField = new Stable();
         inventory = new Inventory();
     }
 
@@ -44,7 +44,6 @@ public abstract class Character implements TurnBased, Controllable {
 
     @Override
     public boolean shovelSnow() {
-        boolean result;
         System.out.println(">Character.shovelSnow()");
 
         if(work==0){
@@ -68,6 +67,30 @@ public abstract class Character implements TurnBased, Controllable {
         System.out.print("-Ho asas utan: " + currentField.snowSize + "\n");
 
         System.out.println("<Character.shovelSnow()");
+        return true;
+    }
+
+    public boolean digItem(){
+        System.out.println(">Character.digItem()");
+        if(currentField.snowSize!=0){
+            System.out.println("-Itt ho van, nem lehet targyat kiasni.");
+            System.out.println("<Character.digItem()");
+            return false;
+        }
+        if(work==0){
+            System.out.println("-Nincs munka, nem lehet targyat kiasni.");
+            System.out.println("<Character.digItem()");
+            return false;
+        }
+        if(currentField.getFrozenItem()==null){
+            System.out.println("-Nincs targy, nincs mit kiasni.");
+            System.out.println("<Character.digItem()");
+            return false;
+        }
+        inventory.addItem(currentField.getFrozenItem());
+        currentField.setFrozenItem(null);
+
+        System.out.println("<Character.digItem()");
         return true;
     }
 
@@ -109,9 +132,9 @@ public abstract class Character implements TurnBased, Controllable {
 
     
     void setCurrentField(Field nextField){
-        System.out.println(">setCurrentField(nextField)");
+        System.out.println(">setCurrentField()");
         currentField = nextField;
-        System.out.println("<setCurrentField(nextField)");
+        System.out.println("<setCurrentField()");
     }
     
     
@@ -123,4 +146,6 @@ public abstract class Character implements TurnBased, Controllable {
         drowning = d;
         System.out.println("<setDrowning(d)");
     }
+
+
 }
