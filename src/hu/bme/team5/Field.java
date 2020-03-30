@@ -64,4 +64,5 @@ public abstract class Field {
 
     abstract public Item getFrozenItem();
     abstract public void setFrozenItem(Item i);
+    abstract  public void setIgloo(boolean igloo);
 }

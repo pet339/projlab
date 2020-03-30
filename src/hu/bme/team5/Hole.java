@@ -24,4 +24,9 @@ public class Hole extends Field {
     public void setFrozenItem(Item i) {
 
     }
+
+    @Override
+    public void setIgloo(boolean igloo) {
+
+    }
 }

@@ -186,10 +186,15 @@ public class Menu {
                         }break;
                     }
                 } break;
-                case 9: break;
+                case 9: {
+                    Character c = new Eskimo();
+                    c.setCurrentField(new Iceberg());
+                    System.out.println("Mennyi munkat tud vegezni a karakter? (0-4)");
+                    c.setWork(sc.nextInt());
+                    c.buildIgloo();
+                } break;
                 case 10: break;
                 case 11: break;
-                case 12: break;
                 default: {
                     sc.close();
                     runningGame = false;
