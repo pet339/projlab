@@ -9,7 +9,7 @@ public class Field {
     protected int snowSize;
 
     public Field() {
-        characters = new ArrayList<>();
+        characters = new ArrayList<Character>();
     }
 
     public void stepOn(Character c) {
@@ -41,5 +41,11 @@ public class Field {
         System.out.println(">setSnowSize(s)");
         snowSize = s;
         System.out.println("<setSnowSize(s)");
+    }
+    public void setMap(Map m){
+        map = m;
+    }
+    public void setNeighbors(ArrayList<Field> fs){
+        neighbors = fs;
     }
 }

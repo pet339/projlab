@@ -29,6 +29,13 @@ public class Unstable extends Iceberg {
 
     public void getDestroyed() {
         System.out.println(">getDestroyed");
+        Hole h = new Hole();
+        h.setMap(this.map);
+        h.setNeighbors(neighbors);
+        map.fields.add(map.fields.indexOf(this),h);
+        for(Character c : characters){
+            h.stepOn(c);
+        }
         System.out.println("<getDestroyed");
     }
 }
