@@ -48,6 +48,8 @@ public abstract class Character implements TurnBased, Controllable {
 
     @Override
     public boolean shovelSnow() {
+        System.out.println(">Character.shovelSnow()");
+        System.out.println("<Character.shovelSnow()");
         return false;
     }
 
