@@ -20,8 +20,10 @@ public class Field {
         characters.remove(c);
     }
 
-    public boolean checkNeighbor(Field f) {
-        return true;
+    public boolean checkNeighbor(Field nextField) {
+        System.out.println(">currentField.checkNeighbor(nextField)");
+        System.out.println("<currentField.checkNeighbor(nextField)");
+        return false;
     }
 
     public void setCharacter(Character c) {
@@ -33,6 +35,8 @@ public class Field {
     }
 
     void setSnowSize(int s){
+        System.out.println(">setSnowSize(s)");
         snowSize = s;
+        System.out.println(">setSnowSize(s)");
     }
 }
