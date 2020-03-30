@@ -24,11 +24,8 @@ public class Unstable extends Iceberg {
             System.out.println(">getDestroyed()");
             getDestroyed();
             System.out.println("<getDestroyed()");
-            sc.close();
         }
-        else{
-            sc.close();
-        }
+        sc.close();
     }
 
     public void getDestroyed() {
