@@ -55,11 +55,15 @@ public abstract class Character implements TurnBased, Controllable {
 
     @Override
     public boolean assemble() {
+        System.out.println(">Character.assemble()");
+        System.out.println("<Character.assemble()");
         return false;
     }
 
     @Override
     public boolean saveAlly() {
+        System.out.println(">Character.saveAlly()");
+        System.out.println("<Character.saveAlly()");
         return false;
     }
 
