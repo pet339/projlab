@@ -29,7 +29,6 @@ public abstract class Character implements TurnBased, Controllable {
     public boolean move(Field nextField) {
         System.out.println(">move(nextField)");
         boolean b1 = currentField.checkNeighbor(nextField);
-
         setWork(5);
         if (b1 && work > 0){
             setWork(work-1);
