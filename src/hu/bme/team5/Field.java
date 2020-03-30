@@ -13,6 +13,7 @@ public abstract class Field {
     }
 
     public void stepOn(Character c) {
+        ;
     }
 
     public void removeCharacter(Character c) {
@@ -38,7 +39,12 @@ public abstract class Field {
         snowSize = s;
         System.out.println("<setSnowSize(s)");
     }
-
+    public void setMap(Map m){
+        map = m;
+    }
+    public void setNeighbors(ArrayList<Field> fs){
+        neighbors = fs;
+    }
     abstract public Item getFrozenItem();
 
     abstract public void setFrozenItem(Item i);
