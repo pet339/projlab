@@ -8,9 +8,11 @@ public class Hole extends Field {
 
     @Override
     public void stepOn(Character c) {
+        System.out.println(">stepOn(c)");
         setCharacter(c);
         setSnowSize(0);
         characters.get(characters.size()-1).drown();
+        System.out.println("<stepOn(c)");
     }
 
     @Override

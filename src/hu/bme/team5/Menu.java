@@ -45,6 +45,10 @@ public class Menu {
                 case 3: {
                     Field nextField = new Hole();
                     Character c = new Eskimo();
+                    System.out.println("Van a karakternel buvarruha? (1/0)");
+                    event = sc.nextInt();
+                    if(event == 1)
+                        c.inventory.addItem(new DivingSuit());
                     nextField.stepOn(c);
                 } break;
                 case 4: {
