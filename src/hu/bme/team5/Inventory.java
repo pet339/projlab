@@ -8,30 +8,30 @@ public class Inventory {
     public Inventory() {
     }
 
-    private boolean shovelSnowUsed() {
+    public boolean shovelSnowUsed() {
         return false;
     }
 
-    private boolean assembleUsed() {
+    public boolean assembleUsed() {
         return false;
     }
 
-    private boolean drownUsed() {
+    public boolean drownUsed() {
         return false;
     }
 
-    private boolean eatUsed() {
+    public boolean eatUsed() {
         return false;
     }
 
-    private boolean saveAllyUsed() {
+    public boolean saveAllyUsed() {
         return false;
     }
 
-    private void addItem(Item i) {
+    public void addItem(Item i) {
     }
 
-    private void tradeWithInventory(Inventory i) {
+    public void tradeWithInventory(Inventory i) {
     }
 
 }

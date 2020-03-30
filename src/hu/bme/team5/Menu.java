@@ -38,7 +38,17 @@ public class Menu {
                     System.out.println("<game.currentMap.characters.get(0).move(nextField)");
 
                 } break;
-                case 3: break;
+                case 3: {
+                    Field nextField = new Hole();
+                    System.out.println(">nextField.stepOn(game.currentMap.characters.get(0))");
+                    nextField.stepOn(game.currentMap.characters.get(0));
+
+                    game.currentMap.characters.get(0).drown();
+
+
+
+                    System.out.println("<nextField.stepOn(game.currentMap.characters.get(0))");
+                } break;
                 case 4: break;
                 case 5: break;
                 case 6: break;
