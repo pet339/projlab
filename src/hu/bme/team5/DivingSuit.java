@@ -7,6 +7,8 @@ public class DivingSuit extends Item {
 
     @Override
     public boolean divingSuitNeeded() {
+        System.out.println(">divingSuitNeeded()");
+        System.out.println("<divingSuitNeeded()");
         return true;
     }
 }

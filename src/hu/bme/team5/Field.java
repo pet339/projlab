@@ -13,21 +13,24 @@ public class Field {
     }
 
     public void stepOn(Character c) {
-        ;
     }
 
     public void removeCharacter(Character c) {
+        System.out.println(">removeCharacter(c)");
         characters.remove(c);
+        System.out.println("<removeCharacter(c)");
     }
 
     public boolean checkNeighbor(Field nextField) {
-        System.out.println(">currentField.checkNeighbor(nextField)");
-        System.out.println("<currentField.checkNeighbor(nextField)");
+        System.out.println(">checkNeighbor(nextField)");
+        System.out.println("<checkNeighbor(nextField)");
         return false;
     }
 
     public void setCharacter(Character c) {
+        System.out.println(">setCharacter(c)");
         characters.add(c);
+        System.out.println("<setCharacter(c)");
     }
 
     public Item getFrozenItem() {

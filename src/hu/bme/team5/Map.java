@@ -12,8 +12,10 @@ public class Map implements TurnBased {
     }
 
     public void init() {
+        System.out.println(">init()");
         characters.add(new Eskimo());
         characters.add(new Explorer());
+        System.out.println("<init()");
     }
 
     public void startStorm() {
