@@ -7,11 +7,9 @@ public abstract class Field {
     protected ArrayList<Character> characters;
     protected ArrayList<Field> neighbors;
     protected int snowSize;
-    protected Item item;
 
     public Field() {
         characters = new ArrayList<>();
-        item=null;
     }
 
     public void stepOn(Character c) {
@@ -36,14 +34,6 @@ public abstract class Field {
         System.out.println("<setCharacter(c)");
     }
 
-    public void setFrozenItem(Item i){
-        item = i;
-    }
-
-    public Item getFrozenItem() {
-        return item;
-    }
-
     void setSnowSize(int s){
         System.out.println(">setSnowSize(s)");
         snowSize = s;
@@ -55,4 +45,7 @@ public abstract class Field {
     public void setNeighbors(ArrayList<Field> fs){
         neighbors = fs;
     }
+    abstract public Item getFrozenItem();
+
+    abstract public void setFrozenItem(Item i);
 }

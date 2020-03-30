@@ -8,9 +8,12 @@ public class Iceberg extends Field {
         super();
     }
 
-    @Override
     public Item getFrozenItem() {
-        return null;
+        return frozenItem;
+    }
+
+    public void setFrozenItem(Item i){
+        frozenItem = i;
     }
 
 
