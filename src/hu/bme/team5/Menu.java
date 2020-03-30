@@ -28,30 +28,20 @@ public class Menu {
                 event = sc.nextInt();
             }catch(Exception e){ }
             switch (event){
-
                 case 1: {
-                    System.out.println(">game.startGame()");
                     game.startGame();
-                    System.out.println("<game.startGame()");
                 } break;
-
                 case 2: {
-                    Field nextField = new Field();
-                    System.out.println(">game.currentMap.characters.get(0).move(nextField)");
-                    boolean b1 = game.currentMap.characters.get(0).move(nextField);
-                    System.out.println("<game.currentMap.characters.get(0).move(nextField)");
-                } break;
+                    Field nextField = new Stable();
+                    Character character = new Eskimo();
+                    boolean b1 = character.move(nextField);
 
+                } break;
                 case 3: {
                     Field nextField = new Hole();
-                    System.out.println(">nextField.stepOn(game.currentMap.characters.get(0))");
-                    nextField.stepOn(game.currentMap.characters.get(0));
-
-                    game.currentMap.characters.get(0).drown();
-
-                    System.out.println("<nextField.stepOn(game.currentMap.characters.get(0))");
+                    Character c = new Eskimo();
+                    nextField.stepOn(c);
                 } break;
-
                 case 4: {
                     Character char4 = new Explorer();
                     Field currentField=new Field();
@@ -77,13 +67,10 @@ public class Menu {
                     boolean b3=char4.shovelSnow();
 
                 } break;
-
                 case 5: {
                 } break;
-
                 case 6: {
                 } break;
-
                 case 7: break;
                 case 8: break;
                 case 9: break;

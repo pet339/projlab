@@ -16,9 +16,9 @@ public class Game {
     }
 
     public void startGame() {
-        System.out.println(">currentMap.init()");
+        System.out.println(">startGame()");
         currentMap.init();
-        System.out.println("<currentMap.init()");
+        System.out.println("<startGame()");
     }
 
     public void saveMap() {

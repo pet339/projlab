@@ -27,24 +27,18 @@ public abstract class Character implements TurnBased, Controllable {
 
     @Override
     public boolean move(Field nextField) {
-        System.out.println(">character.move(nextField)");
+        System.out.println(">move(nextField)");
         boolean b1 = currentField.checkNeighbor(nextField);
 
         setWork(5);
         if (b1 && work > 0){
             setWork(work-1);
-            System.out.println(">currentField.removeCharacter(this)");
             currentField.removeCharacter(this);
-            System.out.println("<currentField.removeCharacter(this)");
-            System.out.println(">currentField.stepOn(this)");
             currentField.stepOn(this);
-            System.out.println("<currentField.stepOn(this)");
-            System.out.println(">setCurrentField(nextField)");
             setCurrentField(nextField);
-            System.out.println("<setCurrentField(nextField)");
         }
 
-        System.out.println("<character.move(nextField)");
+        System.out.println("<move(nextField)");
         return b1;
     }
 
