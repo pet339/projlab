@@ -7,9 +7,11 @@ public class Field {
     protected ArrayList<Character> characters;
     protected ArrayList<Field> neighbors;
     protected int snowSize;
+    protected Item item;
 
     public Field() {
         characters = new ArrayList<>();
+        item=null;
     }
 
     public void stepOn(Character c) {
@@ -33,8 +35,12 @@ public class Field {
         System.out.println("<setCharacter(c)");
     }
 
+    public void setFrozenItem(Item i){
+        item = i;
+    }
+
     public Item getFrozenItem() {
-        return null;
+        return item;
     }
 
     void setSnowSize(int s){
