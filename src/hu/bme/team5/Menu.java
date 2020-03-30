@@ -35,9 +35,8 @@ public class Menu {
                 } break;
                 case 2: {
                     Field nextField = new Field();
-                    System.out.println(">game.currentMap.characters.get(0).move(nextField)");
-                    boolean b1 = game.currentMap.characters.get(0).move(nextField);
-                    System.out.println("<game.currentMap.characters.get(0).move(nextField)");
+                    Character character = new Eskimo();
+                    boolean b1 = character.move(nextField);
 
                 } break;
                 case 3: {

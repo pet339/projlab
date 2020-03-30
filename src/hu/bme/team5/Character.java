@@ -27,8 +27,9 @@ public abstract class Character implements TurnBased, Controllable {
 
     @Override
     public boolean move(Field nextField) {
-        System.out.println(">currentField.checkNeighbor(nextField)");
+        System.out.println(">character.move(nextField)");
         boolean b1 = currentField.checkNeighbor(nextField);
+
         setWork(5);
         if (b1 && work > 0){
             setWork(work-1);
@@ -42,7 +43,8 @@ public abstract class Character implements TurnBased, Controllable {
             setCurrentField(nextField);
             System.out.println("<setCurrentField(nextField)");
         }
-        System.out.println("<currentField.checkNeighbor(nextField)");
+
+        System.out.println("<character.move(nextField)");
         return b1;
     }
 
@@ -69,9 +71,8 @@ public abstract class Character implements TurnBased, Controllable {
 
     @Override
     public boolean drown() {
-        System.out.println(">inventory.drownUsed()");
+
         boolean b2 = inventory.drownUsed();
-        System.out.println("<inventory.drownUsed()");
         if (!b2){
             setDrowning(true);
         }
@@ -83,13 +84,17 @@ public abstract class Character implements TurnBased, Controllable {
         return false;
     }
 
-    void setWork(int i){
-        work = i;
+    void setWork(int number){
+        System.out.println(">setWork(number)");
+        work = number;
+        System.out.println("<setWork(number)");
     }
 
     
-    void setCurrentField(Field f){
-        currentField = f;
+    void setCurrentField(Field nextField){
+        System.out.println(">setCurrentField(nextField)");
+        currentField = nextField;
+        System.out.println("<setCurrentField(nextField)");
     }
     
     
@@ -97,6 +102,8 @@ public abstract class Character implements TurnBased, Controllable {
     boolean buildIgloo() {return false;}
 
     void setDrowning(boolean d){
+        System.out.println(">setDrowning(d)");
         drowning = d;
+        System.out.println("<setDrowning(d)");
     }
 }

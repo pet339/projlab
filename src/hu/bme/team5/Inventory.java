@@ -6,6 +6,7 @@ public class Inventory {
     private ArrayList<Item> items;
 
     public Inventory() {
+        items = new ArrayList<>();
     }
 
     public boolean shovelSnowUsed() {
@@ -17,6 +18,8 @@ public class Inventory {
     }
 
     public boolean drownUsed() {
+        System.out.println(">drownUsed()");
+        System.out.println("<drownUsed()");
         return false;
     }
 
@@ -29,6 +32,8 @@ public class Inventory {
     }
 
     public void addItem(Item i) {
+        System.out.println(">addItem(i)");
+        System.out.println("<addItem(i)");
     }
 
     public void tradeWithInventory(Inventory i) {
