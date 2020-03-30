@@ -7,6 +7,8 @@ public class Stable extends Iceberg {
 
     @Override
     public void stepOn(Character c) {
-
+        System.out.println(">setCharacter(c)");
+        setCharacter(c);
+        System.out.println("<setCharacter(c)");
     }
 }
