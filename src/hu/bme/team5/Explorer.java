@@ -5,6 +5,8 @@ public class Explorer extends Character {
         super();
     }
 
-    private void explore() {
+    @Override
+    public boolean explore() {
+    	return true;
     }
 }

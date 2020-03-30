@@ -1,6 +1,6 @@
 package hu.bme.team5;
 
-public class Character implements TurnBased, Controllable {
+public abstract class Character implements TurnBased, Controllable {
     protected Field currentField;
     protected int health;
     protected int work;
@@ -78,8 +78,13 @@ public class Character implements TurnBased, Controllable {
         work = i;
     }
 
+    
     void setCurrentField(Field f){
         currentField = f;
     }
+    
+    
+    boolean explore() {return false;}
+    boolean buildIgloo() {return false;}
 
 }

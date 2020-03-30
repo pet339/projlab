@@ -55,9 +55,21 @@ public class Menu {
                 case 6: break;
                 case 7: break;
                 case 8: break;
-                case 9: break;
+                case 9: { // <-----------NINCS KÉSZ
+                	System.out.println(">game.currentMap.characters.get(0).buildIgloo()");
+                	game.currentMap.characters.get(0).buildIgloo();
+                	System.out.println("<game.currentMap.characters.get(0).buildIgloo()");
+                }
+                	break;
+                
                 case 10: break;
-                case 11: break;
+                case 11: {
+                	// ROSSZ SZEKVENCIA, OSZTÁLYDIAGRAM  <---------------------JAVÍTANI
+                	System.out.println(">game.currentMap.characters.get(0).assemble()");
+                	boolean win = game.currentMap.characters.get(0).assemble();
+                	System.out.println("<game.currentMap.characters.get(0).assemble()");
+                }
+                	break;
                 default: {
                     sc.close();
                     runningGame = false;
