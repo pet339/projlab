@@ -3,6 +3,7 @@ package hu.bme.team5;
 import java.util.ArrayList;
 
 public class Field {
+    protected Map map;
     protected ArrayList<Character> characters;
     protected ArrayList<Field> neighbors;
     protected int snowSize;
