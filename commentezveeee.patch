@@ -1,0 +1,325 @@
+Index: src/hu/bme/team5/Map.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/hu/bme/team5/Map.java	(revision 95fad5fd748ebb2779cc705707a9f1a2ab082154)
++++ src/hu/bme/team5/Map.java	(date 1585648664789)
+@@ -3,17 +3,22 @@
+ import java.util.ArrayList;
+ 
+ public class Map implements TurnBased {
++    // A pálya mezői
+     static ArrayList<Field> fields;
++    // a pálya karakterei
+     static ArrayList<Character> characters;
+ 
++    // Map konstruktora, létrehozza a pályák és a characterek listáját
+     public Map() {
+         fields = new ArrayList<Field>();
+         characters = new ArrayList<Character>();
+     }
+-
++    // Létrehoz karaktereket
+     public void init() {
+         System.out.println(">init()");
++        //karakterekhez ad egy eskimot
+         characters.add(new Eskimo());
++        //karakterekhez ad egy explorer-t
+         characters.add(new Explorer());
+         System.out.println("<init()");
+     }
+Index: src/hu/bme/team5/Flare.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/hu/bme/team5/Flare.java	(revision 95fad5fd748ebb2779cc705707a9f1a2ab082154)
++++ src/hu/bme/team5/Flare.java	(date 1585649681020)
+@@ -7,7 +7,11 @@
+         super();
+     }
+ 
++<<<<<<< Updated upstream
+     //Ha szükség van rá akkor igazzal tér vissza
++=======
++    //felüldefinálja az item függvényét, true-val tér vissza
++>>>>>>> Stashed changes
+     @Override
+     public boolean winItemNeeded() {
+         return true;
+Index: src/hu/bme/team5/TurnBased.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/hu/bme/team5/TurnBased.java	(revision 95fad5fd748ebb2779cc705707a9f1a2ab082154)
++++ src/hu/bme/team5/TurnBased.java	(date 1585648664797)
+@@ -1,7 +1,10 @@
+ package hu.bme.team5;
+ 
+ public interface TurnBased {
++
++    //kör vége esemény
+     public void endTurn();
+ 
++    //kör kezdete esemény
+     public void startTurn();
+ }
+Index: src/hu/bme/team5/Program.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/hu/bme/team5/Program.java	(revision 95fad5fd748ebb2779cc705707a9f1a2ab082154)
++++ src/hu/bme/team5/Program.java	(date 1585648664791)
+@@ -3,6 +3,7 @@
+ public class Program {
+ 
+     public static void main(String[] args) {
++        //Létrehoz egy menüt, amely vezérli a játékot
+         Menu menu = new Menu();
+     }
+ }
+Index: src/hu/bme/team5/Item.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/hu/bme/team5/Item.java	(revision 95fad5fd748ebb2779cc705707a9f1a2ab082154)
++++ src/hu/bme/team5/Item.java	(date 1585648664787)
+@@ -5,23 +5,23 @@
+ 
+     public Item() {
+     }
+-
++    // Ásóhasználat, Overrideolva lesz, az shovel-nél true-val tér vissza
+     public boolean shovelNeeded() {
+         return false;
+     }
+-
++    // Ételhaszmálat, Overrideolva lesz, az food-nál true-val tér vissza
+     public boolean foodNeeded() {
+         return false;
+     }
+-
++    // Kötélhasználat, Overrideolva lesz, az rope-nál true-val tér vissza
+     public boolean ropeNeeded() {
+         return false;
+     }
+-
++    // Búvárruha használat, Overrideolva lesz, az divingSuit-nál true-val tér vissza
+     public boolean divingSuitNeeded() {
+         return false;
+     }
+-
++    // Győzelemhez szükséges itemek, Overrideolva lesz, Flare, Charge, Gun-nal true-val tér vissza
+     public boolean winItemNeeded() {
+         return false;
+     }
+Index: projlab.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- projlab.iml	(date 1585647592962)
++++ projlab.iml	(date 1585647592962)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <output url="file://$MODULE_DIR$/bin" />
++    <exclude-output />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(date 1585647592989)
++++ .idea/misc.xml	(date 1585647592989)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_12" project-jdk-name="12" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/classes" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(date 1585647592999)
++++ .idea/vcs.xml	(date 1585647592999)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/modules.xml	(date 1585647593010)
++++ .idea/modules.xml	(date 1585647593010)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/projlab.iml" filepath="$PROJECT_DIR$/projlab.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/.gitignore	(date 1585647593884)
++++ .idea/.gitignore	(date 1585647593884)
+@@ -0,0 +1,2 @@
++# Default ignored files
++/workspace.xml
+Index: src/hu/bme/team5/Field.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/hu/bme/team5/Field.java	(revision 95fad5fd748ebb2779cc705707a9f1a2ab082154)
++++ src/hu/bme/team5/Field.java	(date 1585649614480)
+@@ -3,11 +3,20 @@
+ import java.util.ArrayList;
+ 
+ public abstract class Field {
++<<<<<<< Updated upstream
+     protected Map map; //A Fieldet tartalmazó map
+     protected ArrayList<Character> characters; //Fielden lévő karakterek
+     protected ArrayList<Field> neighbors; //Field szomszédjai
+     protected int snowSize; //Hó nagysága 
+     protected int capacity; //Mező kapacitása
++=======
++    //Minden field map-je
++    protected Map map;
++    protected ArrayList<Character> characters;
++    protected ArrayList<Field> neighbors;
++    protected int snowSize;
++    protected int capacity;
++>>>>>>> Stashed changes
+ 
+ 
+     //Konstruktor
+Index: src/hu/bme/team5/Shovel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/hu/bme/team5/Shovel.java	(revision 95fad5fd748ebb2779cc705707a9f1a2ab082154)
++++ src/hu/bme/team5/Shovel.java	(date 1585648664794)
+@@ -5,6 +5,7 @@
+         super();
+     }
+ 
++    //felüldefinálja az item függvényét, true-val tér vissza
+     @Override
+     public boolean shovelNeeded() {
+         return true;
+Index: src/hu/bme/team5/Rope.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/hu/bme/team5/Rope.java	(revision 95fad5fd748ebb2779cc705707a9f1a2ab082154)
++++ src/hu/bme/team5/Rope.java	(date 1585648664793)
+@@ -5,6 +5,7 @@
+         super();
+     }
+ 
++    //felüldefinálja az item függvényét, true-val tér vissza
+     @Override
+     public boolean ropeNeeded() {
+         return true;
+Index: src/hu/bme/team5/Charge.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/hu/bme/team5/Charge.java	(revision 95fad5fd748ebb2779cc705707a9f1a2ab082154)
++++ src/hu/bme/team5/Charge.java	(date 1585648699604)
+@@ -1,13 +1,10 @@
+ package hu.bme.team5;
+ 
+ public class Charge extends Item {
+-
+-    //Konstruktor
+     public Charge() {
+         super();
+     }
+ 
+-    //Ha szükség van rá akkor igazzal tér vissza
+     @Override
+     public boolean winItemNeeded() {
+         return true;
+Index: src/hu/bme/team5/Gun.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/hu/bme/team5/Gun.java	(revision 95fad5fd748ebb2779cc705707a9f1a2ab082154)
++++ src/hu/bme/team5/Gun.java	(date 1585648664785)
+@@ -5,6 +5,7 @@
+         super();
+     }
+ 
++    //felüldefinálja az item függvényét, true-val tér vissza
+     @Override
+     public boolean winItemNeeded() {
+         return true;
+Index: src/hu/bme/team5/Stable.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/hu/bme/team5/Stable.java	(revision 95fad5fd748ebb2779cc705707a9f1a2ab082154)
++++ src/hu/bme/team5/Stable.java	(date 1585648664796)
+@@ -6,6 +6,7 @@
+         capacity=map.characters.size()+1;
+     }
+ 
++    // Karakter rálép egy mezőre
+     @Override
+     public void stepOn(Character c) {
+         System.out.println(">stepOn(c)");
+Index: src/hu/bme/team5/Food.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/hu/bme/team5/Food.java	(revision 95fad5fd748ebb2779cc705707a9f1a2ab082154)
++++ src/hu/bme/team5/Food.java	(date 1585649681027)
+@@ -7,7 +7,11 @@
+         super();
+     }
+ 
++<<<<<<< Updated upstream
+     //Ha szükség van rá akkor igazzal tér vissza
++=======
++    //felüldefinálja az item függvényét, true-val tér vissza
++>>>>>>> Stashed changes
+     @Override
+     public boolean foodNeeded() {
+         return true;

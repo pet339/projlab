@@ -6,6 +6,7 @@ public class Stable extends Iceberg {
         capacity=map.characters.size()+1;
     }
 
+    // Karakter rálép egy mezőre
     @Override
     public void stepOn(Character c) {
         System.out.println(">stepOn(c)");

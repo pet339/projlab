@@ -5,6 +5,7 @@ public class Gun extends Item {
         super();
     }
 
+    //felüldefinálja az item függvényét, true-val tér vissza
     @Override
     public boolean winItemNeeded() {
         return true;

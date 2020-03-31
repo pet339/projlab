@@ -5,6 +5,7 @@ public class Shovel extends Item {
         super();
     }
 
+    //felüldefinálja az item függvényét, true-val tér vissza
     @Override
     public boolean shovelNeeded() {
         return true;

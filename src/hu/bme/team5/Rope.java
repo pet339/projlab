@@ -5,6 +5,7 @@ public class Rope extends Item {
         super();
     }
 
+    //felüldefinálja az item függvényét, true-val tér vissza
     @Override
     public boolean ropeNeeded() {
         return true;
