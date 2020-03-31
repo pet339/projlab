@@ -1,8 +1,8 @@
 package hu.bme.team5;
 
 public abstract class Iceberg extends Field {
-    private boolean igloo;
-    private Item frozenItem;
+    private boolean igloo; //van e iglu a mezőn
+    private Item frozenItem; //Befagyott item
 
     public Iceberg() {
         super();
@@ -13,6 +13,7 @@ public abstract class Iceberg extends Field {
 
     }
 
+    //Getter setterek
     public void setIgloo(boolean igloo) {
         System.out.println(">setIgloo()");
         this.igloo = igloo;
