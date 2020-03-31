@@ -12,7 +12,18 @@ public abstract class Character implements TurnBased, Controllable {
         inventory = new Inventory();
     }
 
-    public void trade(Character c) {
+    public void trade(Character c, Item i1) {
+        System.out.println(">trade(c)");
+        Field f1 = c.getCurrentField();
+        if (currentField != f1){
+            System.out.println("Nem azonos mezon allnak");
+        }
+        else{
+            Inventory nv = c.getInventory();
+            inventory.tradeWithInventory(nv, i1);
+        }
+
+        System.out.println("<trade(c)");
     }
 
     @Override
@@ -99,13 +110,22 @@ public abstract class Character implements TurnBased, Controllable {
     @Override
     public boolean assemble() {
         System.out.println(">assemble()");
+        if(work > 0){
+            setWork(work-1);
+            boolean b1 = inventory.assembleUsed();
+            if(!b1)
+                System.out.println("Hianyzik a jelzopisztoly resze");
+            System.out.println("<assemble()");
+        }
+        else
+            System.out.println("Nincs eleg munkaegyseg");
         System.out.println("<assemble()");
         return false;
     }
 
     @Override
     public boolean saveAlly(Character ally) {
-        System.out.println(">saveAlly()");
+        System.out.println(">saveAlly(ally)");
         if(work > 0){
             Field f1 = ally.getCurrentField();
             boolean b1 = currentField.checkNeighbor(f1);
@@ -117,7 +137,7 @@ public abstract class Character implements TurnBased, Controllable {
                 ally.setCurrentField(currentField);
             }else{
                 System.out.println("Nem szomszedos mezon van a masik karakter vagy nem fulladozik (buvarruha vedi)");
-                System.out.println("<saveAlly()");
+                System.out.println("<saveAlly(ally)");
                 return false;
             }
         }
@@ -175,6 +195,8 @@ public abstract class Character implements TurnBased, Controllable {
     Field getCurrentField(){
         return currentField;
     }
+    Inventory getInventory(){return inventory;}
+
     
     boolean explore(Field f) {return false;}
     boolean buildIgloo() {return false;}
@@ -196,6 +218,5 @@ public abstract class Character implements TurnBased, Controllable {
         health=h;
         System.out.println("<Character.setHealth()");
     }
-
 
 }

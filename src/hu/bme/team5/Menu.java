@@ -97,7 +97,22 @@ public class Menu {
 
                     boolean b5=char5.digItem();
                 } break;
-                case 6: break;
+                case 6: {
+                    Field currentField = new Stable();
+                    Character c1 = new Explorer();
+                    c1.setCurrentField(currentField);
+                    Item i1 = new Flare();
+                    c1.inventory.addItem(i1);
+                    Character c2 = new Explorer();
+                    System.out.println("Azonos mezon all a ket karakter? (1/0)");
+                    event = sc.nextInt();
+                    if(event == 1)
+                        c2.setCurrentField(currentField);
+                    else
+                        c2.setCurrentField(new Stable());
+                    c1.trade(c2, i1);
+
+                } break;
                 case 7: {
                     Character char7 = new Explorer();
                     System.out.println("Mennyi a karakter testhője? (1-256)");
@@ -211,7 +226,19 @@ public class Menu {
                     c1.saveAlly(c2);
 
                 } break;
-                case 11: break;
+                case 11: {
+                    Character c = new Explorer();
+                    System.out.println("Mennyi munkat tud vegezni a karakter? (0-4)");
+                    c.setWork(sc.nextInt());
+                    System.out.println("Megvan az osszes resze a jelzopisztolynak? (1/0)");
+                    event = sc.nextInt();
+                    if(event == 1) {
+                        c.inventory.addItem(new Flare());
+                        c.inventory.addItem(new Charge());
+                        c.inventory.addItem(new Gun());
+                    }
+                    c.assemble();
+                } break;
                 default: {
                     sc.close();
                     runningGame = false;
