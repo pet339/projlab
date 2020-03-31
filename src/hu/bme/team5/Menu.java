@@ -27,19 +27,28 @@ public class Menu {
                 event = sc.nextInt();
             }catch(Exception e){ }
             switch (event){
-
                 case 1: {
                     game.startGame();
                 } break;
                 case 2: {
                     Field nextField = new Stable();
                     Character character = new Eskimo();
+                    System.out.println("Mennyi munkat tud vegezni a karakter? (0-4)");
+                    character.setWork(sc.nextInt());
+                    System.out.println("Szomszedos mezore akar lepni? (1/0)");
+                    event = sc.nextInt();
+                    if(event == 1)
+                        character.currentField.addNeighbor(nextField);
                     boolean b1 = character.move(nextField);
 
                 } break;
                 case 3: {
                     Field nextField = new Hole();
                     Character c = new Eskimo();
+                    System.out.println("Van a karakternel buvarruha? (1/0)");
+                    event = sc.nextInt();
+                    if(event == 1)
+                        c.inventory.addItem(new DivingSuit());
                     nextField.stepOn(c);
                 } break;
                 case 4: {
@@ -89,13 +98,147 @@ public class Menu {
                     boolean b5=char5.digItem();
                 } break;
                 case 6: {
+                    Field currentField = new Stable();
+                    Character c1 = new Explorer();
+                    c1.setCurrentField(currentField);
+                    Item i1 = new Flare();
+                    c1.inventory.addItem(i1);
+                    Character c2 = new Explorer();
+                    System.out.println("Azonos mezon all a ket karakter? (1/0)");
+                    event = sc.nextInt();
+                    if(event == 1)
+                        c2.setCurrentField(currentField);
+                    else
+                        c2.setCurrentField(new Stable());
+                    c1.trade(c2, i1);
+
                 } break;
-                case 7: break;
-                case 8: break;
-                case 9: break;
-                case 10: break;
-                case 11: break;
-                case 12: break;
+                case 7: {
+                    Character char7 = new Explorer();
+                    System.out.println("Mennyi a karakter testhője? (1-256)");
+                    event=sc.nextInt();
+                    if(event<1) event=1;
+                    if(event>256) event=256;
+                    char7.setHealth(event);
+                    System.out.println("Mennyi ételt egyen?");
+                    event=sc.nextInt();
+                    boolean canEat=true;
+                    for (int i=0; i<event; i++){
+                        char7.inventory.addItem(new Food());
+                        canEat = char7.eat();
+                        if(!canEat) break;
+                    }
+                } break;
+                case 8: {
+                    Character exp8 = new Explorer();
+                    Stable currentField = new Stable();
+
+                    int type, capacity=0, place;
+                    System.out.println("Hol vizsgaljon? (0: sajat, 1: szomszedos, 2: egyeb)");
+                    place = sc.nextInt();
+                    System.out.println("Milyen legyen a vizsgalt mezo? (0: lyuk, 1: instabil, 2:stabil)");
+                    type=sc.nextInt();
+                    if(type==1){
+                        System.out.println("Mekkora legyen a teherbirasa? (0-256)");
+                        capacity=sc.nextInt();
+                    }
+                    System.out.println("Mennyi munkat tud vegezni a karakter? (1-4)");
+                    event=sc.nextInt();
+                    if(event>4) event=4;
+                    if(event<0) event=0;
+                    exp8.setWork(event);
+
+                    switch (type){ //Minden eset
+                        case 0:{
+                            Hole hole = new Hole();
+                            switch (place){
+                                case 0:{
+                                    System.out.println("-Lyukban csak fuldokolni lehet.");
+                                    exp8.setCurrentField(hole);
+                                }break;
+                                case 1:{
+                                    exp8.setCurrentField(currentField);
+                                    exp8.currentField.addNeighbor(hole);
+                                }break;
+                                case 2:{
+                                    exp8.setCurrentField(currentField);
+                                }break;
+                            }
+                            exp8.explore(hole);
+                        }break;
+                        case 1:{
+                            Unstable unstable = new Unstable();
+                            unstable.setCapacity(capacity);
+                            switch (place){
+                                case 0:{
+                                    exp8.setCurrentField(unstable);
+                                }break;
+                                case 1:{
+                                    exp8.setCurrentField(currentField);
+                                    exp8.currentField.addNeighbor(unstable);
+                                }break;
+                                case 2:{
+                                    exp8.setCurrentField(currentField);
+                                }break;
+                            }
+                            exp8.explore(unstable);
+                        }break;
+                        case 2:{
+                            Stable stable = new Stable();
+                            switch (place){
+                                case 0:{
+                                    exp8.setCurrentField(stable);
+                                }break;
+                                case 1:{
+                                    exp8.setCurrentField(currentField);
+                                    exp8.currentField.addNeighbor(stable);
+                                }break;
+                                case 2:{
+                                    exp8.setCurrentField(currentField);
+                                }break;
+                            }
+                            exp8.explore(stable);
+                        }break;
+                    }
+                } break;
+                case 9: {
+                    Character c = new Eskimo();
+                    c.setCurrentField(new Stable());
+                    System.out.println("Mennyi munkat tud vegezni a karakter? (0-4)");
+                    c.setWork(sc.nextInt());
+                    c.buildIgloo();
+                } break;
+                case 10: {
+                    Character c1 = new Explorer();
+                    c1.setCurrentField(new Stable());
+                    Character c2 = new Eskimo();
+                    c2.setCurrentField(new Hole());
+                    System.out.println("Mennyi munkat tud vegezni a karakter? (0-4)");
+                    c1.setWork(sc.nextInt());
+                    System.out.println("Szomszedos mezon all a masik karakter? (1/0)");
+                    event = sc.nextInt();
+                    if(event == 1)
+                        c1.currentField.addNeighbor(c2.currentField);
+                    System.out.println("Fuldoklik a masik karakter? (1/0)");
+                    event = sc.nextInt();
+                    if(event == 1)
+                        c2.setDrowning(true);
+                    c1.saveAlly(c2);
+
+                } break;
+                case 11: {
+                    Character c = new Explorer();
+                    System.out.println("Mennyi munkat tud vegezni a karakter? (0-4)");
+                    c.setWork(sc.nextInt());
+                    System.out.println("Megvan az osszes resze a jelzopisztolynak? (1/0)");
+                    event = sc.nextInt();
+                    if(event == 1) {
+                        c.inventory.addItem(new Flare());
+                        c.inventory.addItem(new Charge());
+                        c.inventory.addItem(new Gun());
+                    }
+                    c.assemble();
+                } break;
                 default: {
                     sc.close();
                     runningGame = false;

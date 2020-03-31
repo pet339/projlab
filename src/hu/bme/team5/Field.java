@@ -7,14 +7,14 @@ public abstract class Field {
     protected ArrayList<Character> characters;
     protected ArrayList<Field> neighbors;
     protected int snowSize;
+    protected int capacity;
 
     public Field() {
         characters = new ArrayList<>();
+        neighbors = new ArrayList<>();
     }
 
-    public void stepOn(Character c) {
-        ;
-    }
+    abstract void stepOn(Character c);
 
     public void removeCharacter(Character c) {
         System.out.println(">removeCharacter(c)");
@@ -24,6 +24,10 @@ public abstract class Field {
 
     public boolean checkNeighbor(Field nextField) {
         System.out.println(">checkNeighbor(nextField)");
+        if(neighbors.contains(nextField)){
+            System.out.println("<checkNeighbor(nextField)");
+            return true;
+        }
         System.out.println("<checkNeighbor(nextField)");
         return false;
     }
@@ -39,17 +43,30 @@ public abstract class Field {
         snowSize = s;
         System.out.println("<setSnowSize(s)");
     }
+
     public void setMap(Map m){
         System.out.println(">setMap(m)");
         map = m;
         System.out.println("<setMap(m)");
     }
+
     public void setNeighbors(ArrayList<Field> fs){
         System.out.println(">setNeighbors(fs)");
         neighbors = fs;
         System.out.println("<setNeighbors(fs)");
     }
-    abstract public Item getFrozenItem();
 
+    public void addNeighbor(Field f){
+        System.out.println(">addNeighbor()");
+        neighbors.add(f);
+        System.out.println("<addNeighbor()");
+    }
+
+    public int getCapacity(){
+        return capacity;
+    }
+
+    abstract public Item getFrozenItem();
     abstract public void setFrozenItem(Item i);
+    abstract  public void setIgloo(boolean igloo);
 }
