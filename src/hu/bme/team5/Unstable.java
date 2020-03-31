@@ -1,15 +1,13 @@
 package hu.bme.team5;
 
-import java.net.Socket;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Unstable extends Iceberg {
 
     public Unstable() {
         super();
         Random rand = new Random();
-        capacity = rand.nextInt(map.characters.size());
+        capacity = rand.nextInt(Map.characters.size());
         
     }
 
@@ -31,7 +29,7 @@ public class Unstable extends Iceberg {
         Hole h = new Hole();
         h.setMap(this.map);
         h.setNeighbors(neighbors);
-        map.fields.add(map.fields.indexOf(this),h);
+        Map.fields.add(Map.fields.indexOf(this), h);
         for(Character c : characters){
             h.stepOn(c);
         }
