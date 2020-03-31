@@ -40,10 +40,14 @@ public abstract class Field {
         System.out.println("<setSnowSize(s)");
     }
     public void setMap(Map m){
+        System.out.println(">setMap(m)");
         map = m;
+        System.out.println("<setMap(m)");
     }
     public void setNeighbors(ArrayList<Field> fs){
+        System.out.println(">setNeighbors(fs)");
         neighbors = fs;
+        System.out.println("<setNeighbors(fs)");
     }
     abstract public Item getFrozenItem();
 
