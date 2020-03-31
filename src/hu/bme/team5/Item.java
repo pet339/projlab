@@ -5,23 +5,28 @@ public abstract class Item {
 
     public Item() {
     }
-    // Ásóhasználat, Overrideolva lesz, az shovel-nél true-val tér vissza
+
+    // asohasznalat, Overrideolva lesz, az shovel-nel true-val ter vissza
     public boolean shovelNeeded() {
         return false;
     }
-    // Ételhaszmálat, Overrideolva lesz, az food-nál true-val tér vissza
+
+    // etelhaszmalat, Overrideolva lesz, az food-nal true-val ter vissza
     public boolean foodNeeded() {
         return false;
     }
-    // Kötélhasználat, Overrideolva lesz, az rope-nál true-val tér vissza
+
+    // Kötelhasznalat, Overrideolva lesz, az rope-nal true-val ter vissza
     public boolean ropeNeeded() {
         return false;
     }
-    // Búvárruha használat, Overrideolva lesz, az divingSuit-nál true-val tér vissza
+
+    // Búvarruha hasznalat, Overrideolva lesz, az divingSuit-nal true-val ter vissza
     public boolean divingSuitNeeded() {
         return false;
     }
-    // Győzelemhez szükséges itemek, Overrideolva lesz, Flare, Charge, Gun-nal true-val tér vissza
+
+    // Gyozelemhez szükseges itemek, Overrideolva lesz, Flare, Charge, Gun-nal true-val ter vissza
     public boolean winItemNeeded() {
         return false;
     }
