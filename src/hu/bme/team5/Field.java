@@ -3,25 +3,30 @@ package hu.bme.team5;
 import java.util.ArrayList;
 
 public abstract class Field {
-    protected Map map;
-    protected ArrayList<Character> characters;
-    protected ArrayList<Field> neighbors;
-    protected int snowSize;
-    protected int capacity;
+    protected Map map; //A Fieldet tartalmazó map
+    protected ArrayList<Character> characters; //Fielden lévő karakterek
+    protected ArrayList<Field> neighbors; //Field szomszédjai
+    protected int snowSize; //Hó nagysága 
+    protected int capacity; //Mező kapacitása
 
+
+    //Konstruktor
     public Field() {
         characters = new ArrayList<>();
         neighbors = new ArrayList<>();
     }
 
+    //Fieldre lépés lekezelése
     abstract void stepOn(Character c);
 
+    //Fielden álló karakter eltávolítása
     public void removeCharacter(Character c) {
         System.out.println(">removeCharacter(c)");
         characters.remove(c);
         System.out.println("<removeCharacter(c)");
     }
 
+    //Megnézzük ,hogy a paraméterként kapott field szomszédos e
     public boolean checkNeighbor(Field nextField) {
         System.out.println(">checkNeighbor(nextField)");
         if(neighbors.contains(nextField)){
@@ -32,12 +37,15 @@ public abstract class Field {
         return false;
     }
 
+    //Beállítunk egy ezen fielden álló karaktert
     public void setCharacter(Character c) {
         System.out.println(">setCharacter(c)");
         characters.add(c);
         System.out.println("<setCharacter(c)");
     }
 
+
+    //Getter / Setterek
     void setSnowSize(int s){
         System.out.println(">setSnowSize(s)");
         snowSize = s;
