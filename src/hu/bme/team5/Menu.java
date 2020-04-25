@@ -1,5 +1,22 @@
 package hu.bme.team5;
 
+/*
+        ++++++++++++++++++++++++Üzenőfal+++++++++++++++++++++
+        Írjátok ide ha valami eszetekbe jut, hogy majd meg kell csinálni
+        Ha csinálod írd mellé a neved
+
+
+        -Tent osztályt a függvényivel megcsinálni
+        -FragileShovel osztályt a függvényeivel megcsinálni
+
+
+
+
+
+
+
+
+*/
 import java.util.Scanner;
 
 public class Menu {
