@@ -8,14 +8,14 @@ public class Hole extends Field {
 
     //Lyukra lépés lekezelése
     @Override
-    public void stepOn(Character c) {
+    public void stepOn(Movable m) {
         System.out.println(">stepOn(c)");
         //Karaktér beállítása
-        setCharacter(c);
+        setMovable(m);
         //Hó letörlése
         setSnowSize(0);
         //Character megfullasztása
-        characters.get(characters.size()-1).drown();
+        movables.get(movables.size()-1).drown();
         System.out.println("<stepOn(c)");
     }
 

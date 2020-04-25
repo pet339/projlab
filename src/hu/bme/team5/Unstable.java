@@ -12,13 +12,13 @@ public class Unstable extends Iceberg {
     }
 
     @Override
-    public void stepOn(Character c) {
+    public void stepOn(Movable m) {
         System.out.println(">stepOn(c)");
-        setCharacter(c);
+        setMovable(m);
         
 
         System.out.println("characters.size() > capacity");
-        if(characters.size() > capacity)
+        if(movables.size() > capacity)
         getDestroyed();
         System.out.println("<stepOn(c)");
 
@@ -30,8 +30,8 @@ public class Unstable extends Iceberg {
         h.setMap(this.map);
         h.setNeighbors(neighbors);
         Map.fields.add(Map.fields.indexOf(this), h);
-        for(Character c : characters){
-            h.stepOn(c);
+        for(Movable m : movables){
+            h.stepOn(m);
         }
         System.out.println("<getDestroyed");
     }

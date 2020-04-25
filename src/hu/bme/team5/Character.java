@@ -1,6 +1,6 @@
 package hu.bme.team5;
 
-public abstract class Character implements TurnBased, Controllable {
+public abstract class Character extends Movable implements TurnBased, Controllable {
     
     protected Field currentField; //A field amin a karakter áll
     protected int health; //A karakter életét tartalmazó integer
@@ -42,23 +42,26 @@ public abstract class Character implements TurnBased, Controllable {
     }
 
     //Karakter lép, paraméter az a field amire lépni akarunk
-    @Override
     public boolean move(Field nextField) {
         System.out.println(">move(nextField)");
         //Megnézzök hogy szomszédos e
         boolean b1 = currentField.checkNeighbor(nextField);
-        if(work <= 0)
-        //Megnézzük hogy van e elég munka
+        if(work <= 0){
+            //Megnézzük hogy van e elég munka
             System.out.println("    Nincs eleg munkaegyseg a lepeshez");
-        if(!b1)
-            System.out.println("    Nem szomszedos a mezo");
-        //Elveszünk 1 munkát a fieldek elvégzik a karakterek kezelését.
-        if (b1 && work > 0){
-            setWork(work-1);
-            currentField.removeCharacter(this);
-            currentField.stepOn(this);
-            setCurrentField(nextField);
+            return false;
         }
+
+        if(!b1){
+            System.out.println("    Nem szomszedos a mezo");
+            return false;
+        }
+
+        //Elveszünk 1 munkát a fieldek elvégzik a karakterek kezelését.
+        setWork(work-1);
+        currentField.removeMovable(this);
+        currentField.stepOn(this);
+        setCurrentField(nextField);
 
         System.out.println("<move(nextField)");
         return b1;

@@ -9,7 +9,7 @@ public abstract class Iceberg extends Field {
     }
 
     @Override
-    void stepOn(Character c) {
+    void stepOn(Movable m) {
 
     }
 

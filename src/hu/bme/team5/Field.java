@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public abstract class Field {
     protected Map map; //A Fieldet tartalmazó map
-    protected ArrayList<Character> characters; //Fielden lévő karakterek
+    protected ArrayList<Movable> movables; //Fielden lévő karakterek
     protected ArrayList<Field> neighbors; //Field szomszédjai
     protected int snowSize; //Hó nagysága 
     protected int capacity; //Mező kapacitása
@@ -12,17 +12,17 @@ public abstract class Field {
 
     //Konstruktor
     public Field() {
-        characters = new ArrayList<>();
+        movables = new ArrayList<>();
         neighbors = new ArrayList<>();
     }
 
     //Fieldre lépés lekezelése
-    abstract void stepOn(Character c);
+    abstract void stepOn(Movable m);
 
     //Fielden álló karakter eltávolítása
-    public void removeCharacter(Character c) {
+    public void removeMovable(Movable m) {
         System.out.println(">removeCharacter(c)");
-        characters.remove(c);
+        movables.remove(m);
         System.out.println("<removeCharacter(c)");
     }
 
@@ -38,9 +38,9 @@ public abstract class Field {
     }
 
     //Beállítunk egy ezen fielden álló karaktert
-    public void setCharacter(Character c) {
+    public void setMovable(Movable m) {
         System.out.println(">setCharacter(c)");
-        characters.add(c);
+        movables.add(m);
         System.out.println("<setCharacter(c)");
     }
 
