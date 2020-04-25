@@ -10,4 +10,5 @@ public class Rope extends Item {
     public boolean ropeNeeded() {
         return true;
     }
+    // Push Test
 }
