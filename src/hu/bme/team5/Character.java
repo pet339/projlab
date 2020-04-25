@@ -64,7 +64,7 @@ public abstract class Character extends Movable implements TurnBased, Controllab
         setCurrentField(nextField);
 
         System.out.println("<move(nextField)");
-        return b1;
+        return true;
     }
 
     //karakter havat takarít

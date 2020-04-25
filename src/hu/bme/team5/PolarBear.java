@@ -25,6 +25,7 @@ public class PolarBear extends Movable {
         currentField.removeMovable(this);
         currentField.stepOn(this);
         setCurrentField(nextField);
+        kill();
     }
     public void setCurrentField(Field f){
         currentField = f;
