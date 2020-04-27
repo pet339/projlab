@@ -2,12 +2,14 @@ package hu.bme.team5;
 
 import java.util.Random;
 
+import static hu.bme.team5.Menu.game;
+
 public class Unstable extends Iceberg {
 
     public Unstable() {
         super();
         Random rand = new Random();
-        capacity = rand.nextInt(Map.characters.size());
+        capacity = rand.nextInt(game.currentMap.characters.size());
         
     }
 
@@ -23,7 +25,7 @@ public class Unstable extends Iceberg {
         Hole h = new Hole();
         h.setMap(this.map);
         h.setNeighbors(neighbors);
-        Map.fields.add(Map.fields.indexOf(this), h);
+        game.currentMap.fields.add(game.currentMap.fields.indexOf(this), h);
         for(Movable m : movables){
             h.stepOn(m);
         }
