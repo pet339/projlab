@@ -8,7 +8,7 @@ public class Game {
 
     //Konstruktor
     public Game() {
-        currentMap = new Map();
+        currentMap = new Map(this);
         maps = new ArrayList<>();
         maps.add(currentMap);
     }
@@ -27,6 +27,10 @@ public class Game {
 
     //Map mentése
     public void saveMap() {
+    }
+
+    public void mapEnded(){
+        
     }
 
     //Kilépés a játékból

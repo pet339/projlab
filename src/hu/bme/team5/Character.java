@@ -40,17 +40,16 @@ public abstract class Character extends Movable implements TurnBased, Controllab
 
     //Karakter lép, paraméter az a field amire lépni akarunk
     public boolean move(Field nextField) {
-        System.out.println(">move(nextField)");
         //Megnézzök hogy szomszédos e
         boolean b1 = currentField.checkNeighbor(nextField);
         if(work <= 0){
             //Megnézzük hogy van e elég munka
-            System.out.println("    Nincs eleg munkaegyseg a lepeshez");
+            System.out.println("Nincs eleg munkaegyseg a lepeshez");
             return false;
         }
 
         if(!b1){
-            System.out.println("    Nem szomszedos a mezo");
+            System.out.println("Nem szomszedos a mezo");
             return false;
         }
 
@@ -58,71 +57,55 @@ public abstract class Character extends Movable implements TurnBased, Controllab
             //                  <-------- ENDGAME
         }
 
-        //Elveszünk 1 munkát a fieldek elvégzik a karakterek kezelését.
+        //Elveszünk 1 munkát, a fieldek elvégzik a karakterek kezelését.
         setWork(work-1);
         currentField.removeMovable(this);
         currentField.stepOn(this);
         setCurrentField(nextField);
 
-        System.out.println("<move(nextField)");
         return true;
     }
 
     //karakter havat takarít
     @Override
     public boolean shovelSnow() {
-        System.out.println(">Character.shovelSnow()");
-
         //Munka ellenőrzése
         if(work==0){
-            System.out.println("\t-Nincs munka, nem lehet asni.");
-            System.out.println("<Character.shovelSnow()");
+            System.out.println("\t-Nincs eleg munka, nem lehet asni.");
             return false;
         }
 
         //Hó nagyságának ellenőrzése
         if(currentField.snowSize==0){
             System.out.println("\t-Nincs ho, nincs mit asni.");
-            System.out.println("<Character.shovelSnow()");
             return false;
         }
-
-        System.out.print("\t-Ho asas elott: " + currentField.snowSize + "\n");
 
         //Megnézzük hogy van e ásónk , belső működése az inventory felelőssége
         if(inventory.shovelSnowUsed()){
             currentField.setSnowSize(Math.max(currentField.snowSize-2, 0));
         }
         else currentField.setSnowSize(currentField.snowSize-1);
-
-        System.out.print("\t-Ho asas utan: " + currentField.snowSize + "\n");
-
-        System.out.println("<Character.shovelSnow()");
         return true;
     }
 
     //Karakter kiás egy itemet
     public boolean digItem(){
-        System.out.println(">Character.digItem()");
-
         //Hó nagyságának ellenőrzése
         if(currentField.snowSize!=0){
-            System.out.println("\t-Itt ho van, nem lehet targyat kiasni.");
-            System.out.println("<Character.digItem()");
+            System.out.println("\t-Itt ho van, nem lehet asni.");
             return false;
         }
 
         //Munka ellenőrzése
         if(work==0){
-            System.out.println("\t-Nincs munka, nem lehet targyat kiasni.");
-            System.out.println("<Character.digItem()");
+            System.out.println("\t-Nincs munka, nem lehet asni.");
             return false;
         }
 
         //Van e a táblában befagyott item
         if(currentField.getFrozenItem()==null){
             System.out.println("\t-Nincs targy, nincs mit kiasni.");
-            System.out.println("<Character.digItem()");
             return false;
         }
 
@@ -130,7 +113,6 @@ public abstract class Character extends Movable implements TurnBased, Controllab
         inventory.addItem(currentField.getFrozenItem());
         currentField.setFrozenItem(null);
 
-        System.out.println("<Character.digItem()");
         return true;
     }
 
@@ -142,17 +124,18 @@ public abstract class Character extends Movable implements TurnBased, Controllab
             System.out.println("Nincs eleg munka!");
             return false;
         }
-
-        //Ellenőrizzük hogy megvannak e az alkatrészek
-        if(!inventory.assembleUsed()){
-            System.out.println("Hianyzik nehany alkatresz!");
+        //Inventory ellenőrzi, hogy megvannak-e a tárgyak
+        boolean b1 = inventory.assembleUsed();
+        if(!b1){
+            System.out.println("Hianyzik a jelzopisztoly valamelyik resze");
             return false;
         }
-
-        //Csökkentjük a munkát és visszatérünk
-        setWork(work-1);
-        return true;
+        else{
+            currentField.GameEnded(true);
+            return true;
+        }
     }
+        
 
     
     //Karakter kiment egy paraméterként megadott karaktert
@@ -181,17 +164,13 @@ public abstract class Character extends Movable implements TurnBased, Controllab
     //karakter fuldoklik
     @Override
     public boolean drown() {
-
         //Az inventory kideríti hogy van e nálla búvárruha
-        System.out.println(">drown()");
         boolean b2 = inventory.drownUsed();
         if (!b2){
             System.out.println("Lyukba esett a karakter es megfullad");
             setDrowning(true);
         }
-        else
-            System.out.println("Buvarruha megvedi a karaktert a megfulladastol");
-        System.out.println("<drown()");
+        else System.out.println("Buvarruha megvedi a karaktert a megfulladastol");
         return b2;
     }
 
@@ -226,30 +205,25 @@ public abstract class Character extends Movable implements TurnBased, Controllab
 
     //Getter/Setterek
     void setWork(int number){
-        System.out.println(">setWork(number)");
         work = number;
-        System.out.println("<setWork(number)");
     }
     
     void setCurrentField(Field nextField){
-        System.out.println(">setCurrentField()");
         currentField = nextField;
-        System.out.println("<setCurrentField()");
     }
 
     Field getCurrentField(){
         return currentField;
     }
-    Inventory getInventory(){return inventory;}
-
+    Inventory getInventory(){
+        return inventory;
+    }
     
     int explore(Field f) {return -1;}
     boolean buildIgloo() {return false;}
 
     void setDrowning(boolean d){
-        System.out.println(">setDrowning(d)");
         drowning = d;
-        System.out.println("<setDrowning(d)");
     }
 
     boolean isDrowning(){
@@ -258,6 +232,10 @@ public abstract class Character extends Movable implements TurnBased, Controllab
 
     void setHealth(int h){
         health=h;
+    }
+
+    public void Die(){
+        currentField.GameEnded(false);
     }
 
 }

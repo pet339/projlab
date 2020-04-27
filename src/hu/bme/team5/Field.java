@@ -83,6 +83,11 @@ public abstract class Field {
         return capacity;
     }
 
+    public void GameEnded(boolean win)
+    {
+        map.GameEnded(win);
+    }
+
     abstract public Item getFrozenItem();
 
     abstract public void setFrozenItem(Item i);

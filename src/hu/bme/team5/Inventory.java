@@ -10,22 +10,19 @@ public class Inventory {
     }
 
     public boolean shovelSnowUsed() {
-        System.out.println(">shovelSnowUsed()");
         for(Item i : items){
             if(i.shovelNeeded()) {
                 // Ha még nem használták 3-szor true-val tér vissza
-                if (i.counter < 4)
-                {
-                    System.out.println("<shovelSnowUsed()");
+                if (i.counter < 4){
                     return true;
                 }
+
                 // Ha használták, akkor törli az itemet
                 else{
                     items.remove(i);
                 }
             }
         }
-        System.out.println("<shovelSnowUsed()");
         return false;
     }
 
@@ -42,14 +39,11 @@ public class Inventory {
     }
 
     public boolean drownUsed() {
-        System.out.println(">drownUsed()");
         for(Item i : items){
             if(i.divingSuitNeeded()) {
-                System.out.println("<drownUsed()");
                 return true;
             }
         }
-        System.out.println("<drownUsed()");
         return false;
     }
 
@@ -63,14 +57,11 @@ public class Inventory {
     }
 
     public boolean saveAllyUsed() {
-        System.out.println(">saveAllyUsed()");
         for(Item i : items){
             if(i.ropeNeeded()) {
-                System.out.println("<saveAllyUsed()");
                 return true;
             }
         }
-        System.out.println("<saveAllyUsed()");
         return false;
     }
 
@@ -81,10 +72,8 @@ public class Inventory {
     }
 
     public void tradeWithInventory(Inventory nv, Item i1) {
-        System.out.println(">tradeWithInventory(nv, i1)");
         nv.addItem(i1);
         items.remove(i1);
-        System.out.println("<tradeWithInventory(nv, i1)");
     }
 
     public void removeFood(){
