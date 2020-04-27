@@ -10,7 +10,6 @@ public abstract class Character implements TurnBased, Controllable {
 
     //Konstruktor
     public Character() {
-        currentField = new Stable();
         inventory = new Inventory();
     }
 
