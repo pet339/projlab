@@ -71,8 +71,13 @@ public class Menu {
                 } break;
                 case 6: {
                     // Item cseréje
+                    if(game.currentMap.characters.get(0).inventory.items.size() > 0){
                     Item tradeItem = game.currentMap.characters.get(0).inventory.items.get(0);
                     game.currentMap.characters.get(0).trade(game.currentMap.characters.get(1),tradeItem);
+                    }
+                    else
+                        System.out.println("nincs targy az inventoriban");
+                    
                 } break;
                 case 7: {
                     // Jatekos eszik
@@ -97,6 +102,9 @@ public class Menu {
                     // Jelzőpisztolyt összeszerel
                     game.currentMap.characters.get(0).assemble();
                 } break;
+                case 12: {
+                    game.currentMap.endTurn();
+                }break;
                 default: {
                     sc.close();
                     runningGame = false;
