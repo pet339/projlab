@@ -8,7 +8,9 @@ public abstract class Field {
     protected ArrayList<Field> neighbors; //Field szomszédjai
     protected int snowSize; //Hó nagysága 
     protected int capacity; //Mező kapacitása
-
+    protected boolean igloo;
+    protected boolean tent;
+    protected boolean polarBear;
 
     //Konstruktor
     public Field() {

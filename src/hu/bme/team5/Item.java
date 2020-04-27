@@ -2,8 +2,9 @@ package hu.bme.team5;
 
 public abstract class Item {
     private String description;
-
+    int counter;
     public Item() {
+        counter = 0;
     }
 
     // asohasznalat, Overrideolva lesz, az shovel-nel true-val ter vissza
@@ -30,4 +31,6 @@ public abstract class Item {
     public boolean winItemNeeded() {
         return false;
     }
+
+    public boolean tentNeeded() {return false;}
 }

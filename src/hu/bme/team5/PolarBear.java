@@ -21,10 +21,11 @@ public class PolarBear extends Movable {
     public void move(){
         Field nextField = getRandomNeighbor();
 
-
         currentField.removeMovable(this);
+        currentField.polarBear = false;
         currentField.stepOn(this);
         setCurrentField(nextField);
+        currentField.polarBear = true;
         kill();
     }
     public void setCurrentField(Field f){

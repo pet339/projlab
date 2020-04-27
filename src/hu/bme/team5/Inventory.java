@@ -13,8 +13,15 @@ public class Inventory {
         System.out.println(">shovelSnowUsed()");
         for(Item i : items){
             if(i.shovelNeeded()) {
-                System.out.println("<shovelSnowUsed()");
-                return true;
+                if (i.counter < 4)
+                {
+                    System.out.println("<shovelSnowUsed()");
+                    return true;
+                }
+                else{
+                    items.remove(i);
+                    return false;
+                }
             }
         }
         System.out.println("<shovelSnowUsed()");
@@ -94,6 +101,16 @@ public class Inventory {
                 break;
             }
         }
+    }
+    public boolean tentUsed(){
+        for (Item i : items){
+            if (i.tentNeeded()){
+                System.out.println("Sator felallitva");
+                items.remove(i);
+                return true;
+            }
+        }
+        return false;
     }
 
 }

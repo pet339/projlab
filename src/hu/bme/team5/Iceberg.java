@@ -1,7 +1,6 @@
 package hu.bme.team5;
 
 public abstract class Iceberg extends Field {
-    private boolean igloo; //van e iglu a mezőn
     private Item frozenItem; //Befagyott item
 
     public Iceberg() {

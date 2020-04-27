@@ -57,6 +57,10 @@ public abstract class Character extends Movable implements TurnBased, Controllab
             return false;
         }
 
+        if (currentField.polarBear){
+            //                  <-------- ENDGAME
+        }
+
         //Elveszünk 1 munkát a fieldek elvégzik a karakterek kezelését.
         setWork(work-1);
         currentField.removeMovable(this);
@@ -217,6 +221,23 @@ public abstract class Character extends Movable implements TurnBased, Controllab
         System.out.print("\t-Elet utana: " + health + "\n");
         System.out.println("<Character.eat()");
         return true;
+    }
+
+    public boolean buildTent(){
+        if (work <= 0){
+            System.out.println("Nincs eleg munka!");
+            return false;
+        }
+        boolean has = inventory.tentUsed();
+        if (has){
+            System.out.println("Sator megepitve!");
+            currentField.tent = true;
+            return true;
+        }
+        else{
+            System.out.println("Nincs satrad!");
+        }
+        return false;
     }
 
     //Getter/Setterek
