@@ -3,7 +3,7 @@ package hu.bme.team5;
 import java.util.ArrayList;
 
 public class Inventory {
-    private ArrayList<Item> items;
+    ArrayList<Item> items;
 
     public Inventory() {
         items = new ArrayList<Item>();
