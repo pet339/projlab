@@ -94,6 +94,7 @@ public class Map implements TurnBased {
         // Jegesmedve létrehozása
         PolarBear bear = new PolarBear();
         bear.currentField = field4;
+        field4.polarBear = true;
 
         // Item-ek létrehozása
         DivingSuit divingSuit = new DivingSuit();
