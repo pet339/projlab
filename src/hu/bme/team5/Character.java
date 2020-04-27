@@ -209,17 +209,12 @@ public abstract class Character extends Movable implements TurnBased, Controllab
     //Karakter eszik
     @Override
     public boolean eat() {
-        System.out.println(">Character.eat()");
-        if(health==256){
-            System.out.println("\t-Maximum elet, nem tud többet enni.");
-            System.out.println("<Character.eat()");
+        //Nem növeljük az életet ha elérte a maximum értéket vagy ha nincs élelm a karakternél
+        if(health==256 || !inventory.eatUsed()){
             return false;
         }
-        System.out.print("\t-Elet elotte: " + health + "\n");
         health++;
         inventory.removeFood();
-        System.out.print("\t-Elet utana: " + health + "\n");
-        System.out.println("<Character.eat()");
         return true;
     }
 
