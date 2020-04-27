@@ -127,7 +127,7 @@ public class Map implements TurnBased {
         for (Field f : game.currentMap.fields)
             if (rnd.nextInt() % 4 == 0){
                 if (!f.tent && !f.igloo){
-                    for (Character c : game.currentMap.characters){
+                    for (Character c : f.characters){
                         c.health--;
                     }
                 }
