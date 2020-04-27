@@ -91,26 +91,21 @@ public abstract class Character extends Movable implements TurnBased, Controllab
 
     //Karakter kiás egy itemet
     public boolean digItem(){
-        System.out.println(">Character.digItem()");
-
         //Hó nagyságának ellenőrzése
         if(currentField.snowSize!=0){
-            System.out.println("\t-Itt ho van, nem lehet targyat kiasni.");
-            System.out.println("<Character.digItem()");
+            System.out.println("\t-Itt ho van, nem lehet asni.");
             return false;
         }
 
         //Munka ellenőrzése
         if(work==0){
-            System.out.println("\t-Nincs munka, nem lehet targyat kiasni.");
-            System.out.println("<Character.digItem()");
+            System.out.println("\t-Nincs munka, nem lehet asni.");
             return false;
         }
 
         //Van e a táblában befagyott item
         if(currentField.getFrozenItem()==null){
             System.out.println("\t-Nincs targy, nincs mit kiasni.");
-            System.out.println("<Character.digItem()");
             return false;
         }
 
@@ -118,7 +113,6 @@ public abstract class Character extends Movable implements TurnBased, Controllab
         inventory.addItem(currentField.getFrozenItem());
         currentField.setFrozenItem(null);
 
-        System.out.println("<Character.digItem()");
         return true;
     }
 

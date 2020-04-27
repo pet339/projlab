@@ -8,15 +8,11 @@ public abstract class Iceberg extends Field {
     }
 
     @Override
-    void stepOn(Movable m) {
-
-    }
+    void stepOn(Movable m){}
 
     //Getter setterek
     public void setIgloo(boolean igloo) {
-        System.out.println(">setIgloo()");
         this.igloo = igloo;
-        System.out.println("<setIgloo()");
     }
 
     public Item getFrozenItem() {
