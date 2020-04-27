@@ -31,12 +31,14 @@ public abstract class Character implements TurnBased, Controllable {
     //Ezek működése a későbbiekben lesz megvalósítva
     @Override
     public void endTurn() {
+        if (health < 1 || isDrowning()){
+            die();
+        }
+
+
 
     }
-    @Override
-    public void startTurn() {
 
-    }
 
     //Karakter lép, paraméter az a field amire lépni akarunk
     public boolean move(Field nextField) {
@@ -53,7 +55,7 @@ public abstract class Character implements TurnBased, Controllable {
             return false;
         }
 
-        if (currentField.polarBear){
+        if (currentField.polarBear){;
             //                  <-------- ENDGAME
         }
 
@@ -234,7 +236,7 @@ public abstract class Character implements TurnBased, Controllable {
         health=h;
     }
 
-    public void Die(){
+    public void die(){
         currentField.GameEnded(false);
     }
 

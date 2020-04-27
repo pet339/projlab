@@ -147,12 +147,6 @@ public class Map implements TurnBased {
         for (PolarBear bear : game.currentMap.bears){
             bear.move();
         }
-
-    }
-
-    @Override
-    public void startTurn() {
-
     }
 
 
