@@ -81,10 +81,8 @@ public class Inventory {
     }
 
     public void tradeWithInventory(Inventory nv, Item i1) {
-        System.out.println(">tradeWithInventory(nv, i1)");
         nv.addItem(i1);
         items.remove(i1);
-        System.out.println("<tradeWithInventory(nv, i1)");
     }
 
     public void removeFood(){
