@@ -10,8 +10,6 @@ public class DivingSuit extends Item {
     //Ha szükség van rá akkor igazzal tér vissza
     @Override
     public boolean divingSuitNeeded() {
-        System.out.println(">divingSuitNeeded()");
-        System.out.println("<divingSuitNeeded()");
         return true;
     }
 }
