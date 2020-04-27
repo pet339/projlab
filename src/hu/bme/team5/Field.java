@@ -6,7 +6,7 @@ import static hu.bme.team5.Menu.game;
 
 public abstract class Field {
     //protected Map map; //A Fieldet tartalmazó map
-    protected ArrayList<Movable> movables; //Fielden lévő karakterek
+    protected ArrayList<Character> characters; //Fielden lévő karakterek
     protected ArrayList<Field> neighbors; //Field szomszédjai
     protected int snowSize; //Hó nagysága 
     protected int capacity; //Mező kapacitása
@@ -15,20 +15,21 @@ public abstract class Field {
     protected boolean polarBear;
     protected static int ID = 1;
     protected int id;
+    protected Map map;
 
     //Konstruktor
     public Field() {
         id = ID++;
-        movables = new ArrayList<>();
+        characters = new ArrayList<>();
         neighbors = new ArrayList<>();
     }
 
     //Fieldre lépés lekezelése
-    abstract void stepOn(Movable m);
+    abstract void stepOn(Character c);
 
     //Fielden álló karakter eltávolítása
-    public void removeMovable(Movable m) {
-        movables.remove(m);
+    public void removeCharacter(Character c) {
+        characters.remove(c);
     }
 
     //Megnézzük ,hogy a paraméterként kapott field szomszédos e
@@ -40,8 +41,8 @@ public abstract class Field {
     }
 
     //Beállítunk egy ezen fielden álló karaktert
-    public void setMovable(Movable m) {
-        movables.add(m);
+    public void setCharacter(Character c) {
+        characters.add(c);
     }
 
 

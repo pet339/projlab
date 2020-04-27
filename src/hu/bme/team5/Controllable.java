@@ -14,4 +14,6 @@ public interface Controllable {
 
     //Evés
     public boolean eat();
+
+    public boolean drown();
 }

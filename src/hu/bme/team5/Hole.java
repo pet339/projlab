@@ -8,13 +8,13 @@ public class Hole extends Field {
 
     //Lyukra lépés lekezelése
     @Override
-    public void stepOn(Movable m) {
+    public void stepOn(Character c){
         //Karaktér beállítása
-        setMovable(m);
+        setCharacter(c);
         //Hó letörlése
         setSnowSize(0);
         //Character megfullasztása
-        movables.get(movables.size()-1).drown();
+        characters.get(characters.size()-1).drown();
     }
 
     //Visszaadja a fagyott itemet (Lyukban nincs fagyott item)

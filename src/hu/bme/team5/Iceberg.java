@@ -8,7 +8,7 @@ public abstract class Iceberg extends Field {
     }
 
     @Override
-    void stepOn(Movable m){}
+    void stepOn(Character c){}
 
     //Getter setterek
     public void setIgloo(boolean igloo) {

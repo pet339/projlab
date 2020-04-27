@@ -2,7 +2,7 @@ package hu.bme.team5;
 
 import java.util.Random;
 
-public class PolarBear extends Movable {
+public class PolarBear {
     Field currentField;
     public Field getRandomNeighbor(){
         Random rand = new Random();
@@ -14,16 +14,18 @@ public class PolarBear extends Movable {
     }
 
     public void kill(){
-        if (currentField.movables.size() > 1){
-           ; //ENDGAME                                   <------- megcsinálni
+        if (currentField.characters.size() > 1){
+           if(!currentField.igloo){
+               ;
+           }
+            
         }
     }
     public void move(){
         Field nextField = getRandomNeighbor();
 
-        currentField.removeMovable(this);
+         //remove polarbear
         currentField.polarBear = false;
-        currentField.stepOn(this);
         setCurrentField(nextField);
         currentField.polarBear = true;
         kill();
