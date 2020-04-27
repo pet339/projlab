@@ -34,9 +34,7 @@ public abstract class Character implements TurnBased, Controllable {
         if (health < 1 || isDrowning()){
             die();
         }
-
-
-
+        work = 4;
     }
 
 

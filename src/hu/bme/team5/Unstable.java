@@ -14,11 +14,11 @@ public class Unstable extends Iceberg {
     }
 
     @Override
-    public void stepOn(Movable m) {
-        setMovable(m);
+    public void stepOn(Character c) {
+        setCharacter(c);
 
         //Ha túl sokan állnak rajta, a jégtábla felborul
-        if(movables.size() > capacity) getDestroyed();
+        if(characters.size() > capacity) getDestroyed();
     }
 
     public void getDestroyed() {
@@ -26,8 +26,8 @@ public class Unstable extends Iceberg {
         h.setMap(game.currentMap);
         h.setNeighbors(neighbors);
         game.currentMap.fields.add(game.currentMap.fields.indexOf(this), h);
-        for(Movable m : movables){
-            h.stepOn(m);
+        for(Character c : characters){
+            h.stepOn(c);
         }
     }
 
