@@ -2,8 +2,10 @@ package hu.bme.team5;
 
 import java.util.ArrayList;
 
+import static hu.bme.team5.Menu.game;
+
 public abstract class Field {
-    protected Map map; //A Fieldet tartalmazó map
+    //protected Map map; //A Fieldet tartalmazó map
     protected ArrayList<Movable> movables; //Fielden lévő karakterek
     protected ArrayList<Field> neighbors; //Field szomszédjai
     protected int snowSize; //Hó nagysága 
@@ -49,7 +51,7 @@ public abstract class Field {
     }
 
     public void setMap(Map m){
-        map = m;
+        game.currentMap = m;
     }
 
     public void setNeighbors(ArrayList<Field> fs){
@@ -70,7 +72,7 @@ public abstract class Field {
 
     public void GameEnded(boolean win)
     {
-        map.GameEnded(win);
+        game.currentMap.GameEnded(win);
     }
 
     abstract public Item getFrozenItem();

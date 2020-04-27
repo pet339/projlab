@@ -23,7 +23,7 @@ public class Unstable extends Iceberg {
 
     public void getDestroyed() {
         Hole h = new Hole();
-        h.setMap(this.map);
+        h.setMap(game.currentMap);
         h.setNeighbors(neighbors);
         game.currentMap.fields.add(game.currentMap.fields.indexOf(this), h);
         for(Movable m : movables){
