@@ -11,7 +11,7 @@ package hu.bme.team5;
 
 
 
-
+//JustForCommit
 
 
 
@@ -81,47 +81,23 @@ public class Menu {
                     game.currentMap.characters.get(0).eat();
                 } break;
                 case 8: {
+                    //Mezőt megvizsgál
                     System.out.println("Melyik mezot vizsgalja meg?");
                     Field toExlore = game.currentMap.fields.get(sc.nextInt() -1);
                     game.currentMap.characters.get(0).explore(toExlore);
                 } break;
                 case 9: {
-                    Character c = new Eskimo();
-                    c.setCurrentField(new Stable());
-                    System.out.println("Mennyi munkat tud vegezni a karakter? (0-4)");
-                    c.setWork(sc.nextInt());
-                    c.buildIgloo();
+                    // Iglut épít
+                    game.currentMap.characters.get(0).buildIgloo();
                 } break;
                 case 10: {
-                    Character c1 = new Explorer();
-                    c1.setCurrentField(new Stable());
-                    Character c2 = new Eskimo();
-                    c2.setCurrentField(new Hole());
-                    System.out.println("Mennyi munkat tud vegezni a karakter? (0-4)");
-                    c1.setWork(sc.nextInt());
-                    System.out.println("Szomszedos mezon all a masik karakter? (1/0)");
-                    event = sc.nextInt();
-                    if(event == 1)
-                        c1.currentField.addNeighbor(c2.currentField);
-                    System.out.println("Fuldoklik a masik karakter? (1/0)");
-                    event = sc.nextInt();
-                    if(event == 1)
-                        c2.setDrowning(true);
-                    c1.saveAlly(c2);
-
+                    // Karaktert megment
+                    Character inTrouble = game.currentMap.characters.get(1);
+                    game.currentMap.characters.get(0).saveAlly(inTrouble);
                 } break;
                 case 11: {
-                    Character c = new Explorer();
-                    System.out.println("Mennyi munkat tud vegezni a karakter? (0-4)");
-                    c.setWork(sc.nextInt());
-                    System.out.println("Megvan az osszes resze a jelzopisztolynak? (1/0)");
-                    event = sc.nextInt();
-                    if(event == 1) {
-                        c.inventory.addItem(new Flare());
-                        c.inventory.addItem(new Charge());
-                        c.inventory.addItem(new Gun());
-                    }
-                    c.assemble();
+                    // Jelzőpisztolyt összeszerel
+                    game.currentMap.characters.get(0).assemble();
                 } break;
                 default: {
                     sc.close();
