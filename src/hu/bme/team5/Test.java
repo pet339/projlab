@@ -92,15 +92,15 @@ public class Test {
      */
     public void initTest(String input, String output) {
         System.out.print("initTest: ");
-        StringBuilder result = new StringBuilder();
+        String result = "";
         for (Field f : testGame.currentMap.fields) {
             StringBuilder neighborsID = new StringBuilder();
             for (Field n : f.getNeighbors()) {
-                result.append(n.getId() + ",");
+                neighborsID.append(n.getId() + ",");
             }
-            result.delete(neighborsID.toString().length() - 1, neighborsID.toString().length());
-            result.append(f.getClass().getSimpleName() + "{[Field:id=" + f.getId() + ";neighbors:"
-                    + neighborsID.toString() + "]};");
+            neighborsID.delete(neighborsID.toString().length() - 1, neighborsID.toString().length());
+            result += f.getClass().getSimpleName() + "{[Field:id=" + f.getId() + ";neighbors:"
+                    + neighborsID.toString() + "]};";
         }
         printer(result.equals(output));
     }
