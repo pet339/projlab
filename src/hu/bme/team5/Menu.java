@@ -87,7 +87,7 @@ public class Menu {
                     //Mezőt megvizsgál
                     System.out.println("Melyik mezot vizsgalja meg?");
                     Field toExlore = game.currentMap.fields.get(sc.nextInt() -1);
-                    game.currentMap.characters.get(0).explore(toExlore);
+                    System.out.println(game.currentMap.characters.get(1).explore(toExlore));
                 } break;
                 case 9: {
                     // Iglut épít
