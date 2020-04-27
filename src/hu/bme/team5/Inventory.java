@@ -10,15 +10,13 @@ public class Inventory {
     }
 
     public boolean shovelSnowUsed() {
-        System.out.println(">shovelSnowUsed()");
         for(Item i : items){
             if(i.shovelNeeded()) {
                 // Ha még nem használták 3-szor true-val tér vissza
-                if (i.counter < 4)
-                {
-                    System.out.println("<shovelSnowUsed()");
+                if (i.counter < 4){
                     return true;
                 }
+
                 // Ha használták, akkor törli az itemet
                 else{
                     items.remove(i);
