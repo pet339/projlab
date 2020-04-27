@@ -254,7 +254,7 @@ public abstract class Character extends Movable implements TurnBased, Controllab
     Inventory getInventory(){return inventory;}
 
     
-    boolean explore(Field f) {return false;}
+    int explore(Field f) {return -1;}
     boolean buildIgloo() {return false;}
 
     void setDrowning(boolean d){
