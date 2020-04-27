@@ -16,7 +16,6 @@ public abstract class Character extends Movable implements TurnBased, Controllab
 
     //Két azonos mezőn álló karakter itemeket cserél egymással, a belső működése az inventory felelőssége
     public void trade(Character c, Item i1) {
-        System.out.println(">trade(c)");
         Field f1 = c.getCurrentField();
         //Megnézzük hogy azonos mezőn állnak e
         if (currentField != f1){
@@ -27,8 +26,6 @@ public abstract class Character extends Movable implements TurnBased, Controllab
             Inventory nv = c.getInventory();
             inventory.tradeWithInventory(nv, i1);
         }
-
-        System.out.println("<trade(c)");
     }
 
     //Ezek működése a későbbiekben lesz megvalósítva
@@ -140,11 +137,11 @@ public abstract class Character extends Movable implements TurnBased, Controllab
     //Karakter összerakja a jelzőpisztolyt
     @Override
     public boolean assemble() {
-        System.out.println(">assemble()");
-
         //Munka ellenőrzése
-        if(work > 0){
-            setWork(work-1);
+        if(work==0){
+            System.out.println("Nincs eleg munka!");
+            return false;
+        }
 
             
             //inventory ellenőrzi hogy meg vannak e a tárgyak
@@ -152,22 +149,19 @@ public abstract class Character extends Movable implements TurnBased, Controllab
             if(!b1){
                 System.out.println("Hianyzik a jelzopisztoly resze");
             System.out.println("<assemble()");
+            return false;
             }
-            else
+            else{
                 currentField.GameEnded(true);
+            return true;
+            }
         }
-        else
-            System.out.println("Nincs eleg munkaegyseg");
-        System.out.println("<assemble()");
-        return false;
-    }
+        
 
     
     //Karakter kiment egy paraméterként megadott karaktert
     @Override
     public boolean saveAlly(Character ally) {
-        System.out.println(">saveAlly(ally)");
-
         //Ellenőrizzük hogy mellettünk lévő fielden van e valamint ,hogy fuldoklik e
         if(work > 0){
             Field f1 = ally.getCurrentField();
@@ -178,19 +172,14 @@ public abstract class Character extends Movable implements TurnBased, Controllab
                 ally.setDrowning(false);
                 currentField.stepOn(ally);
                 ally.setCurrentField(currentField);
+                return true;
             }else{
                 System.out.println("Nem szomszedos mezon van a masik karakter vagy nem fulladozik (buvarruha vedi)");
-                System.out.println("<saveAlly(ally)");
                 return false;
             }
         }
-        else{
-            System.out.println("Nincs eleg munkaegyseg a menteshez");
-            System.out.println("<saveAlly()");
-            return false;
-        }
-        System.out.println("<saveAlly()");
-        return true;
+        System.out.println("Nincs eleg munkaegyseg a menteshez");
+        return false;
     }
 
     //karakter fuldoklik
@@ -213,17 +202,12 @@ public abstract class Character extends Movable implements TurnBased, Controllab
     //Karakter eszik
     @Override
     public boolean eat() {
-        System.out.println(">Character.eat()");
-        if(health==256){
-            System.out.println("\t-Maximum elet, nem tud többet enni.");
-            System.out.println("<Character.eat()");
+        //Nem növeljük az életet, ha elérte a maximum értéket, vagy ha nincs élelem a karakternél
+        if(health==256 || !inventory.eatUsed()){
             return false;
         }
-        System.out.print("\t-Elet elotte: " + health + "\n");
-        health++;
+        setHealth(health+1);
         inventory.removeFood();
-        System.out.print("\t-Elet utana: " + health + "\n");
-        System.out.println("<Character.eat()");
         return true;
     }
 
@@ -263,7 +247,7 @@ public abstract class Character extends Movable implements TurnBased, Controllab
     Inventory getInventory(){return inventory;}
 
     
-    boolean explore(Field f) {return false;}
+    int explore(Field f) {return -1;}
     boolean buildIgloo() {return false;}
 
     void setDrowning(boolean d){
@@ -273,15 +257,11 @@ public abstract class Character extends Movable implements TurnBased, Controllab
     }
 
     boolean isDrowning(){
-        System.out.println(">isDrowning()");
-        System.out.println("<isDrowning()");
         return drowning;
     }
 
     void setHealth(int h){
-        System.out.println(">Character.setHealth()");
         health=h;
-        System.out.println("<Character.setHealth()");
     }
 
     public void Die(){

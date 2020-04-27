@@ -7,26 +7,21 @@ public class Explorer extends Character {
 
     //Felderít egy paraméterként kapott jégtáblát
     @Override
-    public boolean explore(Field f) {
-        System.out.println(">Explorer.explore()");
-        
+    public int explore(Field f) {
         //Munka ellenőrzése
     	if(work==0){
-    	    System.out.println("-Nincs munka, nem lehet dolgozni.");
-            System.out.println("<Explorer.explore()");
-            return false;
+    	    System.out.println("Nincs eleg munka!");
+            return -1;
         }
 
-        //Megnézzük ,hogy szomszédos e a mező
-    	if(!currentField.checkNeighbor(f)&&currentField!=f){
-            System.out.println("-Nem szomszedos vagy aktualis mezo, tul messze van.");
-            System.out.println("<Explorer.explore()");
-            return false;
+        //Megnézzük, hogy szomszédos e a mező
+    	if(!currentField.checkNeighbor(f) && currentField != f){
+            System.out.println("Hibas mezo!");
+            return -1;
         }
 
-        //Kiírjuk a kapacitást
-    	System.out.println("-Kapacitas: " + f.getCapacity());
-    	System.out.println("<Explorer.explore()");
-    	return true;
+        //Csökkentjük a munkát és kiírjuk a kapacitást
+        setWork(work-1);
+    	return f.getCapacity();
     }
 }

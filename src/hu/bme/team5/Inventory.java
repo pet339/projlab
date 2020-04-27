@@ -31,16 +31,13 @@ public class Inventory {
 
     public boolean assembleUsed() {
         int parts = 0;
-        System.out.println(">assembleUsed()");
         for(Item i : items){
             if(i.winItemNeeded())
                 parts++;
         }
         if(parts == 3){
-        System.out.println("<assembleUsed()");
-        return true;
+            return true;
         }
-        System.out.println("<assembleUsed()");
         return false;
     }
 
@@ -57,14 +54,11 @@ public class Inventory {
     }
 
     public boolean eatUsed() {
-        System.out.println(">eatUsed()");
         for(Item i : items){
             if(i.foodNeeded()) {
-                System.out.println("<eatUsed()");
                 return true;
             }
         }
-        System.out.println("<eatUsed()");
         return false;
     }
 
@@ -94,10 +88,8 @@ public class Inventory {
     }
 
     public void removeFood(){
-        System.out.println(">removeFood()");
         for(Item i : items){
             if(i.foodNeeded()) {
-                System.out.println("<removeFood()");
                 items.remove(i);
                 break;
             }

@@ -13,19 +13,13 @@ public class Unstable extends Iceberg {
 
     @Override
     public void stepOn(Movable m) {
-        System.out.println(">stepOn(c)");
         setMovable(m);
-        
 
-        System.out.println("characters.size() > capacity");
-        if(movables.size() > capacity)
-        getDestroyed();
-        System.out.println("<stepOn(c)");
-
+        //Ha túl sokan állnak rajta, a jégtábla felborul
+        if(movables.size() > capacity) getDestroyed();
     }
 
     public void getDestroyed() {
-        System.out.println(">getDestroyed");
         Hole h = new Hole();
         h.setMap(this.map);
         h.setNeighbors(neighbors);
@@ -33,7 +27,6 @@ public class Unstable extends Iceberg {
         for(Movable m : movables){
             h.stepOn(m);
         }
-        System.out.println("<getDestroyed");
     }
 
     public void setCapacity(int c){

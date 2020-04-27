@@ -9,8 +9,6 @@ public class Stable extends Iceberg {
     // Karakter rálép egy mezőre
     @Override
     public void stepOn(Movable m) {
-        System.out.println(">stepOn(c)");
         setMovable(m);
-        System.out.println("<stepOn(c)");
     }
 }
