@@ -20,9 +20,7 @@ public class Game {
 
     //Játék kezdése
     public void startGame() {
-        System.out.println(">startGame()");
         currentMap.init();
-        System.out.println("<startGame()");
     }
 
     //Map mentése

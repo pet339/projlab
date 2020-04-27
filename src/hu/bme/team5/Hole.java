@@ -9,14 +9,12 @@ public class Hole extends Field {
     //Lyukra lépés lekezelése
     @Override
     public void stepOn(Movable m) {
-        System.out.println(">stepOn(c)");
         //Karaktér beállítása
         setMovable(m);
         //Hó letörlése
         setSnowSize(0);
         //Character megfullasztása
         movables.get(movables.size()-1).drown();
-        System.out.println("<stepOn(c)");
     }
 
     //Visszaadja a fagyott itemet (Lyukban nincs fagyott item)
