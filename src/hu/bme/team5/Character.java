@@ -59,6 +59,7 @@ public abstract class Character implements TurnBased, Controllable {
         }
 
         if (currentField.polarBear){
+            System.out.println("Sajnalattal ertesitjuk, hogy Ont felfalta egy medve!");
             die();
         }
 
