@@ -20,7 +20,8 @@ public class Explorer extends Character {
             return -1;
         }
 
-        //Kiírjuk a kapacitást
+        //Csökkentjük a munkát és kiírjuk a kapacitást
+        setWork(work-1);
     	return f.getCapacity();
     }
 }

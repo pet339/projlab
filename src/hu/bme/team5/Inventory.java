@@ -31,16 +31,13 @@ public class Inventory {
 
     public boolean assembleUsed() {
         int parts = 0;
-        System.out.println(">assembleUsed()");
         for(Item i : items){
             if(i.winItemNeeded())
                 parts++;
         }
         if(parts == 3){
-        System.out.println("<assembleUsed()");
-        return true;
+            return true;
         }
-        System.out.println("<assembleUsed()");
         return false;
     }
 

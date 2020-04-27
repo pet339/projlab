@@ -140,22 +140,21 @@ public abstract class Character extends Movable implements TurnBased, Controllab
     //Karakter összerakja a jelzőpisztolyt
     @Override
     public boolean assemble() {
-        System.out.println(">assemble()");
-
         //Munka ellenőrzése
-        if(work > 0){
-            setWork(work-1);
-
-            //inventory ellenőrzi hogy meg vannak e a tárgyak
-            boolean b1 = inventory.assembleUsed();
-            if(!b1)
-                System.out.println("Hianyzik a jelzopisztoly resze");
-            System.out.println("<assemble()");
+        if(work==0){
+            System.out.println("Nincs eleg munka!");
+            return false;
         }
-        else
-            System.out.println("Nincs eleg munkaegyseg");
-        System.out.println("<assemble()");
-        return false;
+
+        //Ellenőrizzük hogy megvannak e az alkatrészek
+        if(!inventory.assembleUsed()){
+            System.out.println("Hianyzik nehany alkatresz!");
+            return false;
+        }
+
+        //Csökkentjük a munkát és visszatérünk
+        setWork(work-1);
+        return true;
     }
 
     
@@ -213,7 +212,7 @@ public abstract class Character extends Movable implements TurnBased, Controllab
         if(health==256 || !inventory.eatUsed()){
             return false;
         }
-        health++;
+        setHealth(health+1);
         inventory.removeFood();
         return true;
     }
@@ -264,15 +263,11 @@ public abstract class Character extends Movable implements TurnBased, Controllab
     }
 
     boolean isDrowning(){
-        System.out.println(">isDrowning()");
-        System.out.println("<isDrowning()");
         return drowning;
     }
 
     void setHealth(int h){
-        System.out.println(">Character.setHealth()");
         health=h;
-        System.out.println("<Character.setHealth()");
     }
 
 }
