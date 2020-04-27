@@ -22,10 +22,6 @@ public class Map implements TurnBased {
     // Létrehoz karaktereket
     public void init() {
         System.out.println(">init()");
-        //karakterekhez ad egy eskimot
-        characters.add(new Eskimo());
-        //karakterekhez ad egy explorer-t
-        characters.add(new Explorer());
         System.out.println("<init()");
 
         // Field-ek létrehozása
@@ -88,7 +84,9 @@ public class Map implements TurnBased {
 
         // Karakterek létrehozása
         Eskimo eskimo1 = new Eskimo();
+        eskimo1.setWork(4);
         Explorer explorer1 = new Explorer();
+        explorer1.setWork(4);
 
         eskimo1.currentField = field1;
         explorer1.currentField = field7;
@@ -96,6 +94,7 @@ public class Map implements TurnBased {
         // Jegesmedve létrehozása
         PolarBear bear = new PolarBear();
         bear.currentField = field4;
+        field4.polarBear = true;
 
         // Item-ek létrehozása
         DivingSuit divingSuit = new DivingSuit();

@@ -13,6 +13,12 @@ public abstract class Character implements TurnBased, Controllable {
         inventory = new Inventory();
     }
 
+
+    public void printState() {
+        System.out.println(health);
+        System.out.println(work);
+    }
+
     //Két azonos mezőn álló karakter itemeket cserél egymással, a belső működése az inventory felelőssége
     public void trade(Character c, Item i1) {
         Field f1 = c.getCurrentField();
@@ -53,6 +59,7 @@ public abstract class Character implements TurnBased, Controllable {
         }
 
         if (currentField.polarBear){
+            System.out.println("Sajnalattal ertesitjuk, hogy Ont felfalta egy medve!");
             die();
         }
 
