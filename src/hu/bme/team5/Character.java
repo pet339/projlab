@@ -124,20 +124,17 @@ public abstract class Character extends Movable implements TurnBased, Controllab
             System.out.println("Nincs eleg munka!");
             return false;
         }
-
-            
-            //inventory ellenőrzi hogy meg vannak e a tárgyak
-            boolean b1 = inventory.assembleUsed();
-            if(!b1){
-                System.out.println("Hianyzik a jelzopisztoly resze");
-            System.out.println("<assemble()");
+        //Inventory ellenőrzi, hogy megvannak-e a tárgyak
+        boolean b1 = inventory.assembleUsed();
+        if(!b1){
+            System.out.println("Hianyzik a jelzopisztoly valamelyik resze");
             return false;
-            }
-            else{
-                currentField.GameEnded(true);
-            return true;
-            }
         }
+        else{
+            currentField.GameEnded(true);
+            return true;
+        }
+    }
         
 
     
@@ -167,17 +164,13 @@ public abstract class Character extends Movable implements TurnBased, Controllab
     //karakter fuldoklik
     @Override
     public boolean drown() {
-
         //Az inventory kideríti hogy van e nálla búvárruha
-        System.out.println(">drown()");
         boolean b2 = inventory.drownUsed();
         if (!b2){
             System.out.println("Lyukba esett a karakter es megfullad");
             setDrowning(true);
         }
-        else
-            System.out.println("Buvarruha megvedi a karaktert a megfulladastol");
-        System.out.println("<drown()");
+        else System.out.println("Buvarruha megvedi a karaktert a megfulladastol");
         return b2;
     }
 
@@ -212,30 +205,25 @@ public abstract class Character extends Movable implements TurnBased, Controllab
 
     //Getter/Setterek
     void setWork(int number){
-        System.out.println(">setWork(number)");
         work = number;
-        System.out.println("<setWork(number)");
     }
     
     void setCurrentField(Field nextField){
-        System.out.println(">setCurrentField()");
         currentField = nextField;
-        System.out.println("<setCurrentField()");
     }
 
     Field getCurrentField(){
         return currentField;
     }
-    Inventory getInventory(){return inventory;}
-
+    Inventory getInventory(){
+        return inventory;
+    }
     
     int explore(Field f) {return -1;}
     boolean buildIgloo() {return false;}
 
     void setDrowning(boolean d){
-        System.out.println(">setDrowning(d)");
         drowning = d;
-        System.out.println("<setDrowning(d)");
     }
 
     boolean isDrowning(){
