@@ -7,6 +7,10 @@ public class Test {
     //private Game testGame = new Game();
     private int testNum = 1;
 
+    /*
+        test.txt beolvasása és tesztelés
+    */
+
     public Test() throws IOException {
         RandomAccessFile raf = new RandomAccessFile("test.txt", "r");
         for (String line = raf.readLine(); line != null; line = raf.readLine()) {
@@ -73,13 +77,20 @@ public class Test {
 
     }
 
-    public boolean initTest(String input, String output) {
-        return true;
+    /*
+     * @param input: String, output: String
+     * @return void
+     */
+    public void initTest(String input, String output) {
+        System.out.println();
     }
 
+    /*
+     * @param input: String, output: String
+     * @return void
+     */
     public boolean playerStepTest(String input, String output) {
         return true;
-
     }
 
     public boolean playerShovelSnowTest(String input, String output) {
