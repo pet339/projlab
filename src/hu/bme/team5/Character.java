@@ -1,6 +1,6 @@
 package hu.bme.team5;
 
-public abstract class Character extends Movable implements TurnBased, Controllable {
+public abstract class Character implements TurnBased, Controllable {
     
     protected Field currentField; //A field amin a karakter áll
     protected int health; //A karakter életét tartalmazó integer
@@ -59,7 +59,7 @@ public abstract class Character extends Movable implements TurnBased, Controllab
 
         //Elveszünk 1 munkát, a fieldek elvégzik a karakterek kezelését.
         setWork(work-1);
-        currentField.removeMovable(this);
+        currentField.removeCharacter(this);
         currentField.stepOn(this);
         setCurrentField(nextField);
 
