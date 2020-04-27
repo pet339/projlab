@@ -17,7 +17,6 @@ public class Map implements TurnBased {
         characters = new ArrayList<Character>();
         bears = new ArrayList<PolarBear>();
         game = g1;
-        init();
     }
     // Létrehoz karaktereket
     public void init() {
