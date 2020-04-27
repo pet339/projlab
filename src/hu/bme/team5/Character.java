@@ -161,8 +161,6 @@ public abstract class Character extends Movable implements TurnBased, Controllab
     //Karakter kiment egy paraméterként megadott karaktert
     @Override
     public boolean saveAlly(Character ally) {
-        System.out.println(">saveAlly(ally)");
-
         //Ellenőrizzük hogy mellettünk lévő fielden van e valamint ,hogy fuldoklik e
         if(work > 0){
             Field f1 = ally.getCurrentField();
@@ -173,19 +171,14 @@ public abstract class Character extends Movable implements TurnBased, Controllab
                 ally.setDrowning(false);
                 currentField.stepOn(ally);
                 ally.setCurrentField(currentField);
+                return true;
             }else{
                 System.out.println("Nem szomszedos mezon van a masik karakter vagy nem fulladozik (buvarruha vedi)");
-                System.out.println("<saveAlly(ally)");
                 return false;
             }
         }
-        else{
-            System.out.println("Nincs eleg munkaegyseg a menteshez");
-            System.out.println("<saveAlly()");
-            return false;
-        }
-        System.out.println("<saveAlly()");
-        return true;
+        System.out.println("Nincs eleg munkaegyseg a menteshez");
+        return false;
     }
 
     //karakter fuldoklik
@@ -208,7 +201,7 @@ public abstract class Character extends Movable implements TurnBased, Controllab
     //Karakter eszik
     @Override
     public boolean eat() {
-        //Nem növeljük az életet ha elérte a maximum értéket vagy ha nincs élelm a karakternél
+        //Nem növeljük az életet, ha elérte a maximum értéket, vagy ha nincs élelem a karakternél
         if(health==256 || !inventory.eatUsed()){
             return false;
         }
