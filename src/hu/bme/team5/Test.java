@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class Test {
-    //private Game testGame = new Game();
+    static Game testGame = new Game();
     private int testNum = 1;
 
     /*
@@ -77,12 +77,37 @@ public class Test {
 
     }
 
+
+    void printer(boolean result) {
+        if (result)
+            System.out.println("Success");
+        else
+            System.out.println("Fail");
+    }
+
     /*
      * @param input: String, output: String
      * @return void
      */
     public void initTest(String input, String output) {
-        System.out.println();
+        testGame.currentMap.init();
+        String result = "";
+        for (Field f : Map.fields) {
+            StringBuilder neighborsID = new StringBuilder();
+            for (Field n : f.getNeighbors()) {
+                neighborsID.append(n.getId() + ",");
+            }
+            neighborsID.delete(neighborsID.toString().length() - 1, neighborsID.toString().length());
+            result += f.getClass().getSimpleName() + "{[Field:id=" + f.getId() + ";neighbors:" + neighborsID.toString() + "]};";
+        }
+        /*
+        for (Character c: testGame.currentMap.characters) {
+            result += c.getClass().getSimpleName();
+            result += c.currentField
+        }
+         */
+        System.out.println(result);
+        printer(result.equals(output));
     }
 
     /*

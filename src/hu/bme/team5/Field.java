@@ -11,9 +11,12 @@ public abstract class Field {
     protected boolean igloo;
     protected boolean tent;
     protected boolean polarBear;
+    protected static int ID = 1;
+    protected int id;
 
     //Konstruktor
     public Field() {
+        id = ID++;
         movables = new ArrayList<>();
         neighbors = new ArrayList<>();
     }
@@ -66,17 +69,27 @@ public abstract class Field {
         System.out.println("<setNeighbors(fs)");
     }
 
-    public void addNeighbor(Field f){
+    public void addNeighbor(Field f) {
         System.out.println(">addNeighbor()");
         neighbors.add(f);
         System.out.println("<addNeighbor()");
     }
 
-    public int getCapacity(){
+    public ArrayList<Field> getNeighbors() {
+        return neighbors;
+    }
+
+    public int getCapacity() {
         return capacity;
     }
 
     abstract public Item getFrozenItem();
+
     abstract public void setFrozenItem(Item i);
-    abstract  public void setIgloo(boolean igloo);
+
+    abstract public void setIgloo(boolean igloo);
+
+    public int getId() {
+        return id;
+    }
 }
