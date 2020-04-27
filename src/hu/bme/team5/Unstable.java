@@ -13,15 +13,10 @@ public class Unstable extends Iceberg {
 
     @Override
     public void stepOn(Movable m) {
-        System.out.println(">stepOn(c)");
         setMovable(m);
-        
 
-        System.out.println("characters.size() > capacity");
-        if(movables.size() > capacity)
-        getDestroyed();
-        System.out.println("<stepOn(c)");
-
+        //Ha túl sokan állnak rajta, a jégtábla felborul
+        if(movables.size() > capacity) getDestroyed();
     }
 
     public void getDestroyed() {

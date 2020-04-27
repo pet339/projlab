@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Map implements TurnBased {
     // A pálya mezői
-    ArrayList<Field> fields;
+    static ArrayList<Field> fields;
     // a pálya karakterei
-    ArrayList<Character> characters;
+    static ArrayList<Character> characters;
 
     // Map konstruktora, létrehozza a pályák és a characterek listáját
     public Map() {
