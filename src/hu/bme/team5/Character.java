@@ -10,7 +10,6 @@ public abstract class Character implements TurnBased, Controllable {
 
     //Konstruktor
     public Character() {
-        currentField = new Stable();
         inventory = new Inventory();
     }
 
@@ -53,8 +52,8 @@ public abstract class Character implements TurnBased, Controllable {
             return false;
         }
 
-        if (currentField.polarBear){;
-            //                  <-------- ENDGAME
+        if (currentField.polarBear){
+            die();
         }
 
         //Elveszünk 1 munkát, a fieldek elvégzik a karakterek kezelését.

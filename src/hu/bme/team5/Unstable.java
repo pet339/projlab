@@ -9,7 +9,7 @@ public class Unstable extends Iceberg {
     public Unstable() {
         super();
         Random rand = new Random();
-        capacity = rand.nextInt(game.currentMap.characters.size());
+        capacity = 1;
         
     }
 
