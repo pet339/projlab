@@ -26,53 +26,38 @@ public abstract class Field {
 
     //Fielden álló karakter eltávolítása
     public void removeMovable(Movable m) {
-        System.out.println(">removeCharacter(c)");
         movables.remove(m);
-        System.out.println("<removeCharacter(c)");
     }
 
     //Megnézzük ,hogy a paraméterként kapott field szomszédos e
     public boolean checkNeighbor(Field nextField) {
-        System.out.println(">checkNeighbor(nextField)");
         if(neighbors.contains(nextField)){
-            System.out.println("<checkNeighbor(nextField)");
             return true;
         }
-        System.out.println("<checkNeighbor(nextField)");
         return false;
     }
 
     //Beállítunk egy ezen fielden álló karaktert
     public void setMovable(Movable m) {
-        System.out.println(">setCharacter(c)");
         movables.add(m);
-        System.out.println("<setCharacter(c)");
     }
 
 
     //Getter / Setterek
     void setSnowSize(int s){
-        System.out.println(">setSnowSize(s)");
         snowSize = s;
-        System.out.println("<setSnowSize(s)");
     }
 
     public void setMap(Map m){
-        System.out.println(">setMap(m)");
         map = m;
-        System.out.println("<setMap(m)");
     }
 
     public void setNeighbors(ArrayList<Field> fs){
-        System.out.println(">setNeighbors(fs)");
         neighbors = fs;
-        System.out.println("<setNeighbors(fs)");
     }
 
     public void addNeighbor(Field f) {
-        System.out.println(">addNeighbor()");
         neighbors.add(f);
-        System.out.println("<addNeighbor()");
     }
 
     public ArrayList<Field> getNeighbors() {
