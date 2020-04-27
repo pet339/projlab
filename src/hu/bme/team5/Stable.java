@@ -10,7 +10,7 @@ public class Stable extends Iceberg {
 
     // Karakter rálép egy mezőre
     @Override
-    public void stepOn(Movable m) {
-        setMovable(m);
+    public void stepOn(Character c) {
+        setCharacter(c);
     }
 }

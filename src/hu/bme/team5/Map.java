@@ -1,6 +1,7 @@
 package hu.bme.team5;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Map implements TurnBased {
     // A pálya mezői
@@ -8,14 +9,14 @@ public class Map implements TurnBased {
     // a pálya karakterei
     ArrayList<Character> characters;
     ArrayList<PolarBear> bears;
-    private static Game g;
+    private static Game game;
 
     // Map konstruktora, létrehozza a pályák és a characterek listáját
     public Map(Game g1) {
         fields = new ArrayList<Field>();
         characters = new ArrayList<Character>();
         bears = new ArrayList<PolarBear>();
-        g = g1;
+        game = g1;
         init();
     }
     // Létrehoz karaktereket
@@ -122,10 +123,28 @@ public class Map implements TurnBased {
     }
 
     public void startStorm() {
+        Random rnd = new Random();
+        for (Field f : game.currentMap.fields)
+            if (rnd.nextInt() % 4 == 0){
+                if (!f.tent && !f.igloo){
+                    for (Character c : game.currentMap.characters){
+                        c.health--;
+                    }
+                }
+            }
     }
 
     @Override
     public void endTurn() {
+        for (Character c : game.currentMap.characters){
+            c.endTurn();
+        }
+        for (Field f : game.currentMap.fields){
+            f.tent = false;
+        }
+        for (PolarBear bear : game.currentMap.bears){
+            bear.move();
+        }
 
     }
 
