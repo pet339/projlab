@@ -9,7 +9,7 @@ public class PolarBear {
 
         int size = currentField.neighbors.size();
 
-        int rnd = rand.nextInt() % size;
+        int rnd = rand.nextInt(size);
         return currentField.neighbors.get(rnd);
     }
 
@@ -23,7 +23,7 @@ public class PolarBear {
     }
     public void move(){
         Field nextField = getRandomNeighbor();
-
+        System.out.print("bear moves");
          //remove polarbear
         currentField.polarBear = false;
         setCurrentField(nextField);
