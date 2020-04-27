@@ -12,6 +12,7 @@ public class Test {
     */
 
     public Test() throws IOException {
+        testGame.currentMap.init();
         RandomAccessFile raf = new RandomAccessFile("test.txt", "r");
         for (String line = raf.readLine(); line != null; line = raf.readLine()) {
             if (line.equals("")) {
@@ -90,23 +91,17 @@ public class Test {
      * @return void
      */
     public void initTest(String input, String output) {
-        testGame.currentMap.init();
-        String result = "";
-        for (Field f : Map.fields) {
+        System.out.print("initTest: ");
+        StringBuilder result = new StringBuilder();
+        for (Field f : testGame.currentMap.fields) {
             StringBuilder neighborsID = new StringBuilder();
             for (Field n : f.getNeighbors()) {
-                neighborsID.append(n.getId() + ",");
+                result.append(n.getId() + ",");
             }
-            neighborsID.delete(neighborsID.toString().length() - 1, neighborsID.toString().length());
-            result += f.getClass().getSimpleName() + "{[Field:id=" + f.getId() + ";neighbors:" + neighborsID.toString() + "]};";
+            result.delete(neighborsID.toString().length() - 1, neighborsID.toString().length());
+            result.append(f.getClass().getSimpleName() + "{[Field:id=" + f.getId() + ";neighbors:"
+                    + neighborsID.toString() + "]};");
         }
-        /*
-        for (Character c: testGame.currentMap.characters) {
-            result += c.getClass().getSimpleName();
-            result += c.currentField
-        }
-         */
-        System.out.println(result);
         printer(result.equals(output));
     }
 
@@ -114,8 +109,8 @@ public class Test {
      * @param input: String, output: String
      * @return void
      */
-    public boolean playerStepTest(String input, String output) {
-        return true;
+    public void playerStepTest(String input, String output) {
+
     }
 
     public boolean playerShovelSnowTest(String input, String output) {
