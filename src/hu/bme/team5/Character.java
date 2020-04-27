@@ -16,7 +16,6 @@ public abstract class Character extends Movable implements TurnBased, Controllab
 
     //Két azonos mezőn álló karakter itemeket cserél egymással, a belső működése az inventory felelőssége
     public void trade(Character c, Item i1) {
-        System.out.println(">trade(c)");
         Field f1 = c.getCurrentField();
         //Megnézzük hogy azonos mezőn állnak e
         if (currentField != f1){
@@ -27,8 +26,6 @@ public abstract class Character extends Movable implements TurnBased, Controllab
             Inventory nv = c.getInventory();
             inventory.tradeWithInventory(nv, i1);
         }
-
-        System.out.println("<trade(c)");
     }
 
     //Ezek működése a későbbiekben lesz megvalósítva

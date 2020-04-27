@@ -20,7 +20,6 @@ public class Unstable extends Iceberg {
     }
 
     public void getDestroyed() {
-        System.out.println(">getDestroyed");
         Hole h = new Hole();
         h.setMap(this.map);
         h.setNeighbors(neighbors);
@@ -28,7 +27,6 @@ public class Unstable extends Iceberg {
         for(Movable m : movables){
             h.stepOn(m);
         }
-        System.out.println("<getDestroyed");
     }
 
     public void setCapacity(int c){
