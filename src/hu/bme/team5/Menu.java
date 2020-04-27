@@ -26,7 +26,7 @@ public class Menu {
         System.out.println("Valasszon esemenyt:");
         System.out.println("1. Inicializacio");
         System.out.println("2. Jatekos lep");
-        System.out.println("3. Jatekos lyukba lep");
+        System.out.println("3. Jatekos lyukba lep");    //
         System.out.println("4. Jatekos havat takarit el egy jegtablarol");
         System.out.println("5. Jatekos kias egy targyat (kotelet) egy jegtablabol");
         System.out.println("6. Jatekos atad targyat");
@@ -48,15 +48,21 @@ public class Menu {
                     game.startGame();
                 } break;
                 case 2: {
+                    // ÁTÍRVA, Itt járok, Ákos
                     Field nextField = new Stable();
                     Character character = new Eskimo();
                     System.out.println("Mennyi munkat tud vegezni a karakter? (0-4)");
-                    character.setWork(sc.nextInt());
-                    System.out.println("Szomszedos mezore akar lepni? (1/0)");
-                    event = sc.nextInt();
-                    if(event == 1)
-                        character.currentField.addNeighbor(nextField);
+                    for (int i = 0; i < game.currentMap.characters.size(); i++){
+                        game.currentMap.characters.get(i).setWork(sc.nextInt());
+                    }
+
                     boolean b1 = character.move(nextField);
+                    if (b1){
+                        System.out.println("Character has succesfully moved!");
+                    }
+                    else{
+                        System.out.println("Something went wrong at move function");
+                    }
 
                 } break;
                 case 3: {
