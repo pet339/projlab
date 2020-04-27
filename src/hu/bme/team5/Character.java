@@ -13,6 +13,12 @@ public abstract class Character implements TurnBased, Controllable {
         inventory = new Inventory();
     }
 
+
+    public void printState() {
+        System.out.println(health);
+        System.out.println(work);
+    }
+
     //Két azonos mezőn álló karakter itemeket cserél egymással, a belső működése az inventory felelőssége
     public void trade(Character c, Item i1) {
         Field f1 = c.getCurrentField();
@@ -40,10 +46,6 @@ public abstract class Character implements TurnBased, Controllable {
     //Karakter lép, paraméter az a field amire lépni akarunk
     public boolean move(Field nextField) {
         //Megnézzök hogy szomszédos e
-        if (nextField == null){
-            System.out.println("A Field null");
-        }
-
         boolean b1 = currentField.checkNeighbor(nextField);
         if(work <= 0){
             //Megnézzük hogy van e elég munka

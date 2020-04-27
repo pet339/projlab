@@ -21,11 +21,8 @@ public class Map implements TurnBased {
     }
     // Létrehoz karaktereket
     public void init() {
-<<<<<<< HEAD
         System.out.println(">init()");
         System.out.println("<init()");
-=======
->>>>>>> 1317cc70febe2b0f0fa60b26c062e19d117b1801
 
         // Field-ek létrehozása
         Stable field1 = new Stable();
@@ -87,7 +84,9 @@ public class Map implements TurnBased {
 
         // Karakterek létrehozása
         Eskimo eskimo1 = new Eskimo();
+        eskimo1.setWork(4);
         Explorer explorer1 = new Explorer();
+        explorer1.setWork(4);
 
         eskimo1.currentField = field1;
         explorer1.currentField = field7;
