@@ -24,7 +24,7 @@ public class Menu {
 
     public Menu(){
         System.out.println("Valasszon esemenyt:");
-        System.out.println("1. Inicializacio");
+        System.out.println("Torolni majd");
         System.out.println("2. Jatekos lep");
         System.out.println("3. Torolni majd");    //
         System.out.println("4. Jatekos havat takarit el egy jegtablarol");
@@ -39,14 +39,12 @@ public class Menu {
         int event = 0;
         
         boolean runningGame = true;
+        game.startGame();
         while(runningGame){
             try{
                 event = sc.nextInt();
             }catch(Exception e){ }
             switch (event){
-                case 1: {
-                    game.startGame();
-                } break;
                 case 2: {
                     // ÁTÍRVA, Itt járok, Ákos
                     System.out.println("Melyik mezore szeretne lepni?");
