@@ -40,6 +40,10 @@ public abstract class Character implements TurnBased, Controllable {
     //Karakter lép, paraméter az a field amire lépni akarunk
     public boolean move(Field nextField) {
         //Megnézzök hogy szomszédos e
+        if (nextField == null){
+            System.out.println("A Field null");
+        }
+
         boolean b1 = currentField.checkNeighbor(nextField);
         if(work <= 0){
             //Megnézzük hogy van e elég munka
