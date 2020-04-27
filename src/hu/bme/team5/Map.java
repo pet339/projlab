@@ -7,12 +7,14 @@ public class Map implements TurnBased {
     ArrayList<Field> fields;
     // a pálya karakterei
     ArrayList<Character> characters;
+    ArrayList<PolarBear> bears;
     private static Game g;
 
     // Map konstruktora, létrehozza a pályák és a characterek listáját
     public Map(Game g1) {
         fields = new ArrayList<Field>();
         characters = new ArrayList<Character>();
+        bears = new ArrayList<PolarBear>();
         g = g1;
         init();
     }
