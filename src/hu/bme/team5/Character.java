@@ -146,11 +146,15 @@ public abstract class Character extends Movable implements TurnBased, Controllab
         if(work > 0){
             setWork(work-1);
 
+            
             //inventory ellenőrzi hogy meg vannak e a tárgyak
             boolean b1 = inventory.assembleUsed();
-            if(!b1)
+            if(!b1){
                 System.out.println("Hianyzik a jelzopisztoly resze");
             System.out.println("<assemble()");
+            }
+            else
+                currentField.GameEnded(true);
         }
         else
             System.out.println("Nincs eleg munkaegyseg");
@@ -278,6 +282,10 @@ public abstract class Character extends Movable implements TurnBased, Controllab
         System.out.println(">Character.setHealth()");
         health=h;
         System.out.println("<Character.setHealth()");
+    }
+
+    public void Die(){
+        currentField.GameEnded(false);
     }
 
 }

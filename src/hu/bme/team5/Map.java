@@ -7,11 +7,13 @@ public class Map implements TurnBased {
     static ArrayList<Field> fields;
     // a pálya karakterei
     static ArrayList<Character> characters;
+    private static Game g;
 
     // Map konstruktora, létrehozza a pályák és a characterek listáját
-    public Map() {
+    public Map(Game g1) {
         fields = new ArrayList<Field>();
         characters = new ArrayList<Character>();
+        g = g1;
     }
     // Létrehoz karaktereket
     public void init() {
@@ -114,5 +116,10 @@ public class Map implements TurnBased {
     @Override
     public void startTurn() {
 
+    }
+
+
+    public void GameEnded(boolean win) {
+        
     }
 }
