@@ -136,6 +136,8 @@ public class Map implements TurnBased {
 
     @Override
     public void endTurn() {
+        startStorm();
+
         for (Character c : game.currentMap.characters){
             c.endTurn();
         }
