@@ -4,14 +4,15 @@ import java.util.ArrayList;
 
 public class Map implements TurnBased {
     // A pálya mezői
-    static ArrayList<Field> fields;
+    ArrayList<Field> fields;
     // a pálya karakterei
-    static ArrayList<Character> characters;
+    ArrayList<Character> characters;
 
     // Map konstruktora, létrehozza a pályák és a characterek listáját
     public Map() {
         fields = new ArrayList<Field>();
         characters = new ArrayList<Character>();
+        init();
     }
     // Létrehoz karaktereket
     public void init() {
@@ -23,8 +24,8 @@ public class Map implements TurnBased {
         System.out.println("<init()");
 
         // Field-ek létrehozása
-        Unstable field1 = new Unstable();
-        Stable field2 = new Stable();
+        Stable field1 = new Stable();
+        Unstable field2 = new Unstable();
         Stable field3 = new Stable();
         Stable field4 = new Stable();
         Hole field5 = new Hole();
@@ -32,6 +33,8 @@ public class Map implements TurnBased {
         Stable field7 = new Stable();
         Unstable field8 = new Unstable();
 
+        field1.capacity = 1;
+        field8.capacity = 1;
         //Szomszédokkal összekötés
 
         //Field1
@@ -99,7 +102,18 @@ public class Map implements TurnBased {
         field4.setFrozenItem(fragileShovel);
         field8.setFrozenItem(divingSuit);
 
+        //Fieldek hozzáadása a pályához
+        fields.add(field1);
+        fields.add(field2);
+        fields.add(field3);
+        fields.add(field4);
+        fields.add(field5);
+        fields.add(field6);
+        fields.add(field7);
+        fields.add(field8);
 
+        characters.add(eskimo1);
+        characters.add(explorer1);
 
     }
 
