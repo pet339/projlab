@@ -5,8 +5,6 @@ import java.io.RandomAccessFile;
 
 public class Test {
     static Game testGame = new Game();
-    private int testNum = 1;
-
     /*
         test.txt beolvasása és tesztelés
     */
@@ -15,58 +13,77 @@ public class Test {
         testGame.currentMap.init();
         RandomAccessFile raf = new RandomAccessFile("test.txt", "r");
         for (String line = raf.readLine(); line != null; line = raf.readLine()) {
-            if (line.equals("")) {
-                testNum++;
-                continue;
-            }
-            switch (testNum) {
-                case 1: {
-                    initTest(line, raf.readLine());
+
+            switch (line.split(" ")[0]) {
+                case "init": {
+                    System.out.print("initTest: ");
+                    String result = "";
+                    for (Field f : testGame.currentMap.fields) {
+                        StringBuilder neighborsID = new StringBuilder();
+                        for (Field n : f.getNeighbors()) {
+                            neighborsID.append(n.getId() + ",");
+                        }
+                        neighborsID.delete(neighborsID.toString().length() - 1, neighborsID.toString().length());
+                        result += f.getClass().getSimpleName() + "{[Field:id=" + f.getId() + ";neighbors:"
+                                + neighborsID.toString() + "]};";
+                    }
+                    printer(result.equals(raf.readLine()));
                 }
                 break;
-                case 2: {
-                    playerStepTest(line, raf.readLine());
+                case "step": {
+                    System.out.print("stepTest: ");
+                    Explorer explorer = new Explorer();
+                    explorer.setWork(1);
+                    Field field = null;
+                    for (Field f : testGame.currentMap.fields)
+                        if (f.getId() == Integer.parseInt(line.split(" ")[1]))
+                            explorer.setCurrentField(f);
+                    for (Field f : testGame.currentMap.fields)
+                        if (f.getId() == Integer.parseInt(line.split(" ")[2])) {
+                            explorer.move(f);
+                            field = f;
+                        }
+                    if (field.getClass().getSimpleName().equals("Hole"))
+                        printer(field.getId() == Integer.parseInt(raf.readLine())
+                                && explorer.isDrowning());
+                    else
+                        printer(field.getId() == Integer.parseInt(raf.readLine()));
                 }
                 break;
-                case 3: {
+                case "shovel": {
                     playerShovelSnowTest(line, raf.readLine());
                 }
                 break;
-                case 4: {
+                case "dig": {
                     playerStepsOnHoleTest(line, raf.readLine());
                 }
                 break;
-                case 5: {
+                case "give": {
                     playerDigsItemTest(line, raf.readLine());
                 }
                 break;
-                case 6: {
+                case "eat": {
 
                     playerTradesItemTest(line, raf.readLine());
                 }
                 break;
-                case 7: {
+                case "inspect": {
                     playerEatsTest(line, raf.readLine());
 
                 }
                 break;
-                case 8: {
+                case "igloo": {
                     playerExploreTest(line, raf.readLine());
 
                 }
                 break;
-                case 9: {
+                case "save": {
                     playerEskimoBuildsIglooTest(line, raf.readLine());
 
                 }
                 break;
-                case 10: {
+                case "aasemble": {
                     playerSavesPlayerTest(line, raf.readLine());
-
-                }
-                break;
-                case 11: {
-                    playerAssemblesTest(line, raf.readLine());
 
                 }
                 break;
@@ -91,18 +108,7 @@ public class Test {
      * @return void
      */
     public void initTest(String input, String output) {
-        System.out.print("initTest: ");
-        String result = "";
-        for (Field f : testGame.currentMap.fields) {
-            StringBuilder neighborsID = new StringBuilder();
-            for (Field n : f.getNeighbors()) {
-                neighborsID.append(n.getId() + ",");
-            }
-            neighborsID.delete(neighborsID.toString().length() - 1, neighborsID.toString().length());
-            result += f.getClass().getSimpleName() + "{[Field:id=" + f.getId() + ";neighbors:"
-                    + neighborsID.toString() + "]};";
-        }
-        printer(result.equals(output));
+
     }
 
     /*
