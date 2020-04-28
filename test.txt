@@ -5,7 +5,7 @@ step 1 3
 3
 
 shovel 1
-Stable{[Iceberg[Field:snowsize=csökkent egyel]]}Explorer{[Character:work=csökkent egyel]}
+0 0
 
 step 1 3
 3

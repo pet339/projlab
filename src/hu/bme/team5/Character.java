@@ -92,6 +92,7 @@ public abstract class Character implements TurnBased, Controllable {
             currentField.setSnowSize(Math.max(currentField.snowSize-2, 0));
         }
         else currentField.setSnowSize(currentField.snowSize-1);
+        setWork(work - 1);
         return true;
     }
 
@@ -118,7 +119,7 @@ public abstract class Character implements TurnBased, Controllable {
         //Az inventoryba rakjuk az itemet
         inventory.addItem(currentField.getFrozenItem());
         currentField.setFrozenItem(null);
-
+        setWork(work - 1);
         return true;
     }
 
@@ -138,6 +139,7 @@ public abstract class Character implements TurnBased, Controllable {
         }
         else{
             currentField.gameEnded(true);
+            setWork(work - 1);
             return true;
         }
     }
@@ -201,6 +203,7 @@ public abstract class Character implements TurnBased, Controllable {
         if (has){
             System.out.println("Sator megepitve!");
             currentField.tent = true;
+            setWork(work - 1);
             return true;
         }
         else{
@@ -227,7 +230,8 @@ public abstract class Character implements TurnBased, Controllable {
     
     int explore(Field f) {
         System.out.println("nem explorer vagy");
-        return -1;}
+        return -1;
+    }
     boolean buildIgloo() {return false;}
 
     void setDrowning(boolean d){

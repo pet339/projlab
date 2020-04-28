@@ -51,6 +51,20 @@ public class Test {
                 }
                 break;
                 case "shovel": {
+                    System.out.print("shovelTest: ");
+
+                    Explorer explorer = new Explorer();
+                    explorer.setWork(1);
+                    Field field = testGame.currentMap.fields.get(0);
+                    field.setSnowSize(1);
+
+                    explorer.setCurrentField(field);
+                    explorer.shovelSnow();
+
+                    line = raf.readLine();
+                    printer(explorer.work == Integer.parseInt(line.split(" ")[0])
+                            && field.snowSize == Integer.parseInt(line.split(" ")[1]));
+
                 }
                 break;
                 case "dig": {
