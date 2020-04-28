@@ -68,6 +68,17 @@ public class Test {
                 }
                 break;
                 case "dig": {
+                    System.out.print("digTest: ");
+
+                    Explorer explorer = new Explorer();
+                    explorer.setWork(1);
+                    Field field = testGame.currentMap.fields.get(0);
+                    field.setFrozenItem(new Gun());
+                    explorer.setCurrentField(field);
+                    explorer.digItem();
+                    line = raf.readLine();
+                    printer(explorer.work == Integer.parseInt(line.split(" ")[0])
+                            && explorer.inventory.items.size() == Integer.parseInt(line.split(" ")[1]));
                 }
                 break;
                 case "give": {
