@@ -225,7 +225,9 @@ public abstract class Character implements TurnBased, Controllable {
         return inventory;
     }
     
-    int explore(Field f) {return -1;}
+    int explore(Field f) {
+        System.out.println("nem explorer vagy");
+        return -1;}
     boolean buildIgloo() {return false;}
 
     void setDrowning(boolean d){

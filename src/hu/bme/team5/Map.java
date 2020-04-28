@@ -17,7 +17,6 @@ public class Map implements TurnBased {
         characters = new ArrayList<Character>();
         bears = new ArrayList<PolarBear>();
         game = g1;
-        init();
     }
     // Létrehoz karaktereket
     public void init() {
@@ -85,14 +84,18 @@ public class Map implements TurnBased {
         // Karakterek létrehozása
         Eskimo eskimo1 = new Eskimo();
         eskimo1.setWork(4);
+        eskimo1.inventory.addItem(new Food());
+
         Explorer explorer1 = new Explorer();
         explorer1.setWork(4);
+        explorer1.inventory.addItem(new Food());
 
         eskimo1.currentField = field1;
         explorer1.currentField = field7;
 
         // Jegesmedve létrehozása
         PolarBear bear = new PolarBear();
+        bears.add(bear);
         bear.currentField = field4;
         field4.polarBear = true;
 
