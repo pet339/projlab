@@ -5,12 +5,14 @@ import java.util.ArrayList;
 public class Game {
     private ArrayList<Map> maps; //Mappokat tartalmazó lista
     Map currentMap; //Most futó map
+    boolean isActive;
 
     //Konstruktor
     public Game() {
         currentMap = new Map(this);
         maps = new ArrayList<>();
         maps.add(currentMap);
+        isActive = true;
     }
 
     //Map betöltése

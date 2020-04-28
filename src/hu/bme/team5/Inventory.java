@@ -66,9 +66,7 @@ public class Inventory {
     }
 
     public void addItem(Item i) {
-        System.out.println(">addItem()");
         items.add(i);
-        System.out.println("<addItem()");
     }
 
     public void tradeWithInventory(Inventory nv, Item i1) {
