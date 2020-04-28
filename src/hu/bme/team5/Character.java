@@ -37,7 +37,7 @@ public abstract class Character implements TurnBased, Controllable {
     @Override
     public void endTurn() {
         if (health < 1 || isDrowning()){
-            die();
+           currentField.gameEnded(false);
         }
         work = 4;
     }
@@ -60,7 +60,7 @@ public abstract class Character implements TurnBased, Controllable {
 
         if (currentField.polarBear){
             System.out.println("Sajnalattal ertesitjuk, hogy Ont felfalta egy medve!");
-            die();
+            currentField.gameEnded(false);
         }
 
         //Elveszünk 1 munkát, a fieldek elvégzik a karakterek kezelését.
@@ -137,7 +137,7 @@ public abstract class Character implements TurnBased, Controllable {
             return false;
         }
         else{
-            currentField.GameEnded(true);
+            currentField.gameEnded(true);
             return true;
         }
     }
@@ -240,10 +240,6 @@ public abstract class Character implements TurnBased, Controllable {
 
     void setHealth(int h){
         health=h;
-    }
-
-    public void die(){
-        currentField.GameEnded(false);
     }
 
 }

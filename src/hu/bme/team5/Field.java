@@ -34,7 +34,6 @@ public abstract class Field {
 
     //Megnézzük ,hogy a paraméterként kapott field szomszédos e
     public boolean checkNeighbor(Field nextField) {
-        System.out.println("Here I am");
         if(neighbors.contains(nextField)){
             return true;
         }
@@ -72,9 +71,9 @@ public abstract class Field {
         return capacity;
     }
 
-    public void GameEnded(boolean win)
+    public void gameEnded(boolean win)
     {
-        game.currentMap.GameEnded(win);
+        game.currentMap.gameEnded(win);
     }
 
     abstract public Item getFrozenItem();

@@ -9,7 +9,7 @@ public class Map implements TurnBased {
     // a pálya karakterei
     ArrayList<Character> characters;
     ArrayList<PolarBear> bears;
-    private static Game game;
+    Game game;
 
     // Map konstruktora, létrehozza a pályák és a characterek listáját
     public Map(Game g1) {
@@ -20,9 +20,6 @@ public class Map implements TurnBased {
     }
     // Létrehoz karaktereket
     public void init() {
-        System.out.println(">init()");
-        System.out.println("<init()");
-
         // Field-ek létrehozása
         Stable field1 = new Stable();
         Unstable field2 = new Unstable();
@@ -152,7 +149,13 @@ public class Map implements TurnBased {
     }
 
 
-    public void GameEnded(boolean win) {
-        
+    public void gameEnded(boolean win) {
+        if (win){
+            System.out.println("Nyertel!");
+        }
+        else{
+            System.out.println("Vesztettel");
+        }
+        game.isActive = false;
     }
 }

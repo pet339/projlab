@@ -16,7 +16,7 @@ public class PolarBear {
     public void kill(){
         if (currentField.characters.size() > 1){
            if(!currentField.igloo){
-               ;
+              currentField.gameEnded(false);
            }
             
         }
@@ -29,6 +29,7 @@ public class PolarBear {
         setCurrentField(nextField);
         currentField.polarBear = true;
         kill();
+        System.out.println("Hello!");
     }
     public void setCurrentField(Field f){
         currentField = f;
