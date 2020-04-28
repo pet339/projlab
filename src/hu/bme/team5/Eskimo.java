@@ -16,8 +16,13 @@ public class Eskimo extends Character {
             System.out.println("Nincs eleg munkaegyseg az epiteshez");
     		return false;
         }
+    	if(this.currentField.igloo){
+    	    System.out.println("Mar van iglu ezen a mezon");
+    	    return false;
+        }
         
         //Munka csökkentés iglu építése
+        System.out.println("Sikeres iglu epites");
     	setWork(work - 1);
     	currentField.setIgloo(true);
     	return true;

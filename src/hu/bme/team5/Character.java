@@ -28,8 +28,15 @@ public abstract class Character implements TurnBased, Controllable {
         }
         //Innentől a két inventory tradel egymással
         else{
-            Inventory nv = c.getInventory();
-            inventory.tradeWithInventory(nv, i1);
+            if (i1 == null){
+                System.out.println("Nincs ilyen item");
+            }
+            else{
+                Inventory nv = c.getInventory();
+                inventory.tradeWithInventory(nv, i1);
+                System.out.println("Sikeres atadas");
+            }
+
         }
     }
 
@@ -191,10 +198,12 @@ public abstract class Character implements TurnBased, Controllable {
     public boolean eat() {
         //Nem növeljük az életet, ha elérte a maximum értéket, vagy ha nincs élelem a karakternél
         if(health==256 || !inventory.eatUsed()){
+            System.out.println("Nem sikerult");
             return false;
         }
         setHealth(health+1);
         inventory.removeFood();
+        System.out.println("Uj elet: "+ health);
         return true;
     }
 

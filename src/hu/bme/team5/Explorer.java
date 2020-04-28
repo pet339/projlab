@@ -22,6 +22,7 @@ public class Explorer extends Character {
         }
 
         //Csökkentjük a munkát és kiírjuk a kapacitást
+        System.out.println("Sikeres vizsgalat");
         setWork(work-1);
     	return f.getCapacity();
     }
