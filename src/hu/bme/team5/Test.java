@@ -146,10 +146,18 @@ public class Test {
                     Item rope = new Rope();
                     c1.inventory.addItem(rope);
                     Field field = testGame.currentMap.fields.get(2);
+
+                    System.out.println(field.getId());
+                    System.out.println(field.getClass().getSimpleName());
+
                     c1.setCurrentField(field);
                     c2.setCurrentField(field);
 
                     Field hole = c1.currentField.neighbors.get(2);
+
+                    System.out.println(hole.getId());
+                    System.out.println(hole.getClass().getSimpleName());
+
                     c2.move(hole);
                     System.out.println(c2.isDrowning());
                     c1.saveAlly(c2);

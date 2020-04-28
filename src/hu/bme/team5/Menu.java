@@ -86,6 +86,11 @@ public class Menu {
                 case 8: {
                     // Karaktert megment
                     Character inTrouble = game.currentMap.characters.get(1);
+
+                    Rope r = new Rope();
+                    game.currentMap.characters.get(0).inventory.addItem(r);
+
+                    inTrouble.move(game.currentMap.fields.get(4));
                     game.currentMap.characters.get(0).saveAlly(inTrouble);
                 } break;
                 case 9: {

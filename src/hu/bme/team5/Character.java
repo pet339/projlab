@@ -186,7 +186,7 @@ public abstract class Character implements TurnBased, Controllable {
         //Az inventory kideríti hogy van e nála búvárruha
         boolean b2 = inventory.drownUsed();
         if (!b2){
-            System.out.println("Lyukba esett a karakter es megfulladt");
+            System.out.println("Lyukba esett a karakter es fuldokol");
             setDrowning(true);
         }
         else System.out.println("Buvarruha megvedi a karaktert a megfulladastol");
