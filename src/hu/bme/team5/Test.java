@@ -159,7 +159,6 @@ public class Test {
                     System.out.println(hole.getClass().getSimpleName());
 
                     c2.move(hole);
-                    System.out.println(c2.isDrowning());
                     c1.saveAlly(c2);
 
                     line = raf.readLine();
