@@ -26,10 +26,10 @@ public class Menu {
 
         Scanner sc = new Scanner(System.in);
         int event = 0;
-        
         boolean runningGame = true;
         game.startGame();
         printOptions();
+        Character active = game.currentMap.characters.get(0);
         while(runningGame && game.isActive){
             try{
                 event = sc.nextInt();
@@ -41,7 +41,7 @@ public class Menu {
                     Field Chosen = game.currentMap.fields.get(sc.nextInt() - 1);
 
 
-                    boolean b1 = game.currentMap.characters.get(0).move(Chosen);
+                    boolean b1 = active.move(Chosen);
                     if (b1){
                         System.out.println("Character has succesfully moved!");
                     }
@@ -52,18 +52,18 @@ public class Menu {
                 } break;
                 case 2: {
                     // Hó eltakarítása
-                    game.currentMap.characters.get(0).shovelSnow();
+                    active.shovelSnow();
 
                 } break;
                 case 3: {
                     // Item kiásása
-                    game.currentMap.characters.get(0).digItem();
+                    active.digItem();
                 } break;
                 case 4: {
                     // Item cseréje
-                    if(game.currentMap.characters.get(0).inventory.items.size() > 0){
-                    Item tradeItem = game.currentMap.characters.get(0).inventory.items.get(0);
-                    game.currentMap.characters.get(0).trade(game.currentMap.characters.get(1),tradeItem);
+                    if(active.inventory.items.size() > 0){
+                    Item tradeItem = active.inventory.items.get(0);
+                        active.trade(game.currentMap.characters.get(1),tradeItem);
                     }
                     else
                         System.out.println("nincs targy az inventoriban");
@@ -71,7 +71,7 @@ public class Menu {
                 } break;
                 case 5: {
                     // Jatekos eszik
-                    game.currentMap.characters.get(0).eat();
+                    active.eat();
                 } break;
                 case 6: {
                     //Mezőt megvizsgál
@@ -81,21 +81,21 @@ public class Menu {
                 } break;
                 case 7: {
                     // Iglut épít
-                    game.currentMap.characters.get(0).buildIgloo();
+                    active.buildIgloo();
                 } break;
                 case 8: {
                     // Karaktert megment
                     Character inTrouble = game.currentMap.characters.get(1);
 
                     Rope r = new Rope();
-                    game.currentMap.characters.get(0).inventory.addItem(r);
+                    active.inventory.addItem(r);
 
                     inTrouble.move(game.currentMap.fields.get(4));
-                    game.currentMap.characters.get(0).saveAlly(inTrouble);
+                    active.saveAlly(inTrouble);
                 } break;
                 case 9: {
                     // Jelzőpisztolyt összeszerel
-                    game.currentMap.characters.get(0).assemble();
+                    active.assemble();
                 } break;
                 case 10: {
                     game.currentMap.endTurn();
@@ -108,7 +108,10 @@ public class Menu {
                     printOptions();
                 }break;
                 case 13:{
-                    game.currentMap.characters.get(0).inventory.writeItems();
+                    active.inventory.writeItems();
+                }break;
+                case 14:{
+                    active = game.currentMap.characters.get(sc.nextInt() - 1);
                 }break;
                 default: {
                     sc.close();
@@ -132,6 +135,7 @@ public class Menu {
         System.out.println("11. Jatek befejezese");
         System.out.println("12. Menu kiirasa ujra");
         System.out.println("13. Inventory megjelenitese");
+        System.out.println("14. Karakter valasztasa");
     }
 
 

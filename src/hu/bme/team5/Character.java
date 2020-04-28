@@ -170,6 +170,7 @@ public abstract class Character implements TurnBased, Controllable {
                 ally.setDrowning(false);
                 currentField.stepOn(ally);
                 ally.setCurrentField(currentField);
+                System.out.println("Szovetseges sikeresen megmentve");
                 return true;
             }else{
                 System.out.println("Nem szomszedos mezon van a masik karakter vagy nem fulladozik (buvarruha vedi)");
