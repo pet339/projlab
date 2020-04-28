@@ -147,24 +147,19 @@ public class Test {
                     c1.inventory.addItem(rope);
                     Field field = testGame.currentMap.fields.get(2);
 
-                    System.out.println(field.getId());
-                    System.out.println(field.getClass().getSimpleName());
 
                     c1.setCurrentField(field);
                     c2.setCurrentField(field);
 
                     Field hole = c1.currentField.neighbors.get(2);
-
-                    System.out.println(hole.getId());
-                    System.out.println(hole.getClass().getSimpleName());
-
                     c2.move(hole);
+                    System.out.println(c2.isDrowning());
                     c1.saveAlly(c2);
 
                     line = raf.readLine();
                     printer(c1.work == Integer.parseInt(line.split(" ")[0])
-                            && c1.inventory.items.contains(rope)
-                            && c2.isDrowning() == Boolean.parseBoolean(line.split(" ")[1]));
+                            && c1.inventory.items.contains(rope) == Boolean.parseBoolean(line.split(" ")[1])
+                            && c2.isDrowning() == Boolean.parseBoolean(line.split(" ")[2]));
                 }
                 break;
                 case "assemble": {

@@ -73,8 +73,8 @@ public abstract class Character implements TurnBased, Controllable {
         //Elveszünk 1 munkát, a fieldek elvégzik a karakterek kezelését.
         setWork(work-1);
         currentField.removeCharacter(this);
-        currentField.stepOn(this);
         setCurrentField(nextField);
+        currentField.stepOn(this);
 
         return true;
     }
