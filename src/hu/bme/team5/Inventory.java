@@ -92,5 +92,15 @@ public class Inventory {
         }
         return false;
     }
+    public void writeItems(){
+        if(items.size() == 0){
+            System.out.println("Az inventory ures");
+            return;
+        }
+        for (Item i : items){
+            System.out.print(i.name +" ");
+        }
+        System.out.println("");
+    }
 
 }

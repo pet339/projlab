@@ -2,7 +2,7 @@ package hu.bme.team5;
 
 public class Gun extends Item {
     public Gun() {
-        super();
+        name = "gun";
     }
 
     //felüldefinálja az item függvényét, true-val tér vissza

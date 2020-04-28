@@ -2,8 +2,9 @@ package hu.bme.team5;
 
 public class Rope extends Item {
     int counter = 0;
+
     public Rope() {
-        super();
+        name = "rope";
     }
 
 

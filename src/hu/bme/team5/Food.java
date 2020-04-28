@@ -2,7 +2,7 @@ package hu.bme.team5;
 
 public class Food extends Item {
     public Food() {
-        super();
+        name = "food";
     }
 
     @Override

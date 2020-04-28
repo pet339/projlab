@@ -5,6 +5,7 @@ public class Eskimo extends Character {
     //Konstruktor
     public Eskimo() {
         super();
+        health = 5;
     }
 
     //Iglu építés

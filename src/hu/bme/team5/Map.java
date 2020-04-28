@@ -81,12 +81,10 @@ public class Map implements TurnBased {
         // Karakterek létrehozása
         Eskimo eskimo1 = new Eskimo();
         eskimo1.setWork(4);
-        eskimo1.setHealth(3);
         eskimo1.inventory.addItem(new Food());
 
         Explorer explorer1 = new Explorer();
         explorer1.setWork(4);
-        explorer1.setHealth(3);
         explorer1.inventory.addItem(new Food());
 
         eskimo1.currentField = field1;
@@ -132,14 +130,19 @@ public class Map implements TurnBased {
 
     public void startStorm() {
         Random rnd = new Random();
+        System.out.println("Vihar tombol ezeken a mezokon:");
         for (Field f : game.currentMap.fields)
             if (rnd.nextInt() % 4 == 0){
+                System.out.print(f.map.fields.indexOf(f) + 1 + " ");
+                //Novelni a ho meretet
+                f.snowSize++;
                 if (!f.tent && !f.igloo){
                     for (Character c : f.characters){
                         c.health--;
                     }
                 }
             }
+        System.out.println("");
     }
 
     @Override

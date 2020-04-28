@@ -102,6 +102,9 @@ public class Menu {
                 case 12:{
                     printOptions();
                 }break;
+                case 13:{
+                    game.currentMap.characters.get(0).inventory.writeItems();
+                }break;
                 default: {
                     sc.close();
                     runningGame = false;
@@ -123,6 +126,7 @@ public class Menu {
         System.out.println("10. Uj kor");
         System.out.println("11. Jatek befejezese");
         System.out.println("12. Menu kiirasa ujra");
+        System.out.println("13. Inventory megjelenitese");
     }
 
 

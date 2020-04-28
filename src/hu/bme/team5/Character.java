@@ -77,13 +77,13 @@ public abstract class Character implements TurnBased, Controllable {
     public boolean shovelSnow() {
         //Munka ellenőrzése
         if(work==0){
-            System.out.println("\t-Nincs eleg munka, nem lehet asni.");
+            System.out.println("Nincs eleg munka");
             return false;
         }
 
         //Hó nagyságának ellenőrzése
         if(currentField.snowSize==0){
-            System.out.println("\t-Nincs ho, nincs mit asni.");
+            System.out.println("A mezo tiszta");
             return false;
         }
 
@@ -92,6 +92,8 @@ public abstract class Character implements TurnBased, Controllable {
             currentField.setSnowSize(Math.max(currentField.snowSize-2, 0));
         }
         else currentField.setSnowSize(currentField.snowSize-1);
+
+        System.out.println("Sikeres asas");
         setWork(work - 1);
         return true;
     }
@@ -100,13 +102,13 @@ public abstract class Character implements TurnBased, Controllable {
     public boolean digItem(){
         //Hó nagyságának ellenőrzése
         if(currentField.snowSize!=0){
-            System.out.println("\t-Itt ho van, nem lehet asni.");
+            System.out.println("A ho miatt nem lehet asni");
             return false;
         }
 
         //Munka ellenőrzése
         if(work==0){
-            System.out.println("\t-Nincs munka, nem lehet asni.");
+            System.out.println("Nincs munka, nem lehet asni.");
             return false;
         }
 
@@ -117,9 +119,11 @@ public abstract class Character implements TurnBased, Controllable {
         }
 
         //Az inventoryba rakjuk az itemet
-        inventory.addItem(currentField.getFrozenItem());
+        Item i = currentField.getFrozenItem();
+        inventory.addItem(i);
         currentField.setFrozenItem(null);
         setWork(work - 1);
+        System.out.println("Sikeresen kiastad: " + i.name);
         return true;
     }
 
@@ -175,7 +179,7 @@ public abstract class Character implements TurnBased, Controllable {
         //Az inventory kideríti hogy van e nálla búvárruha
         boolean b2 = inventory.drownUsed();
         if (!b2){
-            System.out.println("Lyukba esett a karakter es megfullad");
+            System.out.println("Lyukba esett a karakter es megfulladt");
             setDrowning(true);
         }
         else System.out.println("Buvarruha megvedi a karaktert a megfulladastol");

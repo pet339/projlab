@@ -3,6 +3,7 @@ package hu.bme.team5;
 public class Explorer extends Character {
     public Explorer() {
         super();
+        health = 4;
     }
 
     //Felderít egy paraméterként kapott jégtáblát

@@ -1,10 +1,11 @@
 package hu.bme.team5;
 
 public abstract class Item {
-    private String description;
+    String name;
     int counter;
     public Item() {
         counter = 0;
+        name = "undefined";
     }
 
     // asohasznalat, Overrideolva lesz, az shovel-nel true-val ter vissza

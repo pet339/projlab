@@ -2,7 +2,7 @@ package hu.bme.team5;
 
 public class Shovel extends Item {
     public Shovel() {
-        super();
+        name = "shovel";
     }
     //felüldefinálja az item függvényét, true-val tér vissza
     @Override

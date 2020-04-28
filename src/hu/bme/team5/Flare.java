@@ -2,7 +2,7 @@ package hu.bme.team5;
 
 public class Flare extends Item {
     public Flare() {
-        super();
+        name = "flare";
     }
 
     @Override

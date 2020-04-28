@@ -4,7 +4,7 @@ public class DivingSuit extends Item {
 
     //Konstruktor
     public DivingSuit() {
-        super();
+        name = "diving suit";
     }
 
     //Ha szükség van rá akkor igazzal tér vissza

@@ -2,7 +2,7 @@ package hu.bme.team5;
 
 public class Charge extends Item {
     public Charge() {
-        super();
+        name = "charge";
     }
 
     @Override
