@@ -14,7 +14,7 @@ public class PolarBear {
     }
 
     public void kill(){
-        if (currentField.characters.size() > 1){
+        if (currentField.characters.size() > 0){
            if(!currentField.igloo){
               currentField.gameEnded(false);
            }
@@ -23,13 +23,15 @@ public class PolarBear {
     }
     public void move(){
         Field nextField = getRandomNeighbor();
-        System.out.print("bear moves");
+        System.out.print("bear moves, new positon: ");
          //remove polarbear
         currentField.polarBear = false;
         setCurrentField(nextField);
         currentField.polarBear = true;
+
+        int newField = currentField.map.fields.indexOf(currentField) + 1;
+        System.out.println(newField);
         kill();
-        System.out.println("Hello!");
     }
     public void setCurrentField(Field f){
         currentField = f;

@@ -22,6 +22,8 @@ public abstract class Field {
         id = ID++;
         characters = new ArrayList<>();
         neighbors = new ArrayList<>();
+        igloo = false;
+        tent = false;
     }
 
     //Fieldre lépés lekezelése

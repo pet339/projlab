@@ -92,6 +92,10 @@ public class Map implements TurnBased {
         eskimo1.currentField = field1;
         explorer1.currentField = field7;
 
+        field1.characters.add(eskimo1);
+        field7.characters.add(explorer1);
+
+
         // Jegesmedve létrehozása
         PolarBear bear = new PolarBear();
         bears.add(bear);
@@ -121,6 +125,9 @@ public class Map implements TurnBased {
         characters.add(eskimo1);
         characters.add(explorer1);
 
+        for (Field f : fields){
+            f.map = this;
+        }
     }
 
     public void startStorm() {
