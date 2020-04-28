@@ -146,8 +146,6 @@ public class Test {
                     Item rope = new Rope();
                     c1.inventory.addItem(rope);
                     Field field = testGame.currentMap.fields.get(2);
-
-
                     c1.setCurrentField(field);
                     c2.setCurrentField(field);
 
