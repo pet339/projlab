@@ -13,20 +13,20 @@ step 1 3
 dig
 0 1
 
-give 1 2 gun
-Explorer{[Character:inventory:items={eltűnt a tárgy}]}Eskimo{[Character:inventory:items={megjelent a tárgy}]}
+give gun
+0 1
 
-eat 1 2
-Explorer{[Character:health=megnőtt eggyel;Character:inventory:items={eltűnt egy étel}]}
+eat
+0 5
 
-inspect 1 3
-UnStable[7]{capacity=A mező kapacitása}Explorer{[Character:work=csökkent egyel]}
+inspect
+0 1
 
 igloo2
-Stable{[Iceberg[Field:igloo=true]]}Eskimo{[Character:work=csökkent egyel]}
+0 true
 
-save 1 2
-Explorer{[Character:work=csökkent eggyel;Character:inventory:items={van benne Rope}]}Eskimo{[Character:drowning=false]}
+save
+0 true false
 
 assemble 1
 Explorer{[Character:work=csökkent eggyel;Character:inventory:items={az alkatrészek eltűntek, a jelzőpisztoly megjelenik}]}

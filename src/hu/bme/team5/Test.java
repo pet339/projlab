@@ -32,20 +32,20 @@ public class Test {
                 break;
                 case "step": {
                     System.out.print("stepTest: ");
-                    Explorer explorer = new Explorer();
-                    explorer.setWork(1);
+                    Character c = new Explorer();
+                    c.setWork(1);
                     Field field = null;
                     for (Field f : testGame.currentMap.fields)
                         if (f.getId() == Integer.parseInt(line.split(" ")[1]))
-                            explorer.setCurrentField(f);
+                            c.setCurrentField(f);
                     for (Field f : testGame.currentMap.fields)
                         if (f.getId() == Integer.parseInt(line.split(" ")[2])) {
-                            explorer.move(f);
+                            c.move(f);
                             field = f;
                         }
                     if (field.getClass().getSimpleName().equals("Hole"))
                         printer(field.getId() == Integer.parseInt(raf.readLine())
-                                && explorer.isDrowning());
+                                && c.isDrowning());
                     else
                         printer(field.getId() == Integer.parseInt(raf.readLine()));
                 }
@@ -53,16 +53,16 @@ public class Test {
                 case "shovel": {
                     System.out.print("shovelTest: ");
 
-                    Explorer explorer = new Explorer();
-                    explorer.setWork(1);
+                    Character c = new Explorer();
+                    c.setWork(1);
                     Field field = testGame.currentMap.fields.get(0);
                     field.setSnowSize(1);
 
-                    explorer.setCurrentField(field);
-                    explorer.shovelSnow();
+                    c.setCurrentField(field);
+                    c.shovelSnow();
 
                     line = raf.readLine();
-                    printer(explorer.work == Integer.parseInt(line.split(" ")[0])
+                    printer(c.work == Integer.parseInt(line.split(" ")[0])
                             && field.snowSize == Integer.parseInt(line.split(" ")[1]));
 
                 }
@@ -70,37 +70,104 @@ public class Test {
                 case "dig": {
                     System.out.print("digTest: ");
 
-                    Explorer explorer = new Explorer();
-                    explorer.setWork(1);
+                    Character c = new Explorer();
+                    c.setWork(1);
                     Field field = testGame.currentMap.fields.get(0);
                     field.setFrozenItem(new Gun());
-                    explorer.setCurrentField(field);
-                    explorer.digItem();
+                    c.setCurrentField(field);
+                    c.digItem();
                     line = raf.readLine();
-                    printer(explorer.work == Integer.parseInt(line.split(" ")[0])
-                            && explorer.inventory.items.size() == Integer.parseInt(line.split(" ")[1]));
+                    printer(c.work == Integer.parseInt(line.split(" ")[0])
+                            && c.inventory.items.size() == Integer.parseInt(line.split(" ")[1]));
                 }
                 break;
                 case "give": {
-                }
-                break;
-                case "eat": {
+                    System.out.print("giveTest: ");
+
+                    Character c1 = new Explorer();
+                    Character c2 = new Eskimo();
+                    Item item = null;
+                    if (line.split(" ")[1].equals("gun"))
+                        item = new Gun();
+                    c1.inventory.addItem(item);
+                    c1.trade(c2, item);
+
+                    line = raf.readLine();
+                    printer(c1.inventory.items.size() == Integer.parseInt(line.split(" ")[0])
+                            && c2.inventory.items.size() == Integer.parseInt(line.split(" ")[1]));
 
                 }
                 break;
+                case "eat": {
+                    System.out.print("eatTest: ");
+
+                    Character c = new Explorer();
+                    c.inventory.addItem(new Food());
+                    c.eat();
+
+                    line = raf.readLine();
+                    printer(c.inventory.items.size() == Integer.parseInt(line.split(" ")[0])
+                            && c.health == Integer.parseInt(line.split(" ")[1]));
+                }
+                break;
                 case "inspect": {
+                    System.out.print("inspectTest: ");
+                    Character c = new Explorer();
+                    c.setWork(1);
+                    c.setCurrentField(testGame.currentMap.fields.get(0));
+                    Field field = c.currentField.neighbors.get(0);
+                    int capacity = c.explore(field);
+
+                    line = raf.readLine();
+                    printer(c.work == Integer.parseInt(line.split(" ")[0])
+                            && capacity == Integer.parseInt(line.split(" ")[1]));
 
                 }
                 break;
                 case "igloo": {
+                    System.out.print("iglooTest: ");
+                    Character c = new Eskimo();
+                    c.setWork(1);
+                    Field field = testGame.currentMap.fields.get(0);
+                    c.setCurrentField(field);
+                    c.buildIgloo();
 
+                    line = raf.readLine();
+                    printer(c.work == Integer.parseInt(line.split(" ")[0])
+                            && field.igloo == Boolean.parseBoolean(line.split(" ")[1]));
                 }
                 break;
                 case "save": {
+                    System.out.print("saveTest: ");
+                    Character c1 = new Eskimo();
+                    Character c2 = new Explorer();
+                    c1.setWork(1);
+                    c2.setWork(1);
+                    Item rope = new Rope();
+                    c1.inventory.addItem(rope);
+                    Field field = testGame.currentMap.fields.get(2);
 
+                    System.out.println(field.getId());
+                    System.out.println(field.getClass().getSimpleName());
+
+                    c1.setCurrentField(field);
+                    c2.setCurrentField(field);
+
+                    Field hole = c1.currentField.neighbors.get(2);
+
+                    System.out.println(hole.getId());
+                    System.out.println(hole.getClass().getSimpleName());
+
+                    c2.move(hole);
+                    c1.saveAlly(c2);
+
+                    line = raf.readLine();
+                    printer(c1.work == Integer.parseInt(line.split(" ")[0])
+                            && c1.inventory.items.contains(rope)
+                            && c2.isDrowning() == Boolean.parseBoolean(line.split(" ")[1]));
                 }
                 break;
-                case "aasemble": {
+                case "assemble": {
 
                 }
                 break;

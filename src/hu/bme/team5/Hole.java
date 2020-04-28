@@ -14,7 +14,7 @@ public class Hole extends Field {
         //Hó letörlése
         setSnowSize(0);
         //Character megfullasztása
-        characters.get(characters.size()-1).drown();
+        c.drown();
     }
 
     //Visszaadja a fagyott itemet (Lyukban nincs fagyott item)
