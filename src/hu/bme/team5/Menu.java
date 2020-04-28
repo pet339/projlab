@@ -23,23 +23,13 @@ public class Menu {
     static Game game = new Game();
 
     public Menu(){
-        System.out.println("Valasszon esemenyt:");
-        System.out.println("1. Jatekos lep");
-        System.out.println("2. Jatekos havat takarit el egy jegtablarol");
-        System.out.println("3. Jatekos kias egy targyat (kotelet) egy jegtablabol");
-        System.out.println("4. Jatekos atad targyat");
-        System.out.println("5. Jatekos eszik");
-        System.out.println("6. Sarkkutato megvizsgal egy jegtablat");
-        System.out.println("7. Eszkimo iglut epit");
-        System.out.println("8. Jatekos kimenti vizbe esett tarsat");
-        System.out.println("9. Jatekos osszeszereli a jelzopisztolyt");
-        System.out.println("10. Uj kor");
-        System.out.println("11. Jatek befejezese");
+
         Scanner sc = new Scanner(System.in);
         int event = 0;
         
         boolean runningGame = true;
         game.startGame();
+        printOptions();
         while(runningGame && game.isActive){
             try{
                 event = sc.nextInt();
@@ -109,12 +99,31 @@ public class Menu {
                     sc.close();
                     runningGame = false;
                 } break;
+                case 12:{
+                    printOptions();
+                }break;
                 default: {
                     sc.close();
                     runningGame = false;
                 } break;
             }
         }
-
     }
+    public void printOptions(){
+        System.out.println("Valasszon esemenyt:");
+        System.out.println("1. Jatekos lep");
+        System.out.println("2. Jatekos havat takarit el egy jegtablarol");
+        System.out.println("3. Jatekos kias egy targyat egy jegtablabol");
+        System.out.println("4. Jatekos atad targyat");
+        System.out.println("5. Jatekos eszik");
+        System.out.println("6. Sarkkutato megvizsgal egy jegtablat");
+        System.out.println("7. Eszkimo iglut epit");
+        System.out.println("8. Jatekos kimenti vizbe esett tarsat");
+        System.out.println("9. Jatekos osszeszereli a jelzopisztolyt");
+        System.out.println("10. Uj kor");
+        System.out.println("11. Jatek befejezese");
+        System.out.println("12. Menu kiirasa ujra");
+    }
+
+
 }

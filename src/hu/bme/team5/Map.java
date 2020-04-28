@@ -81,10 +81,12 @@ public class Map implements TurnBased {
         // Karakterek létrehozása
         Eskimo eskimo1 = new Eskimo();
         eskimo1.setWork(4);
+        eskimo1.setHealth(3);
         eskimo1.inventory.addItem(new Food());
 
         Explorer explorer1 = new Explorer();
         explorer1.setWork(4);
+        explorer1.setHealth(3);
         explorer1.inventory.addItem(new Food());
 
         eskimo1.currentField = field1;
