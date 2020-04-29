@@ -34,8 +34,6 @@ public class Menu {
         Character active = game.currentMap.characters.get(0);
         Character passive = game.currentMap.characters.get(1);
 
-        List<Field> fs = new ArrayList<Field>();
-         fs = game.currentMap.stormFields();
         while(runningGame && game.isActive){
             try{
                 event = sc.nextInt();

@@ -1,7 +1,6 @@
 package hu.bme.team5;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Map implements TurnBased {
@@ -160,21 +159,6 @@ public class Map implements TurnBased {
                 }
             }
         System.out.println("");
-    }
-    public List<Field> stormFields(){
-        System.out.println("Vihar fog tombolni ezeken a mezokon:");
-
-        List<Field> fs =new ArrayList<>();
-
-        Random rnd = new Random();
-        for (Field f : game.currentMap.fields){
-            if (rnd.nextInt() % 4 == 0){
-                fs.add(f);
-                System.out.print(f.map.fields.indexOf(f) + 1);
-            }
-        }
-
-        return fs;
     }
     @Override
     public void endTurn() {
