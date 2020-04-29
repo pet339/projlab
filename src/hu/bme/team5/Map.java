@@ -10,7 +10,9 @@ public class Map implements TurnBased {
     ArrayList<Character> characters;
     ArrayList<PolarBear> bears;
     Game game;
+    Random rnd = new Random();
 
+    boolean stormIsComing = false;
     // Map konstruktora, létrehozza a pályák és a characterek listáját
     public Map(Game g1) {
         fields = new ArrayList<Field>();
@@ -139,7 +141,6 @@ public class Map implements TurnBased {
     }
 
     public void startStorm() {
-        Random rnd = new Random();
         System.out.println("Vihar tombol ezeken a mezokon:");
         for (Field f : game.currentMap.fields)
             if (rnd.nextInt() % 4 == 0){
@@ -165,13 +166,25 @@ public class Map implements TurnBased {
         for (Character c : game.currentMap.characters){
             c.endTurn();
         }
-        startStorm();
+        if (stormIsComing){
+            startStorm();
+        }
+        if (rnd.nextInt() % 2 == 0){
+            stormIsComing = false;
+        }
+        else {
+            stormIsComing = true;
+        }
 
         for (Field f : game.currentMap.fields){
             f.tent = false;
         }
         for (PolarBear bear : game.currentMap.bears){
             bear.move();
+        }
+
+        if (stormIsComing){
+            System.out.println("Vihar kozeledik");
         }
     }
 

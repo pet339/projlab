@@ -29,6 +29,7 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
         int event = 0;
         boolean runningGame = true;
+
         game.startGame();
         printOptions();
         Character active = game.currentMap.characters.get(0);
