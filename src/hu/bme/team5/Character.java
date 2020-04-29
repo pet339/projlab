@@ -7,7 +7,7 @@ public abstract class Character implements TurnBased, Controllable {
     protected int work; //A karakter munkáját tartalmazó integer 
     protected boolean drowning; //A karakter éppen foldiklik e
     protected Inventory inventory; //A karakter inventoryja
-
+    protected String name;
     //Konstruktor
     public Character() {
         inventory = new Inventory();
@@ -65,11 +65,10 @@ public abstract class Character implements TurnBased, Controllable {
             return false;
         }
 
-        if (currentField.polarBear){
+        if (nextField.polarBear){
             System.out.println("Sajnalattal ertesitjuk, hogy Ont felfalta egy medve!");
             currentField.gameEnded(false);
         }
-
         //Elveszünk 1 munkát, a fieldek elvégzik a karakterek kezelését.
         setWork(work-1);
         currentField.removeCharacter(this);
@@ -148,11 +147,15 @@ public abstract class Character implements TurnBased, Controllable {
             System.out.println("Hianyzik a jelzopisztoly valamelyik resze");
             return false;
         }
-        else{
-            currentField.gameEnded(true);
-            setWork(work - 1);
-            return true;
+        for (Character c : currentField.map.characters) {
+            if (c.currentField != currentField) {
+                System.out.println("Nem azonos mezon all az osszes karakter");
+                return false;
+            }
         }
+        currentField.gameEnded(true);
+        setWork(work - 1);
+        return true;
     }
         
 

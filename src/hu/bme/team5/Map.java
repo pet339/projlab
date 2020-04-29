@@ -1,6 +1,7 @@
 package hu.bme.team5;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Map implements TurnBased {
@@ -80,10 +81,12 @@ public class Map implements TurnBased {
 
         // Karakterek létrehozása
         Eskimo eskimo1 = new Eskimo();
+        eskimo1.name = "Eszkimo1";
         eskimo1.setWork(4);
         eskimo1.inventory.addItem(new Food());
 
         Explorer explorer1 = new Explorer();
+        explorer1.name ="Explorer1";
         explorer1.setWork(4);
         explorer1.inventory.addItem(new Food());
 
@@ -103,11 +106,19 @@ public class Map implements TurnBased {
         // Item-ek létrehozása
         DivingSuit divingSuit = new DivingSuit();
         Tent tent = new Tent();
-        FragileShovel fragileShovel = new FragileShovel();
+        Shovel shovel = new Shovel();
+        Flare flare = new Flare();
+        Rope rope = new Rope();
+        Charge charge = new Charge();
+        Gun gun = new Gun();
 
         // Item-ek elhelyezése
+        field1.setFrozenItem(flare);
+        field2.setFrozenItem(shovel);
         field3.setFrozenItem(tent);
-        field4.setFrozenItem(fragileShovel);
+        field4.setFrozenItem(rope);
+        field6.setFrozenItem(charge);
+        field7.setFrozenItem(gun);
         field8.setFrozenItem(divingSuit);
 
         //Fieldek hozzáadása a pályához
@@ -138,20 +149,40 @@ public class Map implements TurnBased {
                 f.snowSize++;
                 if (!f.tent && !f.igloo){
                     for (Character c : f.characters){
+                        System.out.println("");
                         c.health--;
+                        System.out.println("A vihar megsebesitette: " + c.name + ", elet: " + c.health);
+                        if (c.health < 1){
+                            System.out.println(c.name + " kinyirta a vihar");
+                            gameEnded(false);
+                        }
                     }
                 }
             }
         System.out.println("");
     }
+    public List<Field> stormFields(){
+        System.out.println("Vihar fog tombolni ezeken a mezokon:");
 
+        List<Field> fs =new ArrayList<>();
+
+        Random rnd = new Random();
+        for (Field f : game.currentMap.fields){
+            if (rnd.nextInt() % 4 == 0){
+                fs.add(f);
+                System.out.print(f.map.fields.indexOf(f) + 1);
+            }
+        }
+
+        return fs;
+    }
     @Override
     public void endTurn() {
-        startStorm();
-
         for (Character c : game.currentMap.characters){
             c.endTurn();
         }
+        startStorm();
+
         for (Field f : game.currentMap.fields){
             f.tent = false;
         }

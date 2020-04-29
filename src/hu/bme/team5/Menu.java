@@ -17,6 +17,8 @@ package hu.bme.team5;
 
 
 */
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -30,6 +32,10 @@ public class Menu {
         game.startGame();
         printOptions();
         Character active = game.currentMap.characters.get(0);
+        Character passive = game.currentMap.characters.get(1);
+
+        List<Field> fs = new ArrayList<Field>();
+         fs = game.currentMap.stormFields();
         while(runningGame && game.isActive){
             try{
                 event = sc.nextInt();
@@ -63,7 +69,7 @@ public class Menu {
                     // Item cseréje
                     if(active.inventory.items.size() > 0){
                     Item tradeItem = active.inventory.items.get(0);
-                        active.trade(game.currentMap.characters.get(1),tradeItem);
+                        active.trade(passive,tradeItem);
                     }
                     else
                         System.out.println("nincs targy az inventoriban");
@@ -77,7 +83,7 @@ public class Menu {
                     //Mezőt megvizsgál
                     System.out.println("Melyik mezot vizsgalja meg?");
                     Field toExlore = game.currentMap.fields.get(sc.nextInt() -1);
-                    System.out.println(game.currentMap.characters.get(1).explore(toExlore));
+                    System.out.println(active.explore(toExlore));
                 } break;
                 case 7: {
                     // Iglut épít
@@ -111,7 +117,17 @@ public class Menu {
                     active.inventory.writeItems();
                 }break;
                 case 14:{
+                    // Melyik az aktív karakter, intet vár, a listában az index +1
+                    System.out.println("Melyik karaktert valasztod?");
                     active = game.currentMap.characters.get(sc.nextInt() - 1);
+                    // A másik a passzív karakter
+                    if (active == game.currentMap.characters.get(0)){
+                        passive = game.currentMap.characters.get(1);
+                    }
+                    else{
+                        passive = game.currentMap.characters.get(0);
+                    }
+                    System.out.println("Uj aktiv karakter: " + active.name);
                 }break;
                 default: {
                     sc.close();

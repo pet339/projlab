@@ -13,7 +13,6 @@ public class Program {
         }
         //Létrehoz egy menüt, amely vezérli a játékot
         Menu menu = new Menu();
-
-
+        
     }
 }
