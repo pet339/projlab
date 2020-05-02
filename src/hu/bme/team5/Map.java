@@ -138,7 +138,151 @@ public class Map implements TurnBased {
         for (Field f : fields){
             f.map = this;
         }
+        ArrayList<ArrayList<Field>> Test = FullInitTest();
     }
+
+
+
+    public ArrayList<ArrayList<Field>> FullInitTest(){
+
+        int mapsize = characters.size()*15;
+
+        ArrayList<ArrayList<Field>> TFields = new ArrayList<ArrayList<Field>>();
+        
+        for(int i = 0 ; i <  mapsize; i++){
+            ArrayList<Field> row = new ArrayList<Field>();
+
+            for(int j = 0 ; j < mapsize; j++){
+                int rando = rnd.nextInt(100);
+
+                if(rando<=50){
+                    Stable s = new Stable();
+                    s.map = this;
+                    int randoitem = rnd.nextInt(21);
+
+                    if(randoitem == 0)
+                        s.setFrozenItem(new Shovel());
+                    if(randoitem == 1)
+                        s.setFrozenItem(new Flare());
+                    if(randoitem == 2)
+                        s.setFrozenItem(new Gun());  
+                    if(randoitem == 3)
+                        s.setFrozenItem(new Charge());
+                    if(randoitem == 4)
+                        s.setFrozenItem(new Tent());
+                    if(randoitem == 5)
+                        s.setFrozenItem(new DivingSuit());
+                    if(randoitem == 6)
+                        s.setFrozenItem(new Rope());
+                    if(randoitem == 7)
+                        s.setFrozenItem(new Food());
+
+                    row.add(j,s);
+                }
+
+                else if(rando>50 && rando<=85){
+                    Unstable us = new Unstable();
+                    us.map = this;
+                    int randoitem = rnd.nextInt(21);
+
+                    if(randoitem == 0)
+                        us.setFrozenItem(new Shovel());
+                    if(randoitem == 1)
+                        us.setFrozenItem(new Flare());
+                    if(randoitem == 2)
+                        us.setFrozenItem(new Gun());  
+                    if(randoitem == 3)
+                        us.setFrozenItem(new Charge());
+                    if(randoitem == 4)
+                        us.setFrozenItem(new Tent());
+                    if(randoitem == 5)
+                        us.setFrozenItem(new DivingSuit());
+                    if(randoitem == 6)
+                        us.setFrozenItem(new Rope());
+                    if(randoitem == 7)
+                        us.setFrozenItem(new Food());
+
+                    row.add(j,us);
+                }
+                    
+                else{
+                    Hole h = new Hole();
+                    h.map = this;
+                    row.add(j,h);
+                }
+
+            }
+            TFields.add(i,row);
+        }
+
+
+        for(int i = 0 ; i < mapsize ; i++){
+            for(int j = 0 ; j < mapsize ; j++){
+                    try{
+                        TFields.get(i).get(j).addNeighbor(TFields.get(i-1).get(j));
+                    }
+                    catch(IndexOutOfBoundsException e){
+                        TFields.get(i).get(j).addNeighbor(null);
+                    }
+
+                    try{
+                        TFields.get(i).get(j).addNeighbor(TFields.get(i-1).get(j+1));
+                    }
+                    catch(IndexOutOfBoundsException e){
+                        TFields.get(i).get(j).addNeighbor(null);
+                    }
+
+                    try{
+                        TFields.get(i).get(j).addNeighbor(TFields.get(i).get(j+1));
+                    }
+                    catch(IndexOutOfBoundsException e){
+                        TFields.get(i).get(j).addNeighbor(null);
+                    }
+
+                    try{
+                        TFields.get(i).get(j).addNeighbor(TFields.get(i+1).get(j));
+                    }
+                    catch(IndexOutOfBoundsException e){
+                        TFields.get(i).get(j).addNeighbor(null);
+                    }
+
+                    try{
+                        TFields.get(i).get(j).addNeighbor(TFields.get(i+11).get(j-1));
+                    }
+                    catch(IndexOutOfBoundsException e){
+                        TFields.get(i).get(j).addNeighbor(null);
+                    }
+
+                    try{
+                        TFields.get(i).get(j).addNeighbor(TFields.get(i).get(j-1));
+                    }
+                    catch(IndexOutOfBoundsException e){
+                        TFields.get(i).get(j).addNeighbor(null);
+                    }
+                    
+            }
+        }
+        Eskimo eskimo1 = new Eskimo();
+        eskimo1.name = "Eszkimo1";
+        eskimo1.setWork(4);
+        eskimo1.inventory.addItem(new Food());
+
+        Explorer explorer1 = new Explorer();
+        explorer1.name ="Explorer1";
+        explorer1.setWork(4);
+        explorer1.inventory.addItem(new Food());
+
+        eskimo1.currentField = TFields.get(0).get(0);
+        TFields.get(0).get(0).setCharacter(eskimo1);
+        
+        explorer1.currentField = TFields.get(0).get(1);
+        TFields.get(0).get(0).setCharacter(explorer1);
+        return TFields;
+    }
+
+
+
+
 
     public void startStorm() {
         System.out.println("Vihar tombol ezeken a mezokon:");
