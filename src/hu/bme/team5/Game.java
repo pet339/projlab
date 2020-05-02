@@ -2,14 +2,21 @@ package hu.bme.team5;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.awt.event.*;
 
 public class Game extends JFrame {
     private ArrayList<Map> maps; //Mappokat tartalmazó lista
     Map currentMap; //Most futó map
     boolean isActive;
 
+    JButton loadmap = new JButton();
+    JButton savemap = new JButton();
+    JButton startgame = new JButton();
+    JButton endgame = new JButton();
+
     //Konstruktor
     public Game() {
+        
         currentMap = new Map(this);
         maps = new ArrayList<>();
         maps.add(currentMap);
@@ -19,10 +26,48 @@ public class Game extends JFrame {
     }
 
     private void initWindow() {
+    
+
+        loadmap.setText("Load Map");
+        savemap.setText("Save Current Map");
+        startgame.setText("Start Game");
+        endgame.setText("End Game");
+
+        loadmap.addActionListener(new MenuButtonListener());
+        savemap.addActionListener(new MenuButtonListener());
+        startgame.addActionListener(new MenuButtonListener());
+        endgame.addActionListener(new MenuButtonListener());
 
         JPanel jp = new JPanel();
+        jp.add(startgame);
+        jp.add(loadmap);
+        jp.add(savemap);
+        jp.add(endgame);
+        
+
         this.add(jp);
         setVisible(true);
+    }
+
+    final class MenuButtonListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(e.getActionCommand().equals(loadmap.getActionCommand())){
+                loadMap(null);
+            }
+            if(e.getActionCommand().equals(savemap.getActionCommand())){
+                saveMap();
+            }
+            if(e.getActionCommand().equals(startgame.getActionCommand())){
+                startGame();
+            }
+            if(e.getActionCommand().equals(endgame.getActionCommand())){
+                endGame();
+            }
+            
+        }
+
     }
 
     //Map betöltése

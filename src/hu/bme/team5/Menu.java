@@ -21,7 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Menu {
+import javax.swing.*;
+
+public class Menu extends JFrame{
     static Game game = new Game();
 
     public Menu(){

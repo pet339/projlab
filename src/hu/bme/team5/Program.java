@@ -12,7 +12,7 @@ public class Program {
             e.printStackTrace();
         }
         //Létrehoz egy menüt, amely vezérli a játékot
-        Menu menu = new Menu();
+        Game g = new Game();
         
     }
 }
