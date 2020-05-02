@@ -1,12 +1,30 @@
 package hu.bme.team5;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 public class BackGround extends JFrame {
-    JFrame frame = new JFrame("Menü");
+    JFrame frame = new JFrame("Menü") {
+        private Image backgroundImage;
+
+        {
+            try {
+                backgroundImage = ImageIO.read(new File("backImage.jpg"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void paint(Graphics g) {
+            super.paint(g);
+            g.drawImage(backgroundImage, 0, 0, this);
+        }
+    };
     JPanel jp = new JPanel();
     JButton start = new JButton();
     JButton load = new JButton();
@@ -14,10 +32,14 @@ public class BackGround extends JFrame {
     JButton exit = new JButton();
 
     public BackGround() {
-        initWindow();
+        try {
+            initWindow();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    void initWindow() {
+    void initWindow() throws IOException {
 
         start.addActionListener(new BackGround.ActionMenuButtonListener());
         load.addActionListener(new BackGround.ActionMenuButtonListener());
@@ -51,7 +73,6 @@ public class BackGround extends JFrame {
         exit.setAlignmentX(CENTER_ALIGNMENT);
 
         jp.setLayout(new BoxLayout(jp, BoxLayout.Y_AXIS));
-
         frame.add(jp, BorderLayout.CENTER);
         frame.setSize(400, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
