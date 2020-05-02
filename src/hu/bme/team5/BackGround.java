@@ -40,8 +40,8 @@ public class BackGround extends JFrame {
 
         jp.setLayout(new BoxLayout(jp, BoxLayout.Y_AXIS));
 
-
         this.add(jp);
+        this.setSize(400, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
