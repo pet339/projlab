@@ -26,7 +26,8 @@ public class Game extends JFrame {
     }
 
     private void initWindow() {
-    
+        
+        this.setSize(200,200);
 
         loadmap.setText("Load Map");
         savemap.setText("Save Current Map");
@@ -43,10 +44,14 @@ public class Game extends JFrame {
         jp.add(loadmap);
         jp.add(savemap);
         jp.add(endgame);
-        
+
 
         this.add(jp);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.pack();
+
         setVisible(true);
+
     }
 
     final class MenuButtonListener implements ActionListener {
@@ -78,6 +83,7 @@ public class Game extends JFrame {
     //Játék kezdése
     public void startGame() {
         currentMap.init();
+        System.out.println("lol");
     }
 
     //Map mentése
