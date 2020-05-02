@@ -1,7 +1,5 @@
 package hu.bme.team5;
 
-import java.io.IOException;
-
 public class Program {
 
     public static void main(String[] args) {
@@ -13,7 +11,8 @@ public class Program {
         }
         */
         //Létrehoz egy menüt, amely vezérli a játékot
-         Game g = new Game();
-        ActionMenu am = new ActionMenu(new Eskimo(),new Map(g) );
+        // Game g = new Game();
+        // A statikus game-et használjuk 1 példányban
+        ActionMenu am = new ActionMenu(new Eskimo(), new Map(Menu.game));
     }
 }

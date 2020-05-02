@@ -1,8 +1,9 @@
 package hu.bme.team5;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.awt.event.*;
 
 public class Game extends JFrame {
     private ArrayList<Map> maps; //Mappokat tartalmazó lista
@@ -27,7 +28,7 @@ public class Game extends JFrame {
     }
 
     private void initWindow() {
-        
+
         this.setSize(200,200);
 
         loadmap.setText("Load Map");
