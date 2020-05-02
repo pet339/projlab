@@ -39,14 +39,19 @@ public class PlayPanel {
         JButton moveButton = new JButton("Move");
         JButton useItemButton = new JButton("Use Item");
         JButton inventoryButton = new JButton("Inventory");
+        JButton tradeButton = new JButton("Trade");
 
         actionPanel.add(spellButton);
-        actionPanel.add(Box.createRigidArea(new Dimension(60, 0)));
+        actionPanel.add(Box.createRigidArea(new Dimension(80, 0)));
         actionPanel.add(moveButton);
-        actionPanel.add(Box.createRigidArea(new Dimension(60, 0)));
+        actionPanel.add(Box.createRigidArea(new Dimension(80, 0)));
         actionPanel.add(useItemButton);
-        actionPanel.add(Box.createRigidArea(new Dimension(60, 0)));
+        actionPanel.add(Box.createRigidArea(new Dimension(80, 0)));
         actionPanel.add(inventoryButton);
+        actionPanel.add(Box.createRigidArea(new Dimension(80, 0)));
+        actionPanel.add(tradeButton);
+
+
 
         // MapPanel letrehozasa gombokkal
         JPanel mapPanel = new JPanel();
@@ -55,6 +60,7 @@ public class PlayPanel {
         actionPanel.setBounds(200,600,800,50);
         charactersPanel.setBounds(0,300,50,200);
         mapPanel.setBounds(200,70,950,500);
+
 
 
         mainFrame.add(mapPanel);
