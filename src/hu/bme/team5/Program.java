@@ -6,13 +6,14 @@ public class Program {
 
     public static void main(String[] args) {
         //Elindítja a tesztelést
-        try {
+       /* try {
             Test test = new Test();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        */
         //Létrehoz egy menüt, amely vezérli a játékot
-        Game g = new Game();
-        
+         Game g = new Game();
+        ActionMenu am = new ActionMenu(new Eskimo(),new Map(g) );
     }
 }

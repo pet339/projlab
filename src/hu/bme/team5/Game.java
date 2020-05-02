@@ -9,6 +9,7 @@ public class Game extends JFrame {
     Map currentMap; //Most futó map
     boolean isActive;
 
+    JPanel jp = new JPanel();
     JButton loadmap = new JButton();
     JButton savemap = new JButton();
     JButton startgame = new JButton();
@@ -39,7 +40,7 @@ public class Game extends JFrame {
         startgame.addActionListener(new MenuButtonListener());
         endgame.addActionListener(new MenuButtonListener());
 
-        JPanel jp = new JPanel();
+        
         jp.add(startgame);
         jp.add(loadmap);
         jp.add(savemap);
