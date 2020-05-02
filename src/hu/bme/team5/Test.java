@@ -162,7 +162,7 @@ public class Test {
                 }
                 break;
                 case "assemble": {
-
+                    System.out.print("saveTest: ");
                 }
                 break;
                 default:
