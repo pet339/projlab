@@ -1,8 +1,12 @@
 package hu.bme.team5;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class BackGround extends JFrame {
+    JFrame frame = new JFrame("Menü");
     JPanel jp = new JPanel();
     JButton start = new JButton();
     JButton load = new JButton();
@@ -14,12 +18,11 @@ public class BackGround extends JFrame {
     }
 
     void initWindow() {
-        JFrame frame = new JFrame("BackGround");
 
-        //start.addActionListener(new BackGround.ActionMenuButtonListener());
-        //load.addActionListener(new BackGround.ActionMenuButtonListener());
-        //save.addActionListener(new BackGround.ActionMenuButtonListener());
-        //exit.addActionListener(new BackGround.ActionMenuButtonListener());
+        start.addActionListener(new BackGround.ActionMenuButtonListener());
+        load.addActionListener(new BackGround.ActionMenuButtonListener());
+        save.addActionListener(new BackGround.ActionMenuButtonListener());
+        exit.addActionListener(new BackGround.ActionMenuButtonListener());
 
 
         start.setText("Start");
@@ -27,10 +30,19 @@ public class BackGround extends JFrame {
         save.setText("Save");
         exit.setText("Exit");
 
+        start.add(Box.createRigidArea(new Dimension(50, 10)));
+        load.add(Box.createRigidArea(new Dimension(50, 10)));
+        save.add(Box.createRigidArea(new Dimension(50, 10)));
+        exit.add(Box.createRigidArea(new Dimension(50, 10)));
 
+
+        jp.add(Box.createRigidArea(new Dimension(50, 100)));
         jp.add(start);
+        jp.add(Box.createRigidArea(new Dimension(50, 30)));
         jp.add(load);
+        jp.add(Box.createRigidArea(new Dimension(50, 30)));
         jp.add(save);
+        jp.add(Box.createRigidArea(new Dimension(50, 30)));
         jp.add(exit);
 
         start.setAlignmentX(CENTER_ALIGNMENT);
@@ -40,33 +52,32 @@ public class BackGround extends JFrame {
 
         jp.setLayout(new BoxLayout(jp, BoxLayout.Y_AXIS));
 
-        this.add(jp);
-        this.setSize(400, 500);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
+        frame.add(jp, BorderLayout.CENTER);
+        frame.setSize(400, 500);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 
-    /*
     final class ActionMenuButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(e.getActionCommand().equals(start.getActionCommand()))
+            if (e.getActionCommand().equals(start.getActionCommand())) {
+                PlayPanel playPanel = new PlayPanel();
+            }
+
+            if (e.getActionCommand().equals(load.getActionCommand()))
                 ;
 
-            if(e.getActionCommand().equals(load.getActionCommand()))
+            if (e.getActionCommand().equals(save.getActionCommand()))
                 ;
 
-            if(e.getActionCommand().equals(save.getActionCommand()))
-                ;
+            if (e.getActionCommand().equals(exit.getActionCommand()))
+                System.exit(0);
 
-            if(e.getActionCommand().equals(exit.getActionCommand()))
-                ;
 
+        }
 
 
     }
-     */
-
-
 }

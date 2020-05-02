@@ -15,5 +15,6 @@ public class Program {
         // A statikus game-et használjuk 1 példányban
        // ActionMenu am = new ActionMenu(new Eskimo(), new Map(Menu.game));
         PlayPanel playPanel = new PlayPanel();
+        BackGround backGround = new BackGround();
     }
 }
