@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class BackGround extends JFrame {
-    JFrame frame = new JFrame("Menü");
+    JFrame frame = new JFrame("Menu");
     JPanel jp = new JPanel();
     JButton start = new JButton();
     JButton load = new JButton();
