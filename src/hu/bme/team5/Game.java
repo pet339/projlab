@@ -96,6 +96,7 @@ public class Game extends JFrame {
 
     //Kilépés a játékból
     public void endGame() {
+        this.dispose();
     }
 
 
