@@ -13,7 +13,7 @@ public class Program {
         //Létrehoz egy menüt, amely vezérli a játékot
         // Game g = new Game();
         // A statikus game-et használjuk 1 példányban
-        //ActionMenu am = new ActionMenu(new Eskimo(), new Map(Menu.game));
-        BackGround backGround = new BackGround();
+       // ActionMenu am = new ActionMenu(new Eskimo(), new Map(Menu.game));
+        PlayPanel playPanel = new PlayPanel();
     }
 }
