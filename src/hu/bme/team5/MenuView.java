@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class MenuView extends JFrame {
+
+    private PlayPanel activePanel = null;
+
     private JFrame frame = new JFrame("Menu");
     private JPanel jp = new JPanel();
     private JButton start = new JButton();
@@ -68,7 +71,8 @@ public class MenuView extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equals(start.getActionCommand())) {
-                PlayPanel playPanel = new PlayPanel();
+                if (activePanel == null)
+                    activePanel = new PlayPanel();
             }
 
             if (e.getActionCommand().equals(load.getActionCommand()))
