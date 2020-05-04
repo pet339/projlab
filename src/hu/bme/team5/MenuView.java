@@ -6,15 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class BackGround extends JFrame {
-    JFrame frame = new JFrame("Menu");
-    JPanel jp = new JPanel();
-    JButton start = new JButton();
-    JButton load = new JButton();
-    JButton save = new JButton();
-    JButton exit = new JButton();
+public class MenuView extends JFrame {
+    private JFrame frame = new JFrame("Menu");
+    private JPanel jp = new JPanel();
+    private JButton start = new JButton();
+    private JButton load = new JButton();
+    private JButton save = new JButton();
+    private JButton exit = new JButton();
 
-    public BackGround() {
+    public MenuView() {
         try {
             initWindow();
         } catch (IOException e) {
@@ -24,10 +24,10 @@ public class BackGround extends JFrame {
 
     void initWindow() throws IOException {
 
-        start.addActionListener(new BackGround.ActionMenuButtonListener());
-        load.addActionListener(new BackGround.ActionMenuButtonListener());
-        save.addActionListener(new BackGround.ActionMenuButtonListener());
-        exit.addActionListener(new BackGround.ActionMenuButtonListener());
+        start.addActionListener(new MenuView.ActionMenuButtonListener());
+        load.addActionListener(new MenuView.ActionMenuButtonListener());
+        save.addActionListener(new MenuView.ActionMenuButtonListener());
+        exit.addActionListener(new MenuView.ActionMenuButtonListener());
 
 
         start.setText("Start");

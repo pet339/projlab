@@ -1,16 +1,15 @@
 package hu.bme.team5;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class PlayPanel {
-    PlayPanel(){
+    public PlayPanel() {
         JFrame mainFrame = new JFrame("North Pole");
 
         //Characters Panel
         JPanel charactersPanel = new JPanel();
-        charactersPanel.setLayout(new BoxLayout(charactersPanel,BoxLayout.Y_AXIS));
+        charactersPanel.setLayout(new BoxLayout(charactersPanel, BoxLayout.Y_AXIS));
 
         //Gombok létrehozása a karakterPanelhez
         JButton menuButton = new JButton("Menu");
