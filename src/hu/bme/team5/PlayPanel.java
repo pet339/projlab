@@ -67,18 +67,27 @@ public class PlayPanel {
         actionPanel.add(tradeButton);
 
 
+        //HexagonMap Panel létrehozása
+        HexagonMapPanel hexagonMapPanel = new HexagonMapPanel();
 
         // MapPanel letrehozasa gombokkal
         JPanel mapPanel = new JPanel();
         mapPanel.setBackground(Color.BLUE);
 
+        hexagonMapPanel.setBounds(200,70,950,500);
         actionPanel.setBounds(200,600,800,50);
         charactersPanel.setBounds(0,300,50,200);
         mapPanel.setBounds(200,70,950,500);
 
 
 
-        mainFrame.add(mapPanel);
+
+
+
+
+
+        //mainFrame.add(mapPanel);
+        mainFrame.add(hexagonMapPanel);
         mainFrame.add(actionPanel);
         mainFrame.add(charactersPanel);
 
@@ -86,6 +95,7 @@ public class PlayPanel {
         mainFrame.setDefaultCloseOperation(mainFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);
         mainFrame.setSize(1200,800);
+
     }
 
     final class CharacterChangedActionListener implements ActionListener {
