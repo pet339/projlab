@@ -10,10 +10,15 @@ public class HexagonMapPanel extends JPanel {
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-
-        g.drawPolygon(createPolygon(300,300,30));
-        g.drawPolygon(createPolygon(360,300,30));
-        g.drawPolygon(createPolygon(420,300,30));
+        int r = 40;
+        g.setColor(Color.BLUE);
+        g.drawPolygon(createPolygon(240,300,r));
+        g.setColor(Color.RED);
+        g.drawPolygon(createPolygon(240 + 2*r- 10,260,r));
+        g.setColor(Color.ORANGE);
+        g.drawPolygon(createPolygon(240 + 4*r- 20,300,r));
+        g.setColor(Color.pink);
+        g.drawPolygon(createPolygon(240 + 2*r- 10,340,r));
 
     }
     public Polygon createPolygon(int x, int y, int r){

@@ -7,8 +7,8 @@ import java.awt.event.*;
 public class PlayPanel {
     Map m;
     Character SelectedChar;
-    JComboBox cbchars;
-    JComboBox cbitems;
+    JComboBox characterComboBox;
+    JComboBox itemComboBox;
     public PlayPanel(Map m) {
         SelectedChar = m.characters.get(0);
         JFrame mainFrame = new JFrame("North Pole");
@@ -29,19 +29,22 @@ public class PlayPanel {
         for(int i = 0 ; i < m.characters.size();i++){
             tempchars[i] = m.characters.get(i).name;
         }
-        cbchars = new JComboBox(tempchars);
-        cbchars.addActionListener(new CharacterChangedActionListener());
+        characterComboBox = new JComboBox(tempchars);
+        //characterComboBox.setBounds(100,0,60,40);
+        characterComboBox.setSize(100, characterComboBox.getPreferredSize().height);
+
+        characterComboBox.addActionListener(new CharacterChangedActionListener());
 
 
         //items combo box init
         String[] tempitems = {"Save Ally", "Eat", "Shovel Snow", "Assemble flaregun" };
-         cbitems = new JComboBox(tempitems);
-         cbitems.addActionListener(new ItemActionChosenListener());
+        itemComboBox = new JComboBox(tempitems);
+        itemComboBox.addActionListener(new ItemActionChosenListener());
         
         //Hozzáadás a characterPanelhez
 
         charactersPanel.add(menuButton);
-        charactersPanel.add(Box.createRigidArea(new Dimension(0, 200)));
+        //charactersPanel.add(characterComboBox);
         
 
         // ActionPanel letrehozasa gombokkal
@@ -102,7 +105,7 @@ public class PlayPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            String s = (String) cbchars.getSelectedItem();
+            String s = (String) characterComboBox.getSelectedItem();
 
             for(int i = 0 ; i < m.characters.size(); i++){
                 if(m.characters.get(i).name.equals(s))
@@ -116,7 +119,7 @@ public class PlayPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            String s = (String) cbitems.getSelectedItem();
+            String s = (String) itemComboBox.getSelectedItem();
             
             switch(s) {
                 case "Save Ally":
