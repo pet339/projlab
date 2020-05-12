@@ -56,9 +56,11 @@ public class MenuView extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            Map m = new Map(new Game());
+            m.init();
             if (e.getActionCommand().equals(start.getActionCommand())) {
                 if (activePanel == null)
-                    activePanel = new PlayPanel();
+                    activePanel = new PlayPanel(m);
             }
             if (e.getActionCommand().equals(exit.getActionCommand()))
                 System.exit(0);
