@@ -22,15 +22,15 @@ import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.*;
-
+import static hu.bme.team5.MenuView.game;
 public class Menu extends JFrame{
-    static Game game = new Game();
 
     public Menu(){
 
         Scanner sc = new Scanner(System.in);
         int event = 0;
         boolean runningGame = true;
+
 
         game.startGame();
         printOptions();

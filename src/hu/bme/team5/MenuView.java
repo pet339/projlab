@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import static hu.bme.team5.Menu.game;
+import static hu.bme.team5.MenuView.game;
 
 public class MenuView extends JFrame {
 
@@ -17,6 +17,7 @@ public class MenuView extends JFrame {
     private JPanel jp = new JPanel();
     private JButton start = new JButton();
     private JButton exit = new JButton();
+    static Game game;
 
     public MenuView() {
         try {
@@ -166,6 +167,8 @@ public class MenuView extends JFrame {
 
             if (e.getActionCommand().equals(startGame.getActionCommand())) {
                 if (activePanel == null) {
+                    game = new Game();
+                    System.out.println(game.currentMap.characters.get(0));
                     activePanel = new PlayPanel(game.currentMap);
                     frame2.setVisible(false);
                 }

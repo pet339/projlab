@@ -2,7 +2,7 @@ package hu.bme.team5;
 
 import java.util.ArrayList;
 
-import static hu.bme.team5.Menu.game;
+import static hu.bme.team5.MenuView.game;
 
 public abstract class Field {
     //protected Map map; //A Fieldet tartalmazó map

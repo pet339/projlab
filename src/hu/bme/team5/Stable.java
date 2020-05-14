@@ -1,6 +1,6 @@
 package hu.bme.team5;
 
-import static hu.bme.team5.Menu.game;
+import static hu.bme.team5.MenuView.game;
 
 public class Stable extends Iceberg {
     public Stable() {

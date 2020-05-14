@@ -5,14 +5,16 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class PlayPanel {
-    Map m;
+    Map map;
     Character SelectedChar;
     JComboBox characterComboBox;
     JComboBox itemComboBox;
     public PlayPanel(Map m) {
+        System.out.println(m.characters.get(0));
+        this.map = m;
         SelectedChar = m.characters.get(0);
         JFrame mainFrame = new JFrame("North Pole");
-        this.m = m;
+
         //Characters Panel
         JPanel charactersPanel = new JPanel();
         charactersPanel.setLayout(new BoxLayout(charactersPanel, BoxLayout.Y_AXIS));
@@ -45,7 +47,7 @@ public class PlayPanel {
 
         charactersPanel.add(menuButton);
         //charactersPanel.add(characterComboBox);
-        
+
 
         // ActionPanel letrehozasa gombokkal
         JPanel actionPanel = new JPanel();
@@ -83,12 +85,6 @@ public class PlayPanel {
         mapPanel.setBounds(200,70,950,500);
 
 
-
-
-
-
-
-
         //mainFrame.add(mapPanel);
         mainFrame.add(hexagonMapPanel);
         mainFrame.add(actionPanel);
@@ -98,7 +94,6 @@ public class PlayPanel {
         mainFrame.setDefaultCloseOperation(mainFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);
         mainFrame.setSize(1200,800);
-
     }
 
     final class CharacterChangedActionListener implements ActionListener {
@@ -107,9 +102,9 @@ public class PlayPanel {
         public void actionPerformed(ActionEvent e) {
             String s = (String) characterComboBox.getSelectedItem();
 
-            for(int i = 0 ; i < m.characters.size(); i++){
-                if(m.characters.get(i).name.equals(s))
-                    SelectedChar = m.characters.get(i);
+            for(int i = 0 ; i < map.characters.size(); i++){
+                if(map.characters.get(i).name.equals(s))
+                    SelectedChar = map.characters.get(i);
             }
         }
 

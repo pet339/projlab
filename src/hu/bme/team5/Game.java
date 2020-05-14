@@ -23,8 +23,7 @@ public class Game extends JFrame {
         maps = new ArrayList<>();
         maps.add(currentMap);
         isActive = true;
-
-        initWindow();
+        //initWindow();
     }
 
     private void initWindow() {

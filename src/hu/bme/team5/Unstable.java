@@ -2,7 +2,7 @@ package hu.bme.team5;
 
 import java.util.Random;
 
-import static hu.bme.team5.Menu.game;
+import static hu.bme.team5.MenuView.game;
 
 public class Unstable extends Iceberg {
 
