@@ -1,5 +1,6 @@
 package hu.bme.team5;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import static hu.bme.team5.MenuView.game;
