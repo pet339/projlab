@@ -1,6 +1,7 @@
 package hu.bme.team5;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicBorders;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -105,13 +106,29 @@ public class PlayPanel {
         JPanel inventoryPanel = new JPanel();
         inventoryPanel.setBounds(800,75,370, 500);
 
+        inventoryPanel.setLayout(new GridLayout(4,3));
+        inventoryPanel.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
+
+        for (int i =0; i<(4*3); i++){
+            final JLabel label = new JLabel("Label");
+            label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            inventoryPanel.add(label);
+        }
+
+
+        //inventoryLabel.setFont(new Font("Serif", Font.BOLD, 24));
+        //inventoryLabel.setAlignmentX( Component.LEFT_ALIGNMENT );
+
+        //inventoryPanel.add(inventoryLabel);
+
+        JPanel inventoryTextPanel = new JPanel();
         JLabel inventoryLabel = new JLabel("Inventory");
-
-
         inventoryLabel.setFont(new Font("Serif", Font.BOLD, 24));
 
-        inventoryLabel.setAlignmentX( Component.LEFT_ALIGNMENT );
-        inventoryPanel.add(inventoryLabel);
+        inventoryTextPanel.setBounds(940,30,100,35);
+        inventoryTextPanel.add(inventoryLabel);
+
+
 
         // ItemPanel
         JPanel itemPanel = new JPanel();
@@ -142,6 +159,7 @@ public class PlayPanel {
         mainFrame.setVisible(true);
         mainFrame.setSize(1200,800);
 
+        mainFrame.add(inventoryTextPanel);
         mainFrame.add(infoPanel);
         mainFrame.add(menuPanel);
         mainFrame.add(charactersPanel);
