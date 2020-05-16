@@ -44,8 +44,9 @@ public class PlayPanel {
 
 
         //items combo box init
-        String[] tempitems = {"Save Ally", "Eat", "Shovel Snow", "Assemble flaregun" };
+        String[] tempitems = {"Rope", "Food", "Shovel", "Gun" };
         itemComboBox = new JComboBox(tempitems);
+        itemComboBox.setSize(100, itemComboBox.getPreferredSize().height);
         itemComboBox.addActionListener(new ItemActionChosenListener());
         
         //Hozzáadás a characterPanelhez
@@ -57,8 +58,8 @@ public class PlayPanel {
 
         // ActionPanel letrehozasa gombokkal
         JPanel actionPanel = new JPanel();
-        actionPanel.setBounds(180,600,800,50);
-        actionPanel.setLayout(new BoxLayout(actionPanel,BoxLayout.X_AXIS));
+        actionPanel.setBounds(0,400,300,200);
+        actionPanel.setLayout(new BoxLayout(actionPanel,BoxLayout.Y_AXIS));
 
 
         //ActionPanelhez gombok
@@ -68,16 +69,14 @@ public class PlayPanel {
         JButton useItemButton = new JButton("Use Item");
         JButton tradeButton = new JButton("Trade");
 
+        actionPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         actionPanel.add(spellButton);
-        actionPanel.add(Box.createRigidArea(new Dimension(60, 0)));
+        actionPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         actionPanel.add(moveButton);
-        actionPanel.add(Box.createRigidArea(new Dimension(60, 0)));
+        actionPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         actionPanel.add(useItemButton);
-        actionPanel.add(Box.createRigidArea(new Dimension(60, 0)));
+        actionPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         actionPanel.add(tradeButton);
-        actionPanel.add(Box.createRigidArea(new Dimension(60, 0)));
-        actionPanel.add(itemComboBox);
-
 
 
         //HexagonMap Panel létrehozása
@@ -99,7 +98,7 @@ public class PlayPanel {
         workLabel.setFont(new Font("Serif", Font.BOLD, 24));
 
         infoPanel.add(healthLabel);
-        infoPanel.add(Box.createRigidArea(new Dimension(0, 40)));
+        infoPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         infoPanel.add(workLabel);
 
         // InventoryPanel létrehozása
@@ -107,24 +106,36 @@ public class PlayPanel {
         inventoryPanel.setBounds(800,75,370, 500);
 
         JLabel inventoryLabel = new JLabel("Inventory");
+
+
         inventoryLabel.setFont(new Font("Serif", Font.BOLD, 24));
 
+        inventoryLabel.setAlignmentX( Component.LEFT_ALIGNMENT );
         inventoryPanel.add(inventoryLabel);
 
         // ItemPanel
         JPanel itemPanel = new JPanel();
-        itemPanel.setLayout(new BoxLayout(itemPanel,BoxLayout.Y_AXIS));
 
-        JLabel useItem = new JLabel("Make an action+");
+        itemPanel.setBounds(0,600,280,50);
+        itemPanel.setLayout(new BoxLayout(itemPanel,BoxLayout.X_AXIS));
+
+
+
+        JLabel useItem = new JLabel("Use Item:");
         useItem.setFont(new Font("Serif", Font.BOLD, 24));
 
-        itemPanel.setBounds(0,400,300,200);
-        //itemPanel.setBackground(Color.green);
 
-        itemPanel.add(Box.createRigidArea(new Dimension(0, 15)));
         itemPanel.add(useItem);
+
+        itemPanel.add(Box.createRigidArea(new Dimension(10, 0)));
         //Rossz meg, holnapra
-        //itemPanel.add(itemComboBox);
+
+        itemPanel.add(itemComboBox);
+
+        itemPanel.add(Box.createRigidArea(new Dimension(10, 0)));
+
+        JButton itemOk = new JButton("Ok");
+        itemPanel.add(itemOk);
 
 
         mainFrame.setDefaultCloseOperation(mainFrame.EXIT_ON_CLOSE);
