@@ -128,7 +128,7 @@ public class Map implements TurnBased {
 
     public ArrayList<ArrayList<Field>> FullInitTest(){
 
-        int mapsize = characters.size()*3;
+        int mapsize = characters.size()*2;
 
         ArrayList<ArrayList<Field>> TFields = new ArrayList<ArrayList<Field>>();
         
