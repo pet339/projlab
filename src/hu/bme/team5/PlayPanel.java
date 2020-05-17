@@ -22,16 +22,19 @@ public class PlayPanel {
         charactersPanel.setBounds(0,100,180,25);
 
 
-        JPanel menuPanel = new JPanel(new BorderLayout());
-        //menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.X_AXIS));
-        menuPanel.setBounds(0,0,180,25);
+        JPanel menuPanel = new JPanel();
+        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.X_AXIS));
+        menuPanel.setBounds(0,0,1300,30);
 
 
 
         //Gombok létrehozása a karakterPanelhez
-        JButton menuButton = new JButton("Menu");
+        JButton newGameButton = new JButton("New Game");
+        JButton exitGameButton = new JButton("Exit");
 
-        menuPanel.add(menuButton,BorderLayout.WEST);
+        menuPanel.add(newGameButton);
+        menuPanel.add(Box.createRigidArea(new Dimension(1016, 0)));
+        menuPanel.add(exitGameButton);
 
         //characters combo box init
         String[] tempchars = new String[m.characters.size()];
@@ -133,7 +136,7 @@ public class PlayPanel {
         // ItemPanel
         JPanel itemPanel = new JPanel();
 
-        itemPanel.setBounds(0,600,280,50);
+        itemPanel.setBounds(0,600,600,50);
         itemPanel.setLayout(new BoxLayout(itemPanel,BoxLayout.X_AXIS));
 
 
@@ -151,13 +154,17 @@ public class PlayPanel {
 
         itemPanel.add(Box.createRigidArea(new Dimension(10, 0)));
 
-        JButton itemOk = new JButton("Ok");
-        itemPanel.add(itemOk);
+        JButton itemOkButton = new JButton("Ok");
+        itemPanel.add(itemOkButton);
+
+        JButton endTurnButton = new JButton("End Turn");
+        itemPanel.add(Box.createRigidArea(new Dimension(150, 0)));
+        itemPanel.add(endTurnButton);
 
 
         mainFrame.setDefaultCloseOperation(mainFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);
-        mainFrame.setSize(1200,800);
+        mainFrame.setSize(1185,690);
 
         mainFrame.add(inventoryTextPanel);
         mainFrame.add(infoPanel);
