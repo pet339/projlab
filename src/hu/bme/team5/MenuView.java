@@ -4,31 +4,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-
-import static hu.bme.team5.MenuView.game;
 
 public class MenuView extends JFrame {
 
     private PlayPanel activePanel = null;
     private JButton startGame = new JButton("Start playing");
-    private JFrame frame = new JFrame("Menu");
-    private JFrame frame2 = new JFrame("Choose characters");
-    private JPanel jp = new JPanel();
-    private JButton start = new JButton();
-    private JButton exit = new JButton();
+    private JFrame frame = new JFrame("North Pole");
     static Game game;
 
     public MenuView() {
-        try {
-            initFrame();
-            initFrame2();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        initframe();
     }
 
-    void initFrame2() {
+    void initframe() {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         startGame.addActionListener(new ActionMenuButtonListener());
@@ -37,8 +25,9 @@ public class MenuView extends JFrame {
         JPanel jPanel = new JPanel();
         JLabel label = new JLabel(("Number of characters: "));
         JComboBox comboBox = new JComboBox();
-        for (int i = 0; i < 5; i++)
-            comboBox.addItem(i + 1);
+        comboBox.addItem(3);
+        comboBox.addItem(4);
+        comboBox.addItem(5);
         jPanel.add(label);
         jPanel.add(comboBox);
 
@@ -118,59 +107,25 @@ public class MenuView extends JFrame {
         panel.add(jPanel4);
         panel.add(jPanel5);
 
-        frame2.add(startGame, BorderLayout.SOUTH);
-        frame2.add(panel, BorderLayout.CENTER);
-        frame2.setSize(700, 500);
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    void initFrame() throws IOException {
-
-        start.addActionListener(new MenuView.ActionMenuButtonListener());
-        exit.addActionListener(new MenuView.ActionMenuButtonListener());
-
-
-        start.setText("Start");
-        exit.setText("Exit");
-
-        start.add(Box.createRigidArea(new Dimension(50, 10)));
-        exit.add(Box.createRigidArea(new Dimension(50, 10)));
-
-
-        jp.add(Box.createRigidArea(new Dimension(50, 100)));
-        jp.add(start);
-        jp.add(Box.createRigidArea(new Dimension(50, 30)));
-        jp.add(exit);
-
-        start.setAlignmentX(CENTER_ALIGNMENT);
-        exit.setAlignmentX(CENTER_ALIGNMENT);
-
-        jp.setLayout(new BoxLayout(jp, BoxLayout.Y_AXIS));
-        jp.setBackground(new Color(0, 255, 255));
-        frame.add(jp, BorderLayout.CENTER);
-        frame.setSize(400, 500);
+        frame.add(startGame, BorderLayout.SOUTH);
+        frame.add(panel, BorderLayout.CENTER);
+        frame.setSize(700, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
+
 
     final class ActionMenuButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getActionCommand().equals(start.getActionCommand())) {
-
-                frame2.setVisible(true);
-                frame.setVisible(false);
-            }
-            if (e.getActionCommand().equals(exit.getActionCommand()))
-                System.exit(0);
 
             if (e.getActionCommand().equals(startGame.getActionCommand())) {
                 if (activePanel == null) {
                     game = new Game();
                     System.out.println(game.currentMap.characters.get(0));
                     activePanel = new PlayPanel(game.currentMap);
-                    frame2.setVisible(false);
+                    frame.setVisible(false);
                 }
             }
         }
