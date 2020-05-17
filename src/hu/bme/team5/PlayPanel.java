@@ -4,12 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class PlayPanel {
     Map map;
     Character SelectedChar;
     JComboBox characterComboBox;
     JComboBox itemComboBox;
+
+    Field selectedField = null;
+
     JLabel healthLabel = new JLabel("Health: 0");
     JLabel workLabel = new JLabel("Work: 0");
     JButton itemOkButton = new JButton("Ok");
@@ -21,9 +26,12 @@ public class PlayPanel {
 
     JFrame mainFrame = new JFrame("North Pole");
 
+    HexagonMapPanel hexagonMapPanel = null;
+
     public PlayPanel(Map m) {
         System.out.println(m.characters.get(0));
         this.map = m;
+        hexagonMapPanel = new HexagonMapPanel(m);
         SelectedChar = m.characters.get(0);
         healthLabel.setText("Health: " + SelectedChar.health);
         workLabel.setText("Work: " + SelectedChar.work);
@@ -101,7 +109,6 @@ public class PlayPanel {
 
 
         //HexagonMap Panel létrehozása
-        HexagonMapPanel hexagonMapPanel = new HexagonMapPanel(m);
         hexagonMapPanel.setBounds(180,50,600,550);
         //InfoPanel létrehozása
         JPanel infoPanel = new JPanel();
@@ -170,6 +177,7 @@ public class PlayPanel {
         itemOkButton.setActionCommand("Ok");
         itemOkButton.addActionListener(new ItemActionChosenListener());
         itemPanel.add(itemOkButton);
+
 
         endTurnButton.setActionCommand("End Turn");
         endTurnButton.addActionListener(new ButtonListener());
@@ -251,6 +259,38 @@ public class PlayPanel {
 
     }
 
+    final class MouseClickedListener implements MouseListener {
+
+        @Override
+        public void mouseClicked(MouseEvent mouseEvent) {
+            for (Field f : map.fields) {
+                if (f.p.contains(mouseEvent.getX(), mouseEvent.getY())) {
+                    selectedField = f;
+                }
+            }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent mouseEvent) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent mouseEvent) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent mouseEvent) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent mouseEvent) {
+
+        }
+    }
+
     final class ButtonListener implements ActionListener {
 
         @Override
@@ -262,16 +302,20 @@ public class PlayPanel {
                 MenuView menuView = new MenuView();
             }
             if (e.getActionCommand().equals("Spell")) {
-                //SelectedChar.spell()
+                SelectedChar.Spell(SelectedChar.currentField);
                 workLabel.setText("Work: " + SelectedChar.work);
             }
             if (e.getActionCommand().equals("Move")) {
-                //SelectedChar.move()
-                workLabel.setText("Work: " + SelectedChar.work);
+                if (selectedField != null) {
+                    SelectedChar.move(selectedField);
+                    workLabel.setText("Work: " + SelectedChar.work);
+                }
+
             }
             if (e.getActionCommand().equals("Trade")) {
                 //SelectedChar.trade();
                 workLabel.setText("Work: " + SelectedChar.work);
+
             }
             if (e.getActionCommand().equals("End Turn")) {
                 map.endTurn();
