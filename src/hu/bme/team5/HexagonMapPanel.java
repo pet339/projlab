@@ -5,17 +5,53 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class HexagonMapPanel extends JPanel {
-    ArrayList<HexaField> hexafields = new ArrayList<HexaField>();
+    //ArrayList<HexaField> hexafields = new ArrayList<HexaField>();
+    Map m;
+    ArrayList<ArrayList<Field>> fields;
 
     public HexagonMapPanel(Map m){
         setPreferredSize(new Dimension(200, 200));
-
-        
-
+        this.m = m ;
+        fields = m.FullInitTest();
         
     }
 
     public void paintComponent(Graphics g){
+
+        
+        int rowshift = 0;
+        int shift2 = 0;
+        int r = 28;
+        System.out.println(fields.size());
+        for(int i = 0 ; i < fields.size(); i++){
+            
+            System.out.println(fields.get(i).size());
+            shift2 = r;
+            for(int j = 0 ; j < fields.get(i).size(); j++){
+                if(fields.get(i).get(j).characters.size()!=0)
+                    g.setColor(Color.RED);
+                
+
+                g.drawPolygon(createPolygon(40+i*45+rowshift+shift2,20+j*45+rowshift+shift2,r));
+                shift2+=r;
+                g.setColor(Color.BLACK);
+            }
+            rowshift += 20;
+            shift2 = 0;
+        }
+    }
+
+
+    
+    public Polygon createPolygon(int x, int y, int r){
+        Polygon p = new Polygon();
+        for (int i = 0; i < 6; i++)
+            p.addPoint((int) (x + r * Math.cos(i * 2 * Math.PI / 6)),
+                    (int) (y + r * Math.sin(i * 2 * Math.PI / 6)));
+        return p;
+    }
+
+    public void akospaint(Graphics g) {
         super.paintComponent(g);
         int r = 52;
         
@@ -63,12 +99,5 @@ public class HexagonMapPanel extends JPanel {
         g.drawPolygon(createPolygon(240 + shift + 10*r- r/4 *5,300 - 3*r ,r));
         g.drawPolygon(createPolygon(240 + shift + 10*r- r/4 *5,300 - 1*r ,r));
         g.drawPolygon(createPolygon(240 + shift + 10*r- r/4 *5,300 + r ,r));
-    }
-    public Polygon createPolygon(int x, int y, int r){
-        Polygon p = new Polygon();
-        for (int i = 0; i < 6; i++)
-            p.addPoint((int) (x + r * Math.cos(i * 2 * Math.PI / 6)),
-                    (int) (y + r * Math.sin(i * 2 * Math.PI / 6)));
-        return p;
     }
 }
