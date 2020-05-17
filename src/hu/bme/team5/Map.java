@@ -1,5 +1,6 @@
 package hu.bme.team5;
 
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -25,87 +26,193 @@ public class Map implements TurnBased {
     public void init() {
         // Field-ek létrehozása
         Stable field1 = new Stable();
-        Unstable field2 = new Unstable();
+        Stable field2 = new Stable();
         Stable field3 = new Stable();
-        Stable field4 = new Stable();
-        Hole field5 = new Hole();
-        Stable field6 = new Stable();
+        Hole field4 = new Hole();
+        Unstable field5 = new Unstable();
+        Unstable field6 = new Unstable();
         Stable field7 = new Stable();
-        Unstable field8 = new Unstable();
+        Stable field8 = new Stable();
+        Stable field9 = new Stable();
+        Hole field10 = new Hole();
+        Unstable field11 = new Unstable();
+        Unstable field12 = new Unstable();
+        Stable field13 = new Stable();
+        Unstable field14 = new Unstable();
+        Stable field15 = new Stable();
+        Stable field16 = new Stable();
+        Stable field17 = new Stable();
+        Hole field18 = new Hole();
+        Stable field19 = new Stable();
 
-        field1.capacity = 1;
-        field8.capacity = 1;
-        //Szomszédokkal összekötés
-
-        //Field1
+        //1
         field1.addNeighbor(field2);
         field1.addNeighbor(field3);
+        field1.addNeighbor(field4);
 
-        //Field2
+        //2
         field2.addNeighbor(field1);
-        field2.addNeighbor(field3);
         field2.addNeighbor(field4);
         field2.addNeighbor(field5);
 
-        //Field3
+        //3
         field3.addNeighbor(field1);
-        field3.addNeighbor(field2);
-        field3.addNeighbor(field5);
+        field3.addNeighbor(field4);
         field3.addNeighbor(field6);
+        field3.addNeighbor(field7);
 
-        //Field4
+        //4
+        field4.addNeighbor(field1);
         field4.addNeighbor(field2);
+        field4.addNeighbor(field3);
         field4.addNeighbor(field5);
+        field4.addNeighbor(field7);
         field4.addNeighbor(field8);
 
-        //Field5
+        //5
         field5.addNeighbor(field2);
-        field5.addNeighbor(field3);
         field5.addNeighbor(field4);
-        field5.addNeighbor(field6);
-        field5.addNeighbor(field7);
         field5.addNeighbor(field8);
+        field5.addNeighbor(field9);
 
-        //Field6
+        //6
         field6.addNeighbor(field3);
-        field6.addNeighbor(field5);
         field6.addNeighbor(field7);
+        field6.addNeighbor(field10);
 
-        //Field7
-        field7.addNeighbor(field5);
+        //7
+        field7.addNeighbor(field3);
+        field7.addNeighbor(field4);
         field7.addNeighbor(field6);
         field7.addNeighbor(field8);
+        field7.addNeighbor(field10);
+        field7.addNeighbor(field11);
 
-        //Field8
+        //8
         field8.addNeighbor(field4);
         field8.addNeighbor(field5);
         field8.addNeighbor(field7);
+        field8.addNeighbor(field9);
+        field8.addNeighbor(field11);
+        field8.addNeighbor(field12);
 
+        //9
+        field9.addNeighbor(field5);
+        field9.addNeighbor(field8);
+        field9.addNeighbor(field12);
+        field9.addNeighbor(field13);
 
+        //10
+        field10.addNeighbor(field6);
+        field10.addNeighbor(field7);
+        field10.addNeighbor(field11);
+        field10.addNeighbor(field14);
+        field10.addNeighbor(field15);
+
+        //11
+        field11.addNeighbor(field7);
+        field11.addNeighbor(field8);
+        field11.addNeighbor(field10);
+        field11.addNeighbor(field12);
+        field11.addNeighbor(field15);
+        field11.addNeighbor(field16);
+
+        //12
+        field12.addNeighbor(field8);
+        field12.addNeighbor(field9);
+        field12.addNeighbor(field11);
+        field12.addNeighbor(field13);
+        field12.addNeighbor(field16);
+
+        //13
+        field13.addNeighbor(field9);
+        field13.addNeighbor(field12);
+
+        //14
+        field14.addNeighbor(field10);
+        field14.addNeighbor(field15);
+        field14.addNeighbor(field17);
+
+        //15
+        field15.addNeighbor(field10);
+        field15.addNeighbor(field11);
+        field15.addNeighbor(field14);
+        field15.addNeighbor(field16);
+        field15.addNeighbor(field17);
+        field15.addNeighbor(field18);
+
+        //16
+        field16.addNeighbor(field11);
+        field16.addNeighbor(field12);
+        field16.addNeighbor(field15);
+        field16.addNeighbor(field18);
+        field16.addNeighbor(field19);
+
+        //17
+        field17.addNeighbor(field14);
+        field17.addNeighbor(field15);
+        field17.addNeighbor(field18);
+
+        //18
+        field18.addNeighbor(field15);
+        field18.addNeighbor(field16);
+        field18.addNeighbor(field17);
+        field18.addNeighbor(field19);
+
+        //19
+        field19.addNeighbor(field16);
+        field19.addNeighbor(field18);
 
         // Jegesmedve létrehozása
         PolarBear bear = new PolarBear();
         bears.add(bear);
-        bear.currentField = field4;
-        field4.polarBear = true;
+        bear.currentField = field7;
+        field7.polarBear = true;
 
         // Item-ek létrehozása
-        DivingSuit divingSuit = new DivingSuit();
-        Tent tent = new Tent();
+        Food food1 = new Food();
+        Food food2 = new Food();
+        Food food3 = new Food();
+
         Shovel shovel = new Shovel();
+        FragileShovel fragileShovel1 = new FragileShovel();
+        FragileShovel fragileShovel2 = new FragileShovel();
+
         Flare flare = new Flare();
-        Rope rope = new Rope();
-        Charge charge = new Charge();
         Gun gun = new Gun();
+        Rope rope = new Rope();
+        Tent tent = new Tent();
+        DivingSuit divingSuit = new DivingSuit();
+        Charge charge = new Charge();
+
 
         // Item-ek elhelyezése
+
+        //1. oszlop
         field1.setFrozenItem(flare);
         field2.setFrozenItem(shovel);
-        field3.setFrozenItem(tent);
-        field4.setFrozenItem(rope);
-        field6.setFrozenItem(charge);
-        field7.setFrozenItem(gun);
-        field8.setFrozenItem(divingSuit);
+
+        //2. oszlop
+        field3.setFrozenItem(fragileShovel1);
+        field5.setFrozenItem(food1);
+
+        //3. oszlop
+        field6.setFrozenItem(food2);
+        field9.setFrozenItem(rope);
+
+        //4. oszlop
+        field11.setFrozenItem(gun);
+        field13.setFrozenItem(food3);
+
+        //5. oszlop
+        field14.setFrozenItem(tent);
+        field16.setFrozenItem(fragileShovel2);
+
+        //6. oszlop
+        field17.setFrozenItem(divingSuit);
+        field19.setFrozenItem(charge);
+
+
 
         //Fieldek hozzáadása a pályához
         fields.add(field1);
@@ -116,15 +223,28 @@ public class Map implements TurnBased {
         fields.add(field6);
         fields.add(field7);
         fields.add(field8);
+        fields.add(field9);
+        fields.add(field10);
+        fields.add(field11);
+        fields.add(field12);
+        fields.add(field13);
+        fields.add(field14);
+        fields.add(field15);
+        fields.add(field16);
+        fields.add(field17);
+        fields.add(field18);
+        fields.add(field19);
+
+
+
+
 
 
         for (Field f : fields){
             f.map = this;
         }
-        ArrayList<ArrayList<Field>> Test = FullInitTest();
+        //ArrayList<ArrayList<Field>> Test = FullInitTest();
     }
-
-
 
     public ArrayList<ArrayList<Field>> FullInitTest(){
 
