@@ -60,35 +60,36 @@ public class HexagonMapPanel extends JPanel {
     public void MapDrawInit() {
         int r = 52;
         int shift = -180;
-        m.fields.get(0).setPolygon(createPolygon(240 + shift,300 - 2* r,r));
-        m.fields.get(1).setPolygon(createPolygon(240 + shift,300,r));
+        int shifty = -50;
+        m.fields.get(0).setPolygon(createPolygon(240 + shift,300 - 2* r + shifty,r));
+        m.fields.get(1).setPolygon(createPolygon(240 + shift,300+ shifty,r));
 
 
-        m.fields.get(2).setPolygon(createPolygon(240 + shift + 2*r- r/4,300 - 3*r ,r));
-        m.fields.get(3).setPolygon(createPolygon(240 + shift + 2*r- r/4,300-r,r));
-        m.fields.get(4).setPolygon(createPolygon(240 + shift + 2*r- r/4,300+r,r));
+        m.fields.get(2).setPolygon(createPolygon(240 + shift + 2*r- r/4,300 - 3*r+ shifty ,r));
+        m.fields.get(3).setPolygon(createPolygon(240 + shift + 2*r- r/4,300-r+ shifty,r));
+        m.fields.get(4).setPolygon(createPolygon(240 + shift + 2*r- r/4,300+r+ shifty,r));
 
 
-        m.fields.get(5).setPolygon(createPolygon(240 + shift + 4*r- r/2,300 - 4*r ,r));
-        m.fields.get(6).setPolygon(createPolygon(240 + shift + 4*r- r/2,300 - 2*r ,r));
-        m.fields.get(7).setPolygon(createPolygon(240 + shift + 4*r- r/2,300,r));
-        m.fields.get(8).setPolygon(createPolygon(240 + shift + 4*r- r/2,300 + 2*r,r));
+        m.fields.get(5).setPolygon(createPolygon(240 + shift + 4*r- r/2,300 - 4*r+ shifty ,r));
+        m.fields.get(6).setPolygon(createPolygon(240 + shift + 4*r- r/2,300 - 2*r+ shifty ,r));
+        m.fields.get(7).setPolygon(createPolygon(240 + shift + 4*r- r/2,300+ shifty,r));
+        m.fields.get(8).setPolygon(createPolygon(240 + shift + 4*r- r/2,300 + 2*r+ shifty,r));
 
 
-        m.fields.get(9).setPolygon(createPolygon(240 + shift + 6*r- r/4 *3,300 - 3*r ,r));
-        m.fields.get(10).setPolygon(createPolygon(240 + shift + 6*r- r/4 *3,300-r,r));
-        m.fields.get(11).setPolygon(createPolygon(240 + shift + 6*r- r/4 *3,300+r,r));
-        m.fields.get(12).setPolygon(createPolygon(240 + shift + 6*r- r/4 *3,300 + 3*r ,r));
+        m.fields.get(9).setPolygon(createPolygon(240 + shift + 6*r- r/4 *3,300 - 3*r+ shifty ,r));
+        m.fields.get(10).setPolygon(createPolygon(240 + shift + 6*r- r/4 *3,300-r+ shifty,r));
+        m.fields.get(11).setPolygon(createPolygon(240 + shift + 6*r- r/4 *3,300+r+ shifty,r));
+        m.fields.get(12).setPolygon(createPolygon(240 + shift + 6*r- r/4 *3,300 + 3*r+ shifty ,r));
 
 
-        m.fields.get(13).setPolygon(createPolygon(240 + shift + 8*r- r,300 - 4*r ,r));
-        m.fields.get(14).setPolygon(createPolygon(240 + shift + 8*r- r,300 - 2*r ,r));
-        m.fields.get(15).setPolygon(createPolygon(240 + shift + 8*r- r,300,r));
+        m.fields.get(13).setPolygon(createPolygon(240 + shift + 8*r- r,300 - 4*r+ shifty ,r));
+        m.fields.get(14).setPolygon(createPolygon(240 + shift + 8*r- r,300 - 2*r + shifty,r));
+        m.fields.get(15).setPolygon(createPolygon(240 + shift + 8*r- r,300+ shifty,r));
 
         
-        m.fields.get(16).setPolygon(createPolygon(240 + shift + 10*r- r/4 *5,300 - 3*r ,r));
-        m.fields.get(17).setPolygon(createPolygon(240 + shift + 10*r- r/4 *5,300 - 1*r ,r));
-        m.fields.get(18).setPolygon(createPolygon(240 + shift + 10*r- r/4 *5,300 + r ,r));
+        m.fields.get(16).setPolygon(createPolygon(240 + shift + 10*r- r/4 *5,300 - 3*r+ shifty ,r));
+        m.fields.get(17).setPolygon(createPolygon(240 + shift + 10*r- r/4 *5,300 - 1*r+ shifty ,r));
+        m.fields.get(18).setPolygon(createPolygon(240 + shift + 10*r- r/4 *5,300 + r+ shifty ,r));
         
     }
 

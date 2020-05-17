@@ -10,9 +10,9 @@ import java.awt.event.MouseListener;
 public class PlayPanel {
     Map map;
     Character SelectedChar;
-    JComboBox characterComboBox;
+    JComboBox characterComboBox, characterComboBox2;
     JComboBox tradeCharacterComboBox;
-    JComboBox itemComboBox;
+    JComboBox itemComboBox, itemComboBox2;
 
     Field selectedField = null;
 
@@ -22,7 +22,6 @@ public class PlayPanel {
 
     JButton spellButton = new JButton("Spell");
     JButton moveButton = new JButton("Move");
-    JButton tradeButton = new JButton("Trade");
     JButton endTurnButton = new JButton("End Turn");
 
     JFrame mainFrame = new JFrame("North Pole");
@@ -87,7 +86,7 @@ public class PlayPanel {
 
         // ActionPanel letrehozasa gombokkal
         JPanel actionPanel = new JPanel();
-        actionPanel.setBounds(0, 400, 300, 200);
+        actionPanel.setBounds(0, 400, 300, 100);
         actionPanel.setLayout(new BoxLayout(actionPanel, BoxLayout.Y_AXIS));
 
 
@@ -98,21 +97,19 @@ public class PlayPanel {
         moveButton.setActionCommand("Move");
         moveButton.addActionListener(new ButtonListener());
 
-        tradeButton.setActionCommand("Trade");
-        tradeButton.addActionListener(new ButtonListener());
+
 
         actionPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         actionPanel.add(spellButton);
         actionPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         actionPanel.add(moveButton);
         actionPanel.add(Box.createRigidArea(new Dimension(0, 20)));
-        actionPanel.add(tradeButton);
 
         //HexagonMap Panel létrehozása
         hexagonMapPanel.setBounds(180,50,600,550);
         //InfoPanel létrehozása
         JPanel infoPanel = new JPanel();
-        infoPanel.setBounds(0,250,180,170);
+        infoPanel.setBounds(0,150,180,100);
 
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
 
@@ -122,8 +119,22 @@ public class PlayPanel {
         workLabel.setFont(new Font("Serif", Font.BOLD, 24));
 
         infoPanel.add(healthLabel);
-        infoPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+        infoPanel.add(Box.createRigidArea(new Dimension(0, 7)));
         infoPanel.add(workLabel);
+
+
+        //MessagePanel
+        JPanel messagePanel = new JPanel();
+        messagePanel.setLayout(new BoxLayout(messagePanel, BoxLayout.Y_AXIS));
+        JLabel messageLabel = new JLabel("Message:");
+        messageLabel.setFont(new Font("Serif", Font.BOLD, 24));
+
+        messagePanel.setBounds(0,280,180,200);
+        messagePanel.add(messageLabel);
+
+        messagePanel.add(Box.createRigidArea(new Dimension(0, 15)));
+        JLabel messageInformLabel = new JLabel("Keep Playing!");
+        messagePanel.add(messageInformLabel);
 
         // InventoryPanel létrehozása
         JPanel inventoryPanel = new JPanel();
@@ -151,15 +162,43 @@ public class PlayPanel {
         inventoryTextPanel.setBounds(940,30,100,35);
         inventoryTextPanel.add(inventoryLabel);
 
+        //TradeItem Panel
+        JPanel tradeItemPanel = new JPanel();
+        tradeItemPanel.setLayout(new BoxLayout(tradeItemPanel, BoxLayout.X_AXIS));
+        JLabel tradeItem = new JLabel("Trade:");
+        tradeItem.setFont(new Font("Serif", Font.BOLD, 24));
+
+        tradeItemPanel.setBounds(0,520,610,50);
+
+        tradeItemPanel.add(tradeItem);
+        tradeItemPanel.add(Box.createRigidArea(new Dimension(36, 0)));
+        String[] tempchars2 = new String[m.characters.size()];
+        for (int i = 0; i < m.characters.size(); i++) {
+            tempchars[i] = m.characters.get(i).name;
+        }
+
+        characterComboBox2 = new JComboBox(tempchars);
+        characterComboBox2.setSize(100, characterComboBox.getPreferredSize().height);
+        tradeItemPanel.add(characterComboBox2);
+
+        tradeItemPanel.add(Box.createRigidArea(new Dimension(70, 0)));
+        itemComboBox2 = new JComboBox(tempchars);
+        tradeItemPanel.add(itemComboBox2);
+
+        tradeItemPanel.add(Box.createRigidArea(new Dimension(10, 0)));
+        JButton tradeOkButton = new JButton("Ok");
+        tradeItemPanel.add(tradeOkButton);
+
+
+
+
 
 
         // ItemPanel
         JPanel itemPanel = new JPanel();
 
-        itemPanel.setBounds(0,600,600,50);
+        itemPanel.setBounds(0,600,747,50);
         itemPanel.setLayout(new BoxLayout(itemPanel,BoxLayout.X_AXIS));
-
-
 
         JLabel useItem = new JLabel("Use Item:");
         useItem.setFont(new Font("Serif", Font.BOLD, 24));
@@ -181,7 +220,7 @@ public class PlayPanel {
 
         endTurnButton.setActionCommand("End Turn");
         endTurnButton.addActionListener(new ButtonListener());
-        itemPanel.add(Box.createRigidArea(new Dimension(150, 0)));
+        itemPanel.add(Box.createRigidArea(new Dimension(50, 0)));
         itemPanel.add(endTurnButton);
 
 
@@ -189,6 +228,8 @@ public class PlayPanel {
         mainFrame.setVisible(true);
         mainFrame.setSize(1185, 690);
 
+
+        mainFrame.add(tradeItemPanel);
         mainFrame.add(inventoryTextPanel);
         mainFrame.add(infoPanel);
         mainFrame.add(menuPanel);
@@ -197,6 +238,9 @@ public class PlayPanel {
         mainFrame.add(actionPanel);
         mainFrame.add(inventoryPanel);
         mainFrame.add(itemPanel);
+        mainFrame.add(messagePanel);
+
+
 
         //csak hogy ne romoljon el az utolsonal
         JPanel empty = new JPanel();
