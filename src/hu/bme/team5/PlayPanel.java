@@ -11,6 +11,7 @@ public class PlayPanel {
     Map map;
     Character SelectedChar;
     JComboBox characterComboBox;
+    JComboBox tradeCharacterComboBox;
     JComboBox itemComboBox;
 
     Field selectedField = null;
@@ -84,7 +85,6 @@ public class PlayPanel {
 
         charactersPanel.add(characterComboBox,BorderLayout.WEST);
 
-
         // ActionPanel letrehozasa gombokkal
         JPanel actionPanel = new JPanel();
         actionPanel.setBounds(0, 400, 300, 200);
@@ -107,7 +107,6 @@ public class PlayPanel {
         actionPanel.add(moveButton);
         actionPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         actionPanel.add(tradeButton);
-
 
         //HexagonMap Panel létrehozása
         hexagonMapPanel.setBounds(180,50,600,550);
