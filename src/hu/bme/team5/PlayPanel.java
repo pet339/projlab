@@ -14,6 +14,11 @@ public class PlayPanel {
     JLabel workLabel = new JLabel("Work: 0");
     JButton itemOkButton = new JButton("Ok");
 
+    JButton spellButton = new JButton("Spell");
+    JButton moveButton = new JButton("Move");
+    JButton tradeButton = new JButton("Trade");
+    JButton endTurnButton = new JButton("End Turn");
+
     JFrame mainFrame = new JFrame("North Pole");
 
     public PlayPanel(Map m) {
@@ -71,19 +76,21 @@ public class PlayPanel {
         charactersPanel.add(characterComboBox,BorderLayout.WEST);
 
 
-
         // ActionPanel letrehozasa gombokkal
         JPanel actionPanel = new JPanel();
-        actionPanel.setBounds(0,400,300,200);
-        actionPanel.setLayout(new BoxLayout(actionPanel,BoxLayout.Y_AXIS));
+        actionPanel.setBounds(0, 400, 300, 200);
+        actionPanel.setLayout(new BoxLayout(actionPanel, BoxLayout.Y_AXIS));
 
 
         //ActionPanelhez gombok
-        
-        JButton spellButton = new JButton("Spell");
-        JButton moveButton = new JButton("Move");
+        spellButton.setActionCommand("Spell");
+        spellButton.addActionListener(new ButtonListener());
 
-        JButton tradeButton = new JButton("Trade");
+        moveButton.setActionCommand("Move");
+        moveButton.addActionListener(new ButtonListener());
+
+        tradeButton.setActionCommand("Trade");
+        tradeButton.addActionListener(new ButtonListener());
 
         actionPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         actionPanel.add(spellButton);
@@ -164,7 +171,8 @@ public class PlayPanel {
         itemOkButton.addActionListener(new ItemActionChosenListener());
         itemPanel.add(itemOkButton);
 
-        JButton endTurnButton = new JButton("End Turn");
+        endTurnButton.setActionCommand("End Turn");
+        endTurnButton.addActionListener(new ButtonListener());
         itemPanel.add(Box.createRigidArea(new Dimension(150, 0)));
         itemPanel.add(endTurnButton);
 
@@ -252,6 +260,21 @@ public class PlayPanel {
             if (e.getActionCommand().equals("New Game")) {
                 mainFrame.setVisible(false);
                 MenuView menuView = new MenuView();
+            }
+            if (e.getActionCommand().equals("Spell")) {
+                //SelectedChar.spell()
+                workLabel.setText("Work: " + SelectedChar.work);
+            }
+            if (e.getActionCommand().equals("Move")) {
+                //SelectedChar.move()
+                workLabel.setText("Work: " + SelectedChar.work);
+            }
+            if (e.getActionCommand().equals("Trade")) {
+                //SelectedChar.trade();
+                workLabel.setText("Work: " + SelectedChar.work);
+            }
+            if (e.getActionCommand().equals("End Turn")) {
+                map.endTurn();
             }
 
         }
