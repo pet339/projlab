@@ -26,7 +26,7 @@ public abstract class Field {
         neighbors = new ArrayList<>();
         igloo = false;
         tent = false;
-        snowSize = 3;
+        snowSize = 2;
     }
 
     //Fieldre lépés lekezelése

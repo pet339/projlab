@@ -41,12 +41,15 @@ public class Hole extends Field {
 
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(new Color(0, 105, 148));
+        
+        g2.fillPolygon(p);
+
         if(snowSize!=0){
-            g2.setColor(new Color(211,211,211));
+            g2.setColor(new Color(138,195,209));
             g2.setStroke(new BasicStroke(10));
+           
             g2.drawPolygon(p);
         }
-        g2.fillPolygon(p);
         
     }
 }
