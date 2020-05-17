@@ -4,6 +4,15 @@ public class Explorer extends Character {
     public Explorer() {
         super();
         health = 4;
+        this.work = 4;
+
+    }
+
+    public Explorer(String name) {
+        super();
+        health = 4;
+        this.work = 4;
+        this.name = name;
     }
 
     //Felderít egy paraméterként kapott jégtáblát

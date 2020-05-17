@@ -12,6 +12,10 @@ public abstract class Character implements TurnBased, Controllable {
     public Character() {
         inventory = new Inventory();
     }
+    public Character(String name){
+        this.name = name;
+        inventory = new Inventory();
+    }
 
 
     public void printState() {

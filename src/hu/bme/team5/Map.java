@@ -14,9 +14,9 @@ public class Map implements TurnBased {
 
     boolean stormIsComing = false;
     // Map konstruktora, létrehozza a pályák és a characterek listáját
-    public Map(Game g1) {
+    public Map(Game g1, ArrayList<Character> characters) {
         fields = new ArrayList<Field>();
-        characters = new ArrayList<Character>();
+        this.characters = characters;
         bears = new ArrayList<PolarBear>();
         game = g1;
         init();
@@ -81,22 +81,6 @@ public class Map implements TurnBased {
         field8.addNeighbor(field5);
         field8.addNeighbor(field7);
 
-        // Karakterek létrehozása
-        Eskimo eskimo1 = new Eskimo();
-        eskimo1.name = "Eszkimo1";
-        eskimo1.setWork(4);
-        eskimo1.inventory.addItem(new Food());
-
-        Explorer explorer1 = new Explorer();
-        explorer1.name ="Explorer1";
-        explorer1.setWork(4);
-        explorer1.inventory.addItem(new Food());
-
-        eskimo1.currentField = field1;
-        explorer1.currentField = field7;
-
-        field1.characters.add(eskimo1);
-        field7.characters.add(explorer1);
 
 
         // Jegesmedve létrehozása
@@ -133,8 +117,6 @@ public class Map implements TurnBased {
         fields.add(field7);
         fields.add(field8);
 
-        characters.add(eskimo1);
-        characters.add(explorer1);
 
         for (Field f : fields){
             f.map = this;

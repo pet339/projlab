@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuView extends JFrame {
 
@@ -11,7 +13,9 @@ public class MenuView extends JFrame {
     private JButton startGame = new JButton("Start playing");
     private JFrame frame = new JFrame("North Pole");
     static Game game;
-    JPanel jPanel3, jPanel4, jPanel5;
+    JPanel jPanel1, jPanel2, jPanel3, jPanel4, jPanel5;
+    JTextArea textArea1, textArea2, textArea3, textArea4, textArea5;
+    JComboBox comboBox1, comboBox2, comboBox3, comboBox4, comboBox5;
 
     JComboBox comboBox;
     public MenuView() {
@@ -36,13 +40,13 @@ public class MenuView extends JFrame {
 
         //int numberOfCharacters = (int) comboBox.getSelectedItem();
 
-        JPanel jPanel1 = new JPanel();
+        jPanel1 = new JPanel();
         JLabel label1 = new JLabel("Character 1:");
-        JComboBox comboBox1 = new JComboBox();
+        comboBox1 = new JComboBox();
         comboBox1.addItem("Explorer");
         comboBox1.addItem("Eskimo");
         JLabel label1_2 = new JLabel("Name:");
-        JTextArea textArea1 = new JTextArea("Dora");
+        textArea1 = new JTextArea("Dora");
         textArea1.setPreferredSize(new Dimension(200, 20));
         jPanel1.add(label1);
         jPanel1.add(comboBox1);
@@ -50,13 +54,13 @@ public class MenuView extends JFrame {
         jPanel1.add(textArea1);
 
 
-        JPanel jPanel2 = new JPanel();
+        jPanel2 = new JPanel();
         JLabel label2 = new JLabel("Character 2:");
-        JComboBox comboBox2 = new JComboBox();
+        comboBox2 = new JComboBox();
         comboBox2.addItem("Explorer");
         comboBox2.addItem("Eskimo");
         JLabel label2_2 = new JLabel("Name:");
-        JTextArea textArea2 = new JTextArea("Indiana Jones");
+        textArea2 = new JTextArea("Indiana Jones");
         textArea2.setPreferredSize(new Dimension(200, 20));
         jPanel2.add(label2);
         jPanel2.add(comboBox2);
@@ -65,11 +69,11 @@ public class MenuView extends JFrame {
 
         jPanel3 = new JPanel();
         JLabel label3 = new JLabel("Character 3:");
-        JComboBox comboBox3 = new JComboBox();
+        comboBox3 = new JComboBox();
         comboBox3.addItem("Explorer");
         comboBox3.addItem("Eskimo");
         JLabel label3_2 = new JLabel("Name:");
-        JTextArea textArea3 = new JTextArea("Christopher Colombus");
+        textArea3 = new JTextArea("Christopher Colombus");
         textArea3.setPreferredSize(new Dimension(200, 20));
         jPanel3.add(label3);
         jPanel3.add(comboBox3);
@@ -78,11 +82,11 @@ public class MenuView extends JFrame {
 
         jPanel4 = new JPanel();
         JLabel label4 = new JLabel("Character 4:");
-        JComboBox comboBox4 = new JComboBox();
+        comboBox4 = new JComboBox();
         comboBox4.addItem("Explorer");
         comboBox4.addItem("Eskimo");
         JLabel label4_2 = new JLabel("Name:");
-        JTextArea textArea4 = new JTextArea("Ragnar Lothbrok");
+        textArea4 = new JTextArea("Ragnar Lothbrok");
         textArea4.setPreferredSize(new Dimension(200, 20));
         jPanel4.add(label4);
         jPanel4.add(comboBox4);
@@ -93,11 +97,11 @@ public class MenuView extends JFrame {
 
         jPanel5 = new JPanel();
         JLabel label5 = new JLabel("Character 5:");
-        JComboBox comboBox5 = new JComboBox();
+        comboBox5 = new JComboBox();
         comboBox5.addItem("Explorer");
         comboBox5.addItem("Eskimo");
         JLabel label5_2 = new JLabel("Name:");
-        JTextArea textArea5 = new JTextArea("Eric The Red");
+        textArea5 = new JTextArea("Eric The Red");
         textArea5.setPreferredSize(new Dimension(200, 20));
         jPanel5.add(label5);
         jPanel5.add(comboBox5);
@@ -129,7 +133,15 @@ public class MenuView extends JFrame {
 
             if (e.getActionCommand().equals(startGame.getActionCommand())) {
                 if (activePanel == null) {
+
+                    ArrayList<Character> characters = configGame();
+
                     game = new Game();
+                    Map map = new Map(game, characters);
+                    game.maps.add(map);
+                    game.currentMap = map;
+
+
                     System.out.println(game.currentMap.characters.get(0));
                     activePanel = new PlayPanel(game.currentMap);
                     frame.setVisible(false);
@@ -137,6 +149,69 @@ public class MenuView extends JFrame {
             }
         }
     }
+    public ArrayList<Character> configGame(){
+        ArrayList<Character> characters = new ArrayList<Character>();
+
+        //Elso karakter
+        if (comboBox1.getSelectedItem().toString() == "Eskimo"){
+            Eskimo character1 = new Eskimo(textArea1.getText());
+            characters.add(character1);
+        }
+        else{
+            Explorer character1 = new Explorer(textArea1.getText());
+            characters.add(character1);
+        }
+
+
+        //Masodik karakter
+        if (comboBox2.getSelectedItem().toString() == "Eskimo"){
+            Eskimo character2 = new Eskimo(textArea2.getText());
+            characters.add(character2);
+        }
+        else{
+            Explorer character2 = new Explorer(textArea2.getText());
+            characters.add(character2);
+        }
+
+        //Harmadik karakter
+        if (comboBox3.getSelectedItem().toString() == "Eskimo"){
+            Eskimo character3 = new Eskimo(textArea3.getText());
+            characters.add(character3);
+        }
+        else{
+            Explorer character3 = new Explorer(textArea3.getText());
+            characters.add(character3);
+        }
+
+        //Negyedik karakter
+        if ((int) comboBox.getSelectedItem() > 3)
+        {
+            if (comboBox4.getSelectedItem().toString() == "Eskimo"){
+                Eskimo character4 = new Eskimo(textArea4.getText());
+                characters.add(character4);
+            }
+            else{
+                Explorer character4 = new Explorer(textArea4.getText());
+                characters.add(character4);
+            }
+        }
+        if ((int) comboBox.getSelectedItem() > 4){
+            //Otodik karakter
+            if (comboBox5.getSelectedItem().toString() == "Eskimo"){
+                Eskimo character5 = new Eskimo(textArea5.getText());
+                characters.add(character5);
+            }
+            else{
+                Explorer character5 = new Explorer(textArea5.getText());
+                characters.add(character5);
+            }
+        }
+        return characters;
+
+    }
+
+
+
     final class comboBoxListener implements ActionListener{
 
         @Override

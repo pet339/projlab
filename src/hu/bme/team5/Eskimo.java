@@ -6,6 +6,15 @@ public class Eskimo extends Character {
     public Eskimo() {
         super();
         health = 5;
+        this.work = 4;
+    }
+
+
+    public Eskimo(String name) {
+        super();
+        health = 5;
+        this.work = 4;
+        this.name = name;
     }
 
     //Iglu építés
