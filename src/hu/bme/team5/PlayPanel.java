@@ -82,15 +82,13 @@ public class PlayPanel {
         
         JButton spellButton = new JButton("Spell");
         JButton moveButton = new JButton("Move");
-        JButton useItemButton = new JButton("Use Item");
+
         JButton tradeButton = new JButton("Trade");
 
         actionPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         actionPanel.add(spellButton);
         actionPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         actionPanel.add(moveButton);
-        actionPanel.add(Box.createRigidArea(new Dimension(0, 20)));
-        actionPanel.add(useItemButton);
         actionPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         actionPanel.add(tradeButton);
 
