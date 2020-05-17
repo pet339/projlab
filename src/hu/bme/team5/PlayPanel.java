@@ -123,7 +123,7 @@ public class PlayPanel {
         inventoryPanel.setBounds(800,75,375, 500);
 
         inventoryPanel.setLayout(new GridLayout(4,3));
-        inventoryPanel.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
+        inventoryPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         for(Item i : SelectedChar.inventory.items){
             final JLabel label = new JLabel();
