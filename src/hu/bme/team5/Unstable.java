@@ -9,8 +9,7 @@ public class Unstable extends Iceberg {
 
     public Unstable() {
         super();
-        Random rand = new Random();
-        capacity = 1;
+        capacity = r.nextInt(3) + 1;
     }
 
     @Override

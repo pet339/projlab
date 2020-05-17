@@ -2,6 +2,7 @@ package hu.bme.team5;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 import static hu.bme.team5.MenuView.game;
 
@@ -18,15 +19,17 @@ public abstract class Field {
     protected int id;
     protected Map map;
     protected Polygon p;
+    Random r;
 
     //Konstruktor
     public Field() {
+        r = new Random();
         id = ID++;
         characters = new ArrayList<>();
         neighbors = new ArrayList<>();
         igloo = false;
         tent = false;
-        snowSize = 2;
+        snowSize = r.nextInt(6);
     }
 
     //Fieldre lépés lekezelése
