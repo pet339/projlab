@@ -4,6 +4,9 @@ package hu.bme.team5;
 import java.awt.*;
 
 public class Hole extends Field {
+
+    Graphics g = null;
+
     public Hole() {
         super();
         capacity=0;
@@ -18,6 +21,8 @@ public class Hole extends Field {
         setSnowSize(0);
         //Character megfullasztása
         c.drown();
+        DrawField(g);
+        
     }
 
     //Visszaadja a fagyott itemet (Lyukban nincs fagyott item)
