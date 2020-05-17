@@ -1,20 +1,21 @@
 package hu.bme.team5;
 
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicBorders;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PlayPanel {
     Map map;
     Character SelectedChar;
     JComboBox characterComboBox;
     JComboBox itemComboBox;
+    JFrame mainFrame = new JFrame("North Pole");
     public PlayPanel(Map m) {
         System.out.println(m.characters.get(0));
         this.map = m;
         SelectedChar = m.characters.get(0);
-        JFrame mainFrame = new JFrame("North Pole");
+
 
 
         //Characters Panel
@@ -24,13 +25,18 @@ public class PlayPanel {
 
         JPanel menuPanel = new JPanel();
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.X_AXIS));
-        menuPanel.setBounds(0,0,1300,30);
-
+        menuPanel.setBounds(0, 0, 1300, 30);
 
 
         //Gombok létrehozása a karakterPanelhez
         JButton newGameButton = new JButton("New Game");
+        newGameButton.setActionCommand("New Game");
+        newGameButton.addActionListener(new ButtonListener());
+
         JButton exitGameButton = new JButton("Exit");
+        exitGameButton.setActionCommand("Exit");
+        exitGameButton.addActionListener(new ButtonListener());
+
 
         menuPanel.add(newGameButton);
         menuPanel.add(Box.createRigidArea(new Dimension(1016, 0)));
@@ -38,7 +44,7 @@ public class PlayPanel {
 
         //characters combo box init
         String[] tempchars = new String[m.characters.size()];
-        for(int i = 0 ; i < m.characters.size();i++){
+        for (int i = 0; i < m.characters.size(); i++) {
             tempchars[i] = m.characters.get(i).name;
         }
 
@@ -210,14 +216,27 @@ public class PlayPanel {
                     
                 case "Shovel Snow":
                     SelectedChar.shovelSnow();
-                    
+
                 case "Assemble flaregun":
                     SelectedChar.assemble();
-                    
+
             }
 
         }
 
+    }
+
+    final class ButtonListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getActionCommand().equals("Exit"))
+                System.exit(0);
+            if (e.getActionCommand().equals("New Game")) {
+                mainFrame.setVisible(false);
+                MenuView menuView = new MenuView();
+            }
+        }
     }
 
 }
