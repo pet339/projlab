@@ -268,8 +268,10 @@ public abstract class Character implements TurnBased, Controllable {
     }
 
     public void Spell(Field f){
-        buildIgloo();
-        explore(f);
+        int result = explore(f);
+        if (result == -10){
+            buildIgloo();
+        }
     }
 
 }
