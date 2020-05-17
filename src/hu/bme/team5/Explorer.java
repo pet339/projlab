@@ -35,4 +35,9 @@ public class Explorer extends Character {
         setWork(work-1);
     	return f.getCapacity();
     }
+
+    @Override
+    public String draw() {
+        return "src/img/pix_dora.png";
+    }
 }

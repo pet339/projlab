@@ -9,4 +9,9 @@ public class Flare extends Item {
     public boolean winItemNeeded() {
         return true;
     }
+
+    @Override
+    public String draw() {
+        return "src/img/pix_flare.png";
+    }
 }

@@ -34,4 +34,8 @@ public abstract class Item {
     }
 
     public boolean tentNeeded() {return false;}
+
+    public String draw() {
+        return null;
+    }
 }

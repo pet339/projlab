@@ -36,4 +36,8 @@ public class PolarBear {
     public void setCurrentField(Field f){
         currentField = f;
     }
+
+    public String draw(){
+        return "src/img/pix_polar.png";
+    }
 }
