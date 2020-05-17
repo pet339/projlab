@@ -251,7 +251,7 @@ public abstract class Character implements TurnBased, Controllable {
     
     int explore(Field f) {
         System.out.println("nem explorer vagy");
-        return -1;
+        return -10;
     }
     boolean buildIgloo() {return false;}
 
@@ -265,6 +265,13 @@ public abstract class Character implements TurnBased, Controllable {
 
     void setHealth(int h){
         health=h;
+    }
+
+    public void Spell(Field f){
+        int result = explore(f);
+        if (result == -10){
+            buildIgloo();
+        }
     }
 
     public String draw(){

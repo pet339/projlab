@@ -13,10 +13,9 @@ public class HexagonMapPanel extends JPanel {
         setPreferredSize(new Dimension(200, 200));
         this.m = m ;
         fields = m.FullInitTest();
-        
     }
 
-    public void paintComponent(Graphics g){
+    public void benjiPaint(Graphics g){
 
         
         int rowshift = 0;
@@ -51,7 +50,7 @@ public class HexagonMapPanel extends JPanel {
         return p;
     }
 
-    public void akospaint(Graphics g) {
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         int r = 52;
         
