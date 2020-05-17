@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Game extends JFrame {
-    private ArrayList<Map> maps; //Mappokat tartalmazó lista
+    ArrayList<Map> maps; //Mappokat tartalmazó lista
     Map currentMap; //Most futó map
     boolean isActive;
 
@@ -18,10 +18,7 @@ public class Game extends JFrame {
 
     //Konstruktor
     public Game() {
-        
-        currentMap = new Map(this);
         maps = new ArrayList<>();
-        maps.add(currentMap);
         isActive = true;
         //initWindow();
     }

@@ -6,6 +6,12 @@ public class Explorer extends Character {
         health = 4;
     }
 
+    public Explorer(String name) {
+        super();
+        health = 4;
+        this.name = name;
+    }
+
     //Felderít egy paraméterként kapott jégtáblát
     @Override
     public int explore(Field f) {

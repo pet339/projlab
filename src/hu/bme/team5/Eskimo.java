@@ -8,6 +8,13 @@ public class Eskimo extends Character {
         health = 5;
     }
 
+
+    public Eskimo(String name) {
+        super();
+        health = 5;
+        this.name = name;
+    }
+
     //Iglu építés
     @Override
     public boolean buildIgloo() {
