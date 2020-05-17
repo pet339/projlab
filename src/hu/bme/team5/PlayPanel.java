@@ -81,7 +81,7 @@ public class PlayPanel {
 
 
         //HexagonMap Panel létrehozása
-        HexagonMapPanel hexagonMapPanel = new HexagonMapPanel();
+        HexagonMapPanel hexagonMapPanel = new HexagonMapPanel(m);
         hexagonMapPanel.setBounds(180,50,600,550);
         //InfoPanel létrehozása
         JPanel infoPanel = new JPanel();
@@ -197,12 +197,16 @@ public class PlayPanel {
             switch(s) {
                 case "Save Ally":
                     SelectedChar.saveAlly(SelectedChar);
+                    
                 case "Eat":
                     SelectedChar.eat();
+                    
                 case "Shovel Snow":
                     SelectedChar.shovelSnow();
+                    
                 case "Assemble flaregun":
                     SelectedChar.assemble();
+                    
             }
 
         }

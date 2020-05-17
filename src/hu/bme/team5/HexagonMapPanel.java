@@ -2,16 +2,23 @@ package hu.bme.team5;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class HexagonMapPanel extends JPanel {
-    public HexagonMapPanel(){
+    ArrayList<HexaField> hexafields = new ArrayList<HexaField>();
+
+    public HexagonMapPanel(Map m){
         setPreferredSize(new Dimension(200, 200));
+
+        
+
+        
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         int r = 52;
-
+        
         int shift = -180;
 
         // Az első oszlop
