@@ -60,7 +60,7 @@ public class HexagonMapPanel extends JPanel {
     public void MapDrawInit() {
         int r = 52;
         int shift = -180;
-        int shifty = -50;
+        int shifty = -42;
         m.fields.get(0).setPolygon(createPolygon(240 + shift,300 - 2* r + shifty,r));
         m.fields.get(1).setPolygon(createPolygon(240 + shift,300+ shifty,r));
 
