@@ -3,11 +3,16 @@ package hu.bme.team5;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class HexagonMapPanel extends JPanel {
     //ArrayList<HexaField> hexafields = new ArrayList<HexaField>();
     Map m;
     ArrayList<ArrayList<Field>> fields;
+    HexagonMapPanel hx = this;
 
     public HexagonMapPanel(Map m){
         setPreferredSize(new Dimension(200, 200));
@@ -147,4 +152,9 @@ public class HexagonMapPanel extends JPanel {
         g.drawPolygon(createPolygon(240 + shift + 10*r- r/4 *5,300 - 1*r ,r));
         g.drawPolygon(createPolygon(240 + shift + 10*r- r/4 *5,300 + r ,r));
     }
+
+
+    
+
+		
 }

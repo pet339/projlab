@@ -95,4 +95,6 @@ public abstract class Field {
     public void setPolygon(Polygon p){
         this.p = p;
     }
+
+    abstract public void getExplored(Graphics g);
 }

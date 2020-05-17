@@ -37,6 +37,18 @@ public class Unstable extends Iceberg {
 
     public void DrawField(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(new Color(4, 167, 52));
+        
+        g2.fillPolygon(p);
+        if(snowSize!=0){
+            g2.setColor(new Color(138,195,209));
+            g2.fillPolygon(p);
+        }
+        
+    }
+
+    public void getExplored(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
         g2.setColor(new Color(154, 102, 66));
         
         g2.fillPolygon(p);
@@ -45,10 +57,5 @@ public class Unstable extends Iceberg {
             g2.setStroke(new BasicStroke(10));
             g2.drawPolygon(p);
         }
-        
-    }
-
-    public void getExplored(Graphics g) {
-
     }
 }
