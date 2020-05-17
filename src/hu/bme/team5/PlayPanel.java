@@ -32,6 +32,7 @@ public class PlayPanel {
         System.out.println(m.characters.get(0));
         this.map = m;
         hexagonMapPanel = new HexagonMapPanel(m);
+        hexagonMapPanel.addMouseListener(new MouseClickedListener());
         SelectedChar = m.characters.get(0);
         healthLabel.setText("Health: " + SelectedChar.health);
         workLabel.setText("Work: " + SelectedChar.work);
@@ -266,6 +267,8 @@ public class PlayPanel {
             for (Field f : map.fields) {
                 if (f.p.contains(mouseEvent.getX(), mouseEvent.getY())) {
                     selectedField = f;
+                    System.out.println(selectedField.getId());
+
                 }
             }
         }
