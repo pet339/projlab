@@ -1,5 +1,8 @@
 package hu.bme.team5;
 
+
+import java.awt.*;
+
 public class Hole extends Field {
     public Hole() {
         super();
@@ -32,5 +35,12 @@ public class Hole extends Field {
     @Override
     public void setIgloo(boolean igloo) {
 
+    }
+
+    public void DrawField(Graphics g) {
+
+        g.setColor(new Color(0, 105, 148));
+        g.fillPolygon(p);
+        
     }
 }

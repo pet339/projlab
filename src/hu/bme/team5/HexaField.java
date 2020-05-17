@@ -12,6 +12,6 @@ public class HexaField {
         this.f = f ;
         this.p = p ;
     }
-
+    
     
 }

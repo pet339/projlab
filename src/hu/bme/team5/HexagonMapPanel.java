@@ -11,6 +11,7 @@ public class HexagonMapPanel extends JPanel {
 
     public HexagonMapPanel(Map m){
         setPreferredSize(new Dimension(200, 200));
+        this.setBackground(new Color(0, 105, 148));
         this.m = m ;
         fields = m.FullInitTest();
     }

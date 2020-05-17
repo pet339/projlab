@@ -3,6 +3,7 @@ package hu.bme.team5;
 import java.util.Random;
 
 import static hu.bme.team5.MenuView.game;
+import java.awt.*;
 
 public class Unstable extends Iceberg {
 
@@ -33,5 +34,12 @@ public class Unstable extends Iceberg {
 
     public void setCapacity(int c){
         capacity=c;
+    }
+
+    public void DrawField(Graphics g) {
+
+        g.setColor(new Color(0, 105, 148));
+        g.fillPolygon(p);
+        
     }
 }
