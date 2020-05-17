@@ -13,4 +13,9 @@ public class Shovel extends Item {
     public int getCounter(){
         return counter;
     }
+
+    @Override
+    public String draw() {
+        return "src/img/pix_shovel.png";
+    }
 }

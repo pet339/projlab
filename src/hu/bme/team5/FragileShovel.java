@@ -11,4 +11,9 @@ public class FragileShovel extends Shovel {
         counter++;
         return true;
     }
+
+    @Override
+    public String draw() {
+        return "src/img/pix_broken.png";
+    }
 }

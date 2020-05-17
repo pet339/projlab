@@ -118,12 +118,12 @@ public class PlayPanel {
         inventoryPanel.setLayout(new GridLayout(4,3));
         inventoryPanel.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
 
-        for (int i =0; i<(4*3); i++){
-            final JLabel label = new JLabel("Label");
+        for(Item i : SelectedChar.inventory.items){
+            final JLabel label = new JLabel();
+            label.setIcon(new ImageIcon(i.draw()));
             label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             inventoryPanel.add(label);
         }
-
 
         //inventoryLabel.setFont(new Font("Serif", Font.BOLD, 24));
         //inventoryLabel.setAlignmentX( Component.LEFT_ALIGNMENT );

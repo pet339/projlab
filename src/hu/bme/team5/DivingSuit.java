@@ -12,4 +12,9 @@ public class DivingSuit extends Item {
     public boolean divingSuitNeeded() {
         return true;
     }
+
+    @Override
+    public String draw() {
+        return "src/img/pix_diver.png";
+    }
 }

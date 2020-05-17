@@ -267,4 +267,8 @@ public abstract class Character implements TurnBased, Controllable {
         health=h;
     }
 
+    public String draw(){
+        return null;
+    }
+
 }

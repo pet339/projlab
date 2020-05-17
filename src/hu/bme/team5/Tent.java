@@ -10,4 +10,9 @@ public class Tent extends Item {
     public boolean tentNeeded(){
         return true;
     }
+
+    @Override
+    public String draw() {
+        return "src/img/pix_tent.png";
+    }
 }

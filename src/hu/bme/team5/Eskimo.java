@@ -36,4 +36,9 @@ public class Eskimo extends Character {
     	currentField.setIgloo(true);
     	return true;
     }
+
+    @Override
+    public String draw() {
+        return "src/img/pix_eskimo.png";
+    }
 }

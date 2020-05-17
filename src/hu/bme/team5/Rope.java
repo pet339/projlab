@@ -14,4 +14,10 @@ public class Rope extends Item {
         return true;
     }
     // Push2
+
+
+    @Override
+    public String draw() {
+        return "src/img/pix_rope.png";
+    }
 }
