@@ -212,8 +212,6 @@ public class Map implements TurnBased {
         field17.setFrozenItem(divingSuit);
         field19.setFrozenItem(charge);
 
-
-
         //Fieldek hozzáadása a pályához
         fields.add(field1);
         fields.add(field2);
@@ -234,6 +232,28 @@ public class Map implements TurnBased {
         fields.add(field17);
         fields.add(field18);
         fields.add(field19);
+
+        //karakterek inicializalasa
+        characters.get(0).setCurrentField(field1);
+        field1.setCharacter(characters.get(0));
+
+        characters.get(1).setCurrentField(field9);
+        field9.setCharacter(characters.get(1));
+
+        characters.get(2).setCurrentField(field3);
+        field3.setCharacter(characters.get(2));
+
+        if (characters.size() > 3){
+            characters.get(3).setCurrentField(field19);
+            field19.setCharacter(characters.get(3));
+        }
+        if (characters.size() > 4){
+            characters.get(4).setCurrentField(field16);
+            field16.setCharacter(characters.get(4));
+        }
+
+
+
 
 
 
