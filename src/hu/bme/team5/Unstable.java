@@ -11,7 +11,6 @@ public class Unstable extends Iceberg {
         super();
         Random rand = new Random();
         capacity = 1;
-        
     }
 
     @Override
@@ -37,9 +36,18 @@ public class Unstable extends Iceberg {
     }
 
     public void DrawField(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(new Color(154, 102, 66));
+        if(snowSize!=0){
+            g2.setColor(new Color(211,211,211));
+            g2.setStroke(new BasicStroke(10));
+            g2.drawPolygon(p);
+        }
+        g2.fillPolygon(p);
+        
+    }
 
-        g.setColor(new Color(0, 105, 148));
-        g.fillPolygon(p);
+    public void getExplored(Graphics g) {
         
     }
 }

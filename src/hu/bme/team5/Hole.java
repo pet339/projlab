@@ -39,8 +39,14 @@ public class Hole extends Field {
 
     public void DrawField(Graphics g) {
 
-        g.setColor(new Color(0, 105, 148));
-        g.fillPolygon(p);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(new Color(0, 105, 148));
+        if(snowSize!=0){
+            g2.setColor(new Color(211,211,211));
+            g2.setStroke(new BasicStroke(10));
+            g2.drawPolygon(p);
+        }
+        g2.fillPolygon(p);
         
     }
 }

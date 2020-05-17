@@ -18,6 +18,7 @@ public abstract class Field {
     protected int id;
     protected Map map;
     protected Polygon p;
+
     //Konstruktor
     public Field() {
         id = ID++;
@@ -91,4 +92,7 @@ public abstract class Field {
     }
 
     abstract public void DrawField(Graphics g);
+    public void setPolygon(Polygon p){
+        this.p = p;
+    }
 }
