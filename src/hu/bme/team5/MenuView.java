@@ -197,7 +197,7 @@ public class MenuView extends JFrame {
         }
         if ((int) comboBox.getSelectedItem() > 4){
             //Otodik karakter
-            if (comboBox1.getSelectedItem().toString() == "Eskimo"){
+            if (comboBox5.getSelectedItem().toString() == "Eskimo"){
                 Eskimo character5 = new Eskimo(textArea5.getText());
                 characters.add(character5);
             }
