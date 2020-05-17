@@ -12,6 +12,7 @@ public class PlayPanel {
     JComboBox itemComboBox;
     JLabel healthLabel = new JLabel("Health: 0");
     JLabel workLabel = new JLabel("Work: 0");
+    JButton itemOkButton = new JButton("Ok");
 
     JFrame mainFrame = new JFrame("North Pole");
 
@@ -161,7 +162,8 @@ public class PlayPanel {
 
         itemPanel.add(Box.createRigidArea(new Dimension(10, 0)));
 
-        JButton itemOkButton = new JButton("Ok");
+        itemOkButton.setActionCommand("Ok");
+        itemOkButton.addActionListener(new ItemActionChosenListener());
         itemPanel.add(itemOkButton);
 
         JButton endTurnButton = new JButton("End Turn");
@@ -171,7 +173,7 @@ public class PlayPanel {
 
         mainFrame.setDefaultCloseOperation(mainFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);
-        mainFrame.setSize(1185,690);
+        mainFrame.setSize(1185, 690);
 
         mainFrame.add(inventoryTextPanel);
         mainFrame.add(infoPanel);
@@ -209,33 +211,35 @@ public class PlayPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             String s = (String) itemComboBox.getSelectedItem();
-            
-            switch(s) {
-                case "Save Ally": {
-                    SelectedChar.saveAlly(SelectedChar);
-                    workLabel.setText("Work: " + SelectedChar.work);
+            if (e.getActionCommand().equals("Ok")) {
+                switch (s) {
+                    case "Save Ally": {
+                        SelectedChar.saveAlly(SelectedChar);
+                        workLabel.setText("Work: " + SelectedChar.work);
+                    }
+
+
+                    case "Eat": {
+                        SelectedChar.eat();
+                        healthLabel.setText("Health: " + SelectedChar.health);
+                    }
+
+
+                    case "Shovel Snow": {
+                        SelectedChar.shovelSnow();
+                        workLabel.setText("Work: " + SelectedChar.work);
+                    }
+
+
+                    case "Assemble flaregun": {
+                        SelectedChar.assemble();
+                        workLabel.setText("Work: " + SelectedChar.work);
+                    }
+
+
                 }
-
-
-                case "Eat": {
-                    SelectedChar.eat();
-                    healthLabel.setText("Health: " + SelectedChar.health);
-                }
-
-
-                case "Shovel Snow": {
-                    SelectedChar.shovelSnow();
-                    workLabel.setText("Work: " + SelectedChar.work);
-                }
-
-
-                case "Assemble flaregun": {
-                    SelectedChar.assemble();
-                    workLabel.setText("Work: " + SelectedChar.work);
-                }
-
-
             }
+
 
         }
 
@@ -251,6 +255,7 @@ public class PlayPanel {
                 mainFrame.setVisible(false);
                 MenuView menuView = new MenuView();
             }
+
         }
     }
 
