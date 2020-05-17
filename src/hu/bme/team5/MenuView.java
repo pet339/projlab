@@ -11,7 +11,9 @@ public class MenuView extends JFrame {
     private JButton startGame = new JButton("Start playing");
     private JFrame frame = new JFrame("North Pole");
     static Game game;
+    JPanel jPanel3, jPanel4, jPanel5;
 
+    JComboBox comboBox;
     public MenuView() {
         initframe();
     }
@@ -24,12 +26,13 @@ public class MenuView extends JFrame {
 
         JPanel jPanel = new JPanel();
         JLabel label = new JLabel(("Number of characters: "));
-        JComboBox comboBox = new JComboBox();
+        comboBox = new JComboBox();
         comboBox.addItem(3);
         comboBox.addItem(4);
         comboBox.addItem(5);
         jPanel.add(label);
         jPanel.add(comboBox);
+        comboBox.addActionListener(new comboBoxListener());
 
         //int numberOfCharacters = (int) comboBox.getSelectedItem();
 
@@ -60,7 +63,7 @@ public class MenuView extends JFrame {
         jPanel2.add(label2_2);
         jPanel2.add(textArea2);
 
-        JPanel jPanel3 = new JPanel();
+        jPanel3 = new JPanel();
         JLabel label3 = new JLabel("Character 3:");
         JComboBox comboBox3 = new JComboBox();
         comboBox3.addItem("Explorer");
@@ -73,7 +76,7 @@ public class MenuView extends JFrame {
         jPanel3.add(label3_2);
         jPanel3.add(textArea3);
 
-        JPanel jPanel4 = new JPanel();
+        jPanel4 = new JPanel();
         JLabel label4 = new JLabel("Character 4:");
         JComboBox comboBox4 = new JComboBox();
         comboBox4.addItem("Explorer");
@@ -86,7 +89,9 @@ public class MenuView extends JFrame {
         jPanel4.add(label4_2);
         jPanel4.add(textArea4);
 
-        JPanel jPanel5 = new JPanel();
+        jPanel4.setVisible(false);
+
+        jPanel5 = new JPanel();
         JLabel label5 = new JLabel("Character 5:");
         JComboBox comboBox5 = new JComboBox();
         comboBox5.addItem("Explorer");
@@ -98,6 +103,8 @@ public class MenuView extends JFrame {
         jPanel5.add(comboBox5);
         jPanel5.add(label5_2);
         jPanel5.add(textArea5);
+
+        jPanel5.setVisible(false);
 
 
         panel.add(jPanel);
@@ -130,4 +137,29 @@ public class MenuView extends JFrame {
             }
         }
     }
+    final class comboBoxListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String s =comboBox.getSelectedItem().toString();
+            switch (s){
+                case "3":
+                    jPanel4.setVisible(false);
+                    jPanel5.setVisible(false);
+                    break;
+                case "4":
+                    jPanel4.setVisible(false);
+                    jPanel5.setVisible(true);
+                    break;
+                case "5":
+                    jPanel4.setVisible(true);
+                    jPanel5.setVisible(true);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+
 }
