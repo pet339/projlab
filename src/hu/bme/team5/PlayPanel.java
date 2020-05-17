@@ -10,17 +10,22 @@ public class PlayPanel {
     Character SelectedChar;
     JComboBox characterComboBox;
     JComboBox itemComboBox;
+    JLabel healthLabel = new JLabel("Health: 0");
+    JLabel workLabel = new JLabel("Work: 0");
+
     JFrame mainFrame = new JFrame("North Pole");
+
     public PlayPanel(Map m) {
         System.out.println(m.characters.get(0));
         this.map = m;
         SelectedChar = m.characters.get(0);
-
+        healthLabel.setText("Health: " + SelectedChar.health);
+        workLabel.setText("Work: " + SelectedChar.work);
 
 
         //Characters Panel
         JPanel charactersPanel = new JPanel(new BorderLayout());
-        charactersPanel.setBounds(0,100,180,25);
+        charactersPanel.setBounds(0, 100, 180, 25);
 
 
         JPanel menuPanel = new JPanel();
@@ -99,12 +104,8 @@ public class PlayPanel {
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
 
 
-        JLabel healthLabel = new JLabel("Health: 4");
+
         healthLabel.setFont(new Font("Serif", Font.BOLD, 24));
-
-
-
-        JLabel workLabel = new JLabel("Work: 5");
         workLabel.setFont(new Font("Serif", Font.BOLD, 24));
 
         infoPanel.add(healthLabel);
@@ -193,9 +194,11 @@ public class PlayPanel {
         public void actionPerformed(ActionEvent e) {
             String s = (String) characterComboBox.getSelectedItem();
 
-            for(int i = 0 ; i < map.characters.size(); i++){
-                if(map.characters.get(i).name.equals(s))
+            for(int i = 0 ; i < map.characters.size(); i++) {
+                if (map.characters.get(i).name.equals(s))
                     SelectedChar = map.characters.get(i);
+                healthLabel.setText("Health: " + SelectedChar.health);
+                workLabel.setText("Work: " + SelectedChar.work);
             }
         }
 
@@ -208,17 +211,29 @@ public class PlayPanel {
             String s = (String) itemComboBox.getSelectedItem();
             
             switch(s) {
-                case "Save Ally":
+                case "Save Ally": {
                     SelectedChar.saveAlly(SelectedChar);
-                    
-                case "Eat":
-                    SelectedChar.eat();
-                    
-                case "Shovel Snow":
-                    SelectedChar.shovelSnow();
+                    workLabel.setText("Work: " + SelectedChar.work);
+                }
 
-                case "Assemble flaregun":
+
+                case "Eat": {
+                    SelectedChar.eat();
+                    healthLabel.setText("Health: " + SelectedChar.health);
+                }
+
+
+                case "Shovel Snow": {
+                    SelectedChar.shovelSnow();
+                    workLabel.setText("Work: " + SelectedChar.work);
+                }
+
+
+                case "Assemble flaregun": {
                     SelectedChar.assemble();
+                    workLabel.setText("Work: " + SelectedChar.work);
+                }
+
 
             }
 
