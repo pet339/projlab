@@ -15,8 +15,8 @@ public class PlayPanel {
     JComboBox characterComboBox, characterComboBox2;
     JComboBox tradeCharacterComboBox;
     JComboBox itemComboBox;
-    String itemNames[];
-    DefaultComboBoxModel<String> itemModel;
+    String itemNames[], characterNames[];
+    DefaultComboBoxModel<String> itemModel, characterModel;
 
     Field selectedField = null;
 
@@ -176,10 +176,6 @@ public class PlayPanel {
 
         tradeItemPanel.add(tradeItem);
         tradeItemPanel.add(Box.createRigidArea(new Dimension(36, 0)));
-        String[] tempchars2 = new String[m.characters.size()];
-        for (int i = 0; i < m.characters.size(); i++) {
-            tempchars[i] = m.characters.get(i).name;
-        }
 
         itemNames = new String[selectedChar.inventory.items.size()];
         for (int i = 0; i < selectedChar.inventory.items.size();i++){
@@ -190,13 +186,23 @@ public class PlayPanel {
         JComboBox<String> itemComboBox2 = new JComboBox<>(itemModel);
 
 
+        //KarakterComboBox2
+        characterNames = new String[map.characters.size() -1];
+        int counter = 0;
+        for (int i = 0; i < map.characters.size();i++){
+            if (selectedChar.name != map.characters.get(i).name)
+                characterNames[counter++] = map.characters.get(i).name;
+        }
+
+
         itemComboBox2.setSize(100, characterComboBox.getPreferredSize().height);
         tradeItemPanel.add(itemComboBox2);
 
-
-
         tradeItemPanel.add(Box.createRigidArea(new Dimension(70, 0)));
-        characterComboBox2 = new JComboBox(tempchars);
+
+        characterModel = new DefaultComboBoxModel<>(characterNames);
+        JComboBox<String> characterComboBox2 = new JComboBox<>(characterModel);
+
         tradeItemPanel.add(characterComboBox2);
 
         tradeItemPanel.add(Box.createRigidArea(new Dimension(10, 0)));
@@ -274,13 +280,29 @@ public class PlayPanel {
                 healthLabel.setText("Health: " + selectedChar.health);
                 workLabel.setText("Work: " + selectedChar.work);
             }
+
             itemModel.removeAllElements();
             String itemNames[] = new String[selectedChar.inventory.items.size()];
             for (int i = 0; i < selectedChar.inventory.items.size();i++){
                 itemNames[i] = selectedChar.inventory.items.get(i).name;
                 itemModel.addElement(selectedChar.inventory.items.get(i).name);
+            }
+
+            characterModel.removeAllElements();
+            characterNames = new String[map.characters.size() -1];
+            int counter = 0;
+            for (int i = 0; i < map.characters.size();i++){
+                if (selectedChar.name != map.characters.get(i).name){
+                    characterNames[counter++] = map.characters.get(i).name;
+                    characterModel.addElement(map.characters.get(i).name);
+                }
+
 
             }
+
+
+
+
         }
 
     }
