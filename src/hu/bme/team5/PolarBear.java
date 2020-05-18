@@ -38,6 +38,6 @@ public class PolarBear {
     }
 
     public String draw(){
-        return "src/img/pix_polar.png";
+        return "bin/img/pix_polar.png";
     }
 }

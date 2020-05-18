@@ -39,6 +39,6 @@ public class Eskimo extends Character {
 
     @Override
     public String draw() {
-        return "src/img/pix_eskimo.png";
+        return "bin/img/pix_eskimo.png";
     }
 }

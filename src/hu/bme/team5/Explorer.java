@@ -38,6 +38,6 @@ public class Explorer extends Character {
 
     @Override
     public String draw() {
-        return "src/img/pix_dora.png";
+        return "bin/img/pix_dora.png";
     }
 }

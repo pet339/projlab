@@ -353,10 +353,6 @@ public class PlayPanel {
             for (Field f : hexagonMapPanel.m.fields) {
                 if (f.p.contains(mouseEvent.getX(), mouseEvent.getY())) {
                     f.getExplored(hexagonMapPanel.getGraphics());
-<<<<<<< HEAD
-=======
-
->>>>>>> b7b252d00731fe5fde930f20f33a6e8f0ae8db3c
                     selectedField = f;
                     System.out.println(selectedField.getId());
 
