@@ -236,9 +236,12 @@ public class Map implements TurnBased {
         //karakterek inicializalasa
         characters.get(0).setCurrentField(field1);
         field1.setCharacter(characters.get(0));
+        characters.get(0).inventory.items.add(gun);
+        characters.get(0).inventory.items.add(food2);
 
         characters.get(1).setCurrentField(field9);
         field9.setCharacter(characters.get(1));
+        characters.get(1).inventory.items.add(food1);
 
         characters.get(2).setCurrentField(field3);
         field3.setCharacter(characters.get(2));
