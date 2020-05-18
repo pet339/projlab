@@ -6,13 +6,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class PlayPanel {
     Map map;
-    Character SelectedChar;
+    Character selectedChar;
     JComboBox characterComboBox, characterComboBox2;
     JComboBox tradeCharacterComboBox;
-    JComboBox itemComboBox, itemComboBox2;
+    JComboBox itemComboBox;
+    String itemNames[], characterNames[];
+    DefaultComboBoxModel<String> itemModel, characterModel;
 
     Field selectedField = null;
 
@@ -33,9 +37,9 @@ public class PlayPanel {
         this.map = m;
         hexagonMapPanel = new HexagonMapPanel(m);
         hexagonMapPanel.addMouseListener(new MouseClickedListener());
-        SelectedChar = m.characters.get(0);
-        healthLabel.setText("Health: " + SelectedChar.health);
-        workLabel.setText("Work: " + SelectedChar.work);
+        selectedChar = m.characters.get(0);
+        healthLabel.setText("Health: " + selectedChar.health);
+        workLabel.setText("Work: " + selectedChar.work);
 
 
         //Characters Panel
@@ -74,11 +78,11 @@ public class PlayPanel {
 
 
         //items combo box init
-        String[] tempitems = {"Rope", "Food", "Shovel", "Gun" };
+        String[] tempitems = {"Save Ally", "Eat", "Shovel", "Assamble" };
         itemComboBox = new JComboBox(tempitems);
         itemComboBox.setSize(100, itemComboBox.getPreferredSize().height);
         itemComboBox.addActionListener(new ItemActionChosenListener());
-        
+
         //Hozzáadás a characterPanelhez
         //charactersPanel.add(menuButton);
 
@@ -143,7 +147,7 @@ public class PlayPanel {
         inventoryPanel.setLayout(new GridLayout(4,3));
         inventoryPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-        for(Item i : SelectedChar.inventory.items){
+        for(Item i : selectedChar.inventory.items){
             final JLabel label = new JLabel();
             label.setIcon(new ImageIcon(i.draw()));
             label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -172,18 +176,34 @@ public class PlayPanel {
 
         tradeItemPanel.add(tradeItem);
         tradeItemPanel.add(Box.createRigidArea(new Dimension(36, 0)));
-        String[] tempchars2 = new String[m.characters.size()];
-        for (int i = 0; i < m.characters.size(); i++) {
-            tempchars[i] = m.characters.get(i).name;
+
+        itemNames = new String[selectedChar.inventory.items.size()];
+        for (int i = 0; i < selectedChar.inventory.items.size();i++){
+            itemNames[i] = selectedChar.inventory.items.get(i).name;
         }
 
-        characterComboBox2 = new JComboBox(tempchars);
-        characterComboBox2.setSize(100, characterComboBox.getPreferredSize().height);
-        tradeItemPanel.add(characterComboBox2);
+        itemModel = new DefaultComboBoxModel<>(itemNames);
+        JComboBox<String> itemComboBox2 = new JComboBox<>(itemModel);
+
+
+        //KarakterComboBox2
+        characterNames = new String[map.characters.size() -1];
+        int counter = 0;
+        for (int i = 0; i < map.characters.size();i++){
+            if (selectedChar.name != map.characters.get(i).name)
+                characterNames[counter++] = map.characters.get(i).name;
+        }
+
+
+        itemComboBox2.setSize(100, characterComboBox.getPreferredSize().height);
+        tradeItemPanel.add(itemComboBox2);
 
         tradeItemPanel.add(Box.createRigidArea(new Dimension(70, 0)));
-        itemComboBox2 = new JComboBox(tempchars);
-        tradeItemPanel.add(itemComboBox2);
+
+        characterModel = new DefaultComboBoxModel<>(characterNames);
+        JComboBox<String> characterComboBox2 = new JComboBox<>(characterModel);
+
+        tradeItemPanel.add(characterComboBox2);
 
         tradeItemPanel.add(Box.createRigidArea(new Dimension(10, 0)));
         JButton tradeOkButton = new JButton("Ok");
@@ -200,13 +220,13 @@ public class PlayPanel {
         itemPanel.setBounds(0,600,747,50);
         itemPanel.setLayout(new BoxLayout(itemPanel,BoxLayout.X_AXIS));
 
-        JLabel useItem = new JLabel("Use Item:");
+        JLabel useItem = new JLabel("Do it:");
         useItem.setFont(new Font("Serif", Font.BOLD, 24));
 
 
         itemPanel.add(useItem);
 
-        itemPanel.add(Box.createRigidArea(new Dimension(10, 0)));
+        itemPanel.add(Box.createRigidArea(new Dimension(47, 0)));
         //Rossz meg, holnapra
 
         itemPanel.add(itemComboBox);
@@ -256,10 +276,33 @@ public class PlayPanel {
 
             for(int i = 0 ; i < map.characters.size(); i++) {
                 if (map.characters.get(i).name.equals(s))
-                    SelectedChar = map.characters.get(i);
-                healthLabel.setText("Health: " + SelectedChar.health);
-                workLabel.setText("Work: " + SelectedChar.work);
+                    selectedChar = map.characters.get(i);
+                healthLabel.setText("Health: " + selectedChar.health);
+                workLabel.setText("Work: " + selectedChar.work);
             }
+
+            itemModel.removeAllElements();
+            String itemNames[] = new String[selectedChar.inventory.items.size()];
+            for (int i = 0; i < selectedChar.inventory.items.size();i++){
+                itemNames[i] = selectedChar.inventory.items.get(i).name;
+                itemModel.addElement(selectedChar.inventory.items.get(i).name);
+            }
+
+            characterModel.removeAllElements();
+            characterNames = new String[map.characters.size() -1];
+            int counter = 0;
+            for (int i = 0; i < map.characters.size();i++){
+                if (selectedChar.name != map.characters.get(i).name){
+                    characterNames[counter++] = map.characters.get(i).name;
+                    characterModel.addElement(map.characters.get(i).name);
+                }
+
+
+            }
+
+
+
+
         }
 
     }
@@ -272,26 +315,26 @@ public class PlayPanel {
             if (e.getActionCommand().equals("Ok")) {
                 switch (s) {
                     case "Save Ally": {
-                        SelectedChar.saveAlly(SelectedChar);
-                        workLabel.setText("Work: " + SelectedChar.work);
+                        selectedChar.saveAlly(selectedChar);
+                        workLabel.setText("Work: " + selectedChar.work);
                     }
 
 
                     case "Eat": {
-                        SelectedChar.eat();
-                        healthLabel.setText("Health: " + SelectedChar.health);
+                        selectedChar.eat();
+                        healthLabel.setText("Health: " + selectedChar.health);
                     }
 
 
-                    case "Shovel Snow": {
-                        SelectedChar.shovelSnow();
-                        workLabel.setText("Work: " + SelectedChar.work);
+                    case "Shovel": {
+                        selectedChar.shovelSnow();
+                        workLabel.setText("Work: " + selectedChar.work);
                     }
 
 
-                    case "Assemble flaregun": {
-                        SelectedChar.assemble();
-                        workLabel.setText("Work: " + SelectedChar.work);
+                    case "Assemble": {
+                        selectedChar.assemble();
+                        workLabel.setText("Work: " + selectedChar.work);
                     }
 
 
@@ -310,6 +353,10 @@ public class PlayPanel {
             for (Field f : hexagonMapPanel.m.fields) {
                 if (f.p.contains(mouseEvent.getX(), mouseEvent.getY())) {
                     f.getExplored(hexagonMapPanel.getGraphics());
+<<<<<<< HEAD
+=======
+
+>>>>>>> b7b252d00731fe5fde930f20f33a6e8f0ae8db3c
                     selectedField = f;
                     System.out.println(selectedField.getId());
 
@@ -349,19 +396,19 @@ public class PlayPanel {
                 MenuView menuView = new MenuView();
             }
             if (e.getActionCommand().equals("Spell")) {
-                SelectedChar.Spell(SelectedChar.currentField);
-                workLabel.setText("Work: " + SelectedChar.work);
+                selectedChar.Spell(selectedChar.currentField);
+                workLabel.setText("Work: " + selectedChar.work);
             }
             if (e.getActionCommand().equals("Move")) {
                 if (selectedField != null) {
-                    SelectedChar.move(selectedField);
-                    workLabel.setText("Work: " + SelectedChar.work);
+                    selectedChar.move(selectedField);
+                    workLabel.setText("Work: " + selectedChar.work);
                 }
 
             }
             if (e.getActionCommand().equals("Trade")) {
                 //SelectedChar.trade();
-                workLabel.setText("Work: " + SelectedChar.work);
+                workLabel.setText("Work: " + selectedChar.work);
 
             }
             if (e.getActionCommand().equals("End Turn")) {
